@@ -1,10 +1,16 @@
 """Lex, flex, reflex, yacc, Bison, scanners & parser generators."""
 
-
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 
 def setup_parser():
+    if not native.existing_rule("m4"):
+        http_archive(
+            name = "rules_m4",
+            urls = ["https://github.com/jmillikin/rules_m4/releases/download/v0.2/rules_m4-v0.2.tar.xz"],
+            sha256 = "c67fa9891bb19e9e6c1050003ba648d35383b8cb3c9572f397ad24040fb7f0eb",
+        )
+
     # http_archive(
     #     name = "flex",
     #     build_file_content = all_content,
@@ -22,15 +28,14 @@ filegroup(
   srcs = glob(["**"]),
   visibility = ["//visibility:public"]
 )
-"""
-
+    """
     headers_content = """
 filegroup(
   name = "headers",
   srcs = glob(["include/reflex/*.h"]),
   visibility = ["//visibility:public"]
 )
-"""
+    """
     http_archive(
         name = "reflex",
         build_file_content = all_content + headers_content,
@@ -39,17 +44,6 @@ filegroup(
         urls = ["https://github.com/Genivia/RE-flex/archive/v1.6.6.zip"],
         ##build_file = "@//:BUILD.reflex",
     )
-
-    if not native.existing_rule("m4"):
-        # 2016-12-31
-        http_archive(
-            name = "m4",
-            build_file_content = all_content,
-            strip_prefix = "m4-1.4.18",
-            sha256 = "ab2633921a5cd38e48797bf5521ad259bdc4b979078034a3b790d7fec5493fab",
-            urls = ["https://ftp.gnu.org/gnu/m4/m4-1.4.18.tar.gz"],
-            patches = ["@oblique//third_party/parser:m4.patch"],
-        )
 
     # 2020-05-09
     http_archive(

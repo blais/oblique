@@ -5,6 +5,7 @@ build --cxxopt=-std=c++14
 build --define=use_fast_cpp_protos=true
 
 # Use Clang to build, not gcc.
+build --repo_env=CC=clang
 
 ## build --compiler=clang
 ## build --host_compiler=clang
@@ -12,10 +13,8 @@ build --define=use_fast_cpp_protos=true
 ## build --crosstool_top=//tools/toolchain:cc-toolchain
 ## build --host_crosstool_top=//tools/toolchain:host-cc-toolchain
 ## build --action_env=BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1
-
-#build --repo_env=CC=clang
-# build --repo_env=BAZEL_LINKOPTS=-stdlib=libc++:-rtlib=compiler-rt
-# build --repo_env=BAZEL_CXXOPTS="-stdlib=libc++:-isystem$INSTALL_DIR/include" \
-# #build --repo_env=BAZEL_LINKOPTS="-stdlib=libc++" \
-# build --repo_env=BAZEL_LINKLIBS="-L$INSTALL_DIR/lib:-Wl,-rpath,$INSTALL_DIR/lib:-lc++:-lm" \
-# # #build --features=use_compiler_rt=true
+## build --repo_env=BAZEL_LINKOPTS=-stdlib=libc++:-rtlib=compiler-rt
+## build --repo_env=BAZEL_CXXOPTS="-stdlib=libc++:-isystem$INSTALL_DIR/include" \
+## #build --repo_env=BAZEL_LINKOPTS="-stdlib=libc++" \
+## build --repo_env=BAZEL_LINKLIBS="-L$INSTALL_DIR/lib:-Wl,-rpath,$INSTALL_DIR/lib:-lc++:-lm" \
+## build --features=use_compiler_rt=true

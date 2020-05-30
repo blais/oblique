@@ -20,6 +20,8 @@ failing when the parser is extended further.
 
 """
 
+load("@rules_m4//m4:m4.bzl", "M4_TOOLCHAIN_TYPE", "m4_toolchain")
+
 def _genyacc_impl(ctx):
     """Implementation for genyacc rule."""
 
@@ -42,14 +44,15 @@ def _genyacc_impl(ctx):
         ctx.outputs.source_out,
     ]
 
+    m4 = m4_toolchain(ctx)
     ctx.actions.run(
         executable = ctx.executable._bison,
         env = {
-            "M4": ctx.executable._m4.path,
+            "M4": m4.m4_tool.executable.path,
         },
         arguments = [args],
         inputs = ctx.files.src,
-        tools = [ctx.executable._m4],
+        tools = [m4.m4_tool.executable],
         outputs = outputs,
         mnemonic = "Yacc",
         progress_message = "Generating %s and %s from %s" %
@@ -94,11 +97,7 @@ genyacc = rule(
             executable = True,
             cfg = "host",
         ),
-        "_m4": attr.label(
-            default = Label("//third_party/parser:m4_bin"),
-            executable = True,
-            cfg = "host",
-        ),
     },
     output_to_genfiles = True,
+    toolchains = [M4_TOOLCHAIN_TYPE],
 )

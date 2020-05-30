@@ -25,6 +25,8 @@ genreflex(
 ```
 """
 
+load("@rules_m4//m4:m4.bzl", "M4_TOOLCHAIN_TYPE", "m4_toolchain")
+
 def _genreflex_impl(ctx):
     """Implementation for genreflex rule."""
 
@@ -53,14 +55,15 @@ def _genreflex_impl(ctx):
     if ctx.attr.debug:
         args.add("-d")
 
+    m4 = m4_toolchain(ctx)
     ctx.actions.run(
         executable = ctx.executable._reflex,
         env = {
-            "M4": ctx.executable._m4.path,
+            "M4": m4.m4_tool.executable.path,
         },
         arguments = [args],
         inputs = ctx.files.src + ctx.files.includes,
-        tools = [ctx.executable._m4],
+        tools = [m4.m4_tool.executable],
         outputs = [ctx.outputs.out,
                    ctx.outputs.header_out],
         mnemonic = "ReFlex",
@@ -118,11 +121,7 @@ genreflex = rule(
             executable = True,
             cfg = "host",
         ),
-        "_m4": attr.label(
-            default = Label("//third_party/parser:m4_bin"),
-            executable = True,
-            cfg = "host",
-        ),
     },
     output_to_genfiles = True,
+    toolchains = [M4_TOOLCHAIN_TYPE],
 )

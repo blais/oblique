@@ -22,41 +22,18 @@ ar_wrapper(
 )
 
 configure_make(
-    name = "m4",
-    binaries = [
-        "m4",
-    ],
-    configure_env_vars = {
-        "AR": "ar_wrapper",
-    },
-    configure_options = [
-        "--disable-nls",
-    ],
-    lib_source = "@m4//:all",
-    tools_deps = [":ar_wrapper"],
-)
-
-filegroup(
-    name = "m4_bin",
-    srcs = [":m4"],
-    output_group = "m4",
-)
-
-configure_make(
     name = "bison",
     binaries = [
         "bison",
         "yacc",
     ],
     configure_env_vars = {
-        "M4": "$$EXT_BUILD_DEPS$$/m4/bin/m4",
         "CC_FOR_BUILD": "$$CC$$",
         "AR": "ar_wrapper",
     },
     lib_source = "@bison//:all",
     static_libraries = ["liby.a"],
     tools_deps = [":ar_wrapper"],
-    deps = [":m4"],
 )
 
 filegroup(
@@ -74,12 +51,8 @@ configure_make(
     configure_env_vars = {
         # Use PIC so we can link Python extension modules to this.
         "CXXFLAGS": "-fPIC",
-    #     "M4": "$$EXT_BUILD_DEPS$$/m4/bin/m4",
-    #     "AR": "ar_wrapper",
     },
     lib_source = "@reflex//:all",
-    tools_deps = [":ar_wrapper"],
-    deps = [":m4"],
 )
 
 filegroup(
