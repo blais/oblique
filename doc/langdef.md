@@ -1,5 +1,9 @@
 # Oblique Data Language
 
+ > WARNING: THIS DOCUMENT IS NOT ACCURATE. This was written before the
+ > implementation to document the idea. It will be updated when the
+ > implementation is complete.
+
 Oblique is a simple computer language that allows you to define typed data in a
 minimalistic language written in text files.
 
@@ -14,7 +18,7 @@ short definitions.
 Each line in a program is read in order. All declarations must be made prior to
 being used.
 
-Use the `.pfx` extension for files in the Oblique language.
+I suggest using the `.oblique` extension for files in the Oblique language.
 
 ### Objects and Types
 
@@ -55,9 +59,9 @@ Any line beginning with `#` is a comment and everything after it is ignored.
 Commands begin with one of a fixed set of command keywords, which are all single
 words starting with "/" and followed by some arguments. Some examples:
 
-    /type d A calendar date
+    /type/d A calendar date
     /macro P[0-4] p/\1
-    /import other_file.pfx
+    /import other_file.oblique
 
 #### Object Definitions
 
@@ -112,15 +116,15 @@ where `12345678` is an automatically allocated random identifier.
 
 All objects are typed. New types may be defined with:
 
-    /type <typename> <contents>
+    /type/<typename> <contents>
 
 Types also contains a contents string, usually a human-readable description of
 the type. For example:
 
-    /type q Calendar quarter
-    /type o Objective
-    /type cl Change list
-    /type p Project
+    /type/q Calendar quarter
+    /type/o Objective
+    /type/cl Change list
+    /type/p Project
 
 Type names are intended to be very short as in the examples above, one, two, or
 perhaps three lowercase characters as most. The reason for this is that the type
@@ -138,16 +142,16 @@ must be a definition for it elsewhere in the program text.
 explicitly declaring them. Defining lazy types follows a similar syntax as for
 regular types:
 
-    /typel <typename> <contents>
+    /lazytype/<typename> <contents>
 
 All objects of lazy types are automatically defined
 when referenced. This is useful, for example, for types representing external
 entities, e.g.
 
-    /typel b Bug or ticket (in Bug database)
-    /typel g Commit number on Github
-    /typel d Calendar date
-    /typel u User (part of our LDAP database)
+    /lazytype/b Bug or ticket (in Bug database)
+    /lazytype/g Commit number on Github
+    /lazytype/d Calendar date
+    /lazytype/u User (part of our LDAP database)
 
 #### Macros
 
@@ -160,7 +164,7 @@ The replacement strings may contain (and typically do) captures from the regular
 expression. Here's a use case: say you want to define a "Priority" type with a
 few objects:
 
-    /type p Priority
+    /type/p Priority
     p/0 Urgent
     p/1 Important
     p/2 Planned
@@ -191,7 +195,7 @@ you might do this:
 The `\1` string is replaced by the identifier. Types will often define pairs of
 macro/render to produce the output in a similar format as the input:
 
-    /typel u Usernames
+    /lazytype/u Usernames
     /macro \b([a-z]+)@\b u/\1
     /render u \1@
 
