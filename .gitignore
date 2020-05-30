@@ -1,0 +1,4 @@
+bazel-*
+bazel-oblique
+bazel-out
+bazel-testlogs

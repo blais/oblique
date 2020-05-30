@@ -1,0 +1,80 @@
+// A protobuf database of the data structures the parser creates.
+// We use this for exporting and to make it easy to write unit tests.
+
+syntax = "proto2";
+
+package oblique.proto;
+
+// Different flavors of types.
+enum TypeFlavor {
+  // Strict checking, instances have to have be declared explicitly.
+  STRICT = 0;
+
+  // Lazy checking, instances come into being as they are referenced.
+  LAZY = 1;
+
+  // Type for prefixes that ought not to generate references. Ignore the ref.
+  IGNORE = 2;
+}
+
+// An instance of a type declaration.
+message Type {
+  // Line number this type declaration appeared.
+  optional int32 lineno = 1;
+
+  // Type name and dscription.
+  optional string type = 2;
+  optional string contents = 3;
+
+  // Which flavor of type this is.
+  optional TypeFlavor flavor = 4;
+}
+
+// A reference to an object.
+message Ref {
+  // The type name of the object.
+  // Note that types themselves are objects of type 'type'.
+  optional string type = 1;
+
+  // The unique identifier for the object. This string is unique within the set
+  // of objects of the same type.
+  optional string ident = 2;
+
+}
+
+// An instance of an entity, an object, a node, etc.
+message Object {
+  // The unique type and identifier for this object.
+  optional Ref id = 1;
+
+  // Line number this object appeared.
+  optional int32 lineno = 2;
+
+  // The contents of the object. This is the free-form description as parsed.
+  optional string contents = 3;
+
+  // A list of cross-references to other entities.
+  repeated Ref refs = 4;
+
+  // A list of cross-references to other entities.
+  repeated Ref unresolved_refs = 5;
+}
+
+// An error message.
+message Error {
+  optional string filename = 1;
+  optional int32 lineno = 2;
+  optional string error_message = 3;
+}
+
+// The full output state of the program.
+message Database {
+  // The list of types.
+  repeated Type type = 1;
+
+  // The list of objects produced.
+  repeated Object object = 2;
+
+  // A list of errors logged.
+  repeated Error error = 3;
+}

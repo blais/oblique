@@ -1,0 +1,21 @@
+# Use C++14.
+build --cxxopt=-std=c++14
+
+## Make Python protos faster by backing them with C++ protos.
+build --define=use_fast_cpp_protos=true
+
+# Use Clang to build, not gcc.
+
+## build --compiler=clang
+## build --host_compiler=clang
+## build --extra_toolchains=//tools/toolchain:cc-toolchain-linux_k8_clang
+## build --crosstool_top=//tools/toolchain:cc-toolchain
+## build --host_crosstool_top=//tools/toolchain:host-cc-toolchain
+## build --action_env=BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1
+
+#build --repo_env=CC=clang
+# build --repo_env=BAZEL_LINKOPTS=-stdlib=libc++:-rtlib=compiler-rt
+# build --repo_env=BAZEL_CXXOPTS="-stdlib=libc++:-isystem$INSTALL_DIR/include" \
+# #build --repo_env=BAZEL_LINKOPTS="-stdlib=libc++" \
+# build --repo_env=BAZEL_LINKLIBS="-L$INSTALL_DIR/lib:-Wl,-rpath,$INSTALL_DIR/lib:-lc++:-lm" \
+# # #build --features=use_compiler_rt=true
