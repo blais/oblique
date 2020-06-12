@@ -11,8 +11,9 @@ def setup_python():
     if not native.existing_rule("rules_python"):
         http_archive(
             name = "rules_python",
-            url = "https://github.com/bazelbuild/rules_python/releases/download/0.0.2/rules_python-0.0.2.tar.gz",
-            sha256 = "aa96a691d3a8177f3215b14b0edc9641787abaaa30363a080165d06ab65e1161",
+            url = "https://github.com/bazelbuild/rules_python/archive/708ed8679d7510a331ce9a7b910a2a056d24f7b1.tar.gz",
+            strip_prefix = "rules_python-708ed8679d7510a331ce9a7b910a2a056d24f7b1",
+            sha256 = "f352c434f9a81c655375deb071b25e26757b7e95f25d50c4833da4e5f9f00840",
         )
 
     # Support building par files (Python archives).
@@ -93,6 +94,6 @@ def setup_python():
             name = "python_magic",
             url = "https://github.com/ahupp/python-magic/archive/0.4.18.zip",
             sha256 = "ed8b7ae88548bb1bfec5be448d4a515f7fe267bc50d184aa9f1da1734d70aee9",
-            build_file = "@oblique//third_party/python:python_magic.BUILD",
+            build_file = "//third_party/python:python_magic.BUILD",
             strip_prefix = "python-magic-0.4.18",
         )

@@ -42,7 +42,7 @@ configure_make(
         "libicuuc.a",
         "libicudata.a",
     ],
-    tools_deps = ["@oblique//third_party/foreign:ar_wrapper"],
+    tools_deps = ["//third_party/foreign:ar_wrapper"],
 )
 
 cc_library(
