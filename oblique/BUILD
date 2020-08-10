@@ -165,7 +165,7 @@ cc_test(
     deps = [
         ":test_utils",
         ":data_cc_pb2",
-       ":parser",
+        ":parser",
         ":compile",
         "@com_google_googletest//:gtest_main",
         "@com_google_absl//absl/strings",
