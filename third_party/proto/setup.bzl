@@ -9,9 +9,9 @@ def setup_proto():
     if not native.existing_rule("com_google_protobuf"):
         http_archive(
             name = "com_google_protobuf",
-            urls = ["https://github.com/protocolbuffers/protobuf/archive/v3.12.3.tar.gz"],
-            sha256 = "71030a04aedf9f612d2991c1c552317038c3c5a2b578ac4745267a45e7037c29",
-            strip_prefix = "protobuf-3.12.3",
+            urls = ["https://github.com/protocolbuffers/protobuf/archive/v4.0.0-rc2.tar.gz"],
+            sha256 = "cd26c9011e065b4eb95c79a74bb4f882f3b0beb6629a9c50312e387775c681c9",
+            strip_prefix = "protobuf-4.0.0-rc2",
         )
 
     # Rules for building protos.
@@ -37,13 +37,13 @@ def setup_proto():
 
 
 def setup_riegeli():
-    # 2020-05-23
+    # 2020-07-23
     http_archive(
         name = "com_google_riegeli",
-        #sha256 = "94257912684f999ce7f4272878826f3194301a10",
-        strip_prefix = "riegeli-94257912684f999ce7f4272878826f3194301a10",
+        sha256 = "63546085584fadb86f6cee3fc28a1ca825b1c4a54bb50b5d53b70c73e0bf52c1",
+        strip_prefix = "riegeli-84d32bec211daf6d0b8ed65eefeb53566b15b07f",
         urls = [
-            "https://github.com/google/riegeli/archive/94257912684f999ce7f4272878826f3194301a10.zip",
+            "https://github.com/google/riegeli/archive/84d32bec211daf6d0b8ed65eefeb53566b15b07f.zip",
         ],
     )
 
@@ -71,11 +71,11 @@ def setup_riegeli():
     http_archive(
         name = "net_zstd",
         build_file = "@com_google_riegeli//third_party:net_zstd.BUILD",
-        sha256 = "5a874ba43d1ec6d1c03f070f5fa820ff834ef85d5525b03effa7508c9087ba55",
-        strip_prefix = "zstd-1.4.4/lib",
+        sha256 = "b6c537b53356a3af3ca3e621457751fa9a6ba96daf3aebb3526ae0f610863532",
+        strip_prefix = "zstd-1.4.5/lib",
         urls = [
-            #"https://mirror.bazel.build/github.com/facebook/zstd/archive/v1.4.4.zip",
-            "https://github.com/facebook/zstd/archive/v1.4.4.zip",  # 2019-11-04
+            #"https://mirror.bazel.build/github.com/facebook/zstd/archive/v1.4.5.zip",
+            "https://github.com/facebook/zstd/archive/v1.4.5.zip",  # 2020-05-22
         ],
     )
 
