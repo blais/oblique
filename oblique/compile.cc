@@ -26,6 +26,40 @@ absl::Status Resolve(proto::Database* db, bool ignore_ref_to_undeclared) {
     type_map.insert({typ.type(), &typ});
   }
 
+  // Process each of the objects, fixing up the ident fields using the seqeucne
+  // numbers, and handling the IGNORE types.
+  int32_t sequence = -1;
+  for (proto::Object& obj : *db->mutable_object()) {
+    ++sequence;
+
+    // Check that the type has been declared.
+    auto type_iter = type_map.find(obj.id().type());
+    if (type_iter == type_map.end()) {
+      std::ostringstream oss;
+      oss << "Definition for undeclared type '" << data::MakeRefKey(obj.id()) << "'";
+      auto error = db->mutable_error()->Add();
+      error->set_lineno(obj.lineno());
+      error->set_error_message(oss.str());
+      continue;
+    }
+
+    // Declaration of ignored types have been parsed as object declarations. We
+    // need to undo this on the objects, by restoring the object type to the
+    // default type and re-inserting the reference at the front.
+    if (type_iter->second->flavor() == proto::TypeFlavor::IGNORE) {
+      string refkey = absl::StrCat(obj.id().type(), "/", obj.id().ident());
+      obj.set_contents(absl::StrCat(refkey, " ", obj.contents()));
+      auto* id = obj.mutable_id();
+      id->set_type(data::kItemType);
+      id->set_ident(absl::StrCat(sequence));
+    }
+
+    // Fill in auto object ids using sequence number.
+    if (obj.id().ident().empty()) {
+      obj.mutable_id()->set_ident(absl::StrCat(sequence));
+    }
+  }
+
   // Create a fast mapping of type/ident ref key to object.
   absl::flat_hash_map<string, const proto::Object*> object_map;
   for (const auto& obj : db->object()) {
@@ -33,23 +67,8 @@ absl::Status Resolve(proto::Database* db, bool ignore_ref_to_undeclared) {
     object_map.insert({refkey, &obj});
   }
 
-  // Process each of the objects.
+  // Process each of the objects, resolving references.
   for (proto::Object& obj : *db->mutable_object()) {
-
-    // Check that the type has been declared.
-    auto type_iter = type_map.find(obj.id().type());
-    if (type_iter == type_map.end()) {
-      std::ostringstream oss;
-      oss << "Definition for undeclared type '"
-          << data::MakeRefKey(obj.id()) << "'";
-      auto error = db->mutable_error()->Add();
-      error->set_lineno(obj.lineno());
-      error->set_error_message(oss.str());
-    }
-
-    // TODO(blais): Should we disallow explicit definitions of objects for
-    // ignored types?
-
     // Resolve references. We look up all the references in the database and
     // move them from the referencing object's 'unresolved_refs' to its 'refs'
     // when found, and leave them where they are when not found.
@@ -61,7 +80,7 @@ absl::Status Resolve(proto::Database* db, bool ignore_ref_to_undeclared) {
     for (auto* ref : unresolved) {
       // first look up the type of this outbound ref to find out how we ought to
       // treat it.
-      type_iter = type_map.find(ref->type());
+      auto type_iter = type_map.find(ref->type());
       if (type_iter == type_map.end()) {
         if (ignore_ref_to_undeclared) {
           delete ref;

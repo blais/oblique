@@ -36,6 +36,7 @@
 #include "oblique/data.pb.h"
 #include "oblique/data.h"
 
+#include <cstdint>
 #include <cstdio>
 #include <fstream>
 #include <list>
@@ -138,7 +139,7 @@ public:
   // The identifer is allocated automatically.
   proto::Object* AddAutoObject(string_view type,
                                string_view contents) {
-    return AddObject(type, NewId(type), contents);
+    return AddObject(type, "", contents);
   }
 
   // Add a new instance of an object with default type.
@@ -154,13 +155,8 @@ public:
 
 private:
   // Allocate a new id.
-  // TODO(blais): Eventually make the ids by type.
-  string NewId(string_view type) {
-    auto iter = new_id_counter_.find(type);
-    if (iter == new_id_counter_.end()) {
-      iter = new_id_counter_.insert(iter, {string(type), 0});
-    }
-    return absl::StrCat(iter->second++);
+  inline int32_t NewId() {
+    return new_id_counter_++;
   }
 
   // A list of the objects, in the order they appeared in the input file.
@@ -168,7 +164,7 @@ private:
 
   // Counter for producing unique identifiers for lazy references.
   // Note: Use Swiss table for heterogeneous lookup.
-  absl::flat_hash_map<string, int> new_id_counter_;
+  int32_t new_id_counter_ = 0;
 
   // Last registered location.
   parser::location location_;
@@ -412,8 +408,12 @@ proto::Object* Driver::AddObject(string_view type,
                                  string_view contents) {
   auto obj = db_->mutable_object()->Add();
   obj->set_lineno(location_.begin.line);
-  obj->mutable_id()->set_type(type.data(), type.size());
-  obj->mutable_id()->set_ident(ident.data(), ident.size());
+  auto* id = obj->mutable_id();
+  id->set_type(type.data(), type.size());
+  if (!ident.empty()) {
+    id->set_ident(ident.data(), ident.size());
+  }
+  /// obj->set_sequence(NewId()); // TODO(blais): Remove
   obj->set_contents(contents.data(), contents.size());
   return obj;
 }
@@ -465,8 +465,8 @@ namespace parser {
 
 // Parse the given input to a database.
 std::unique_ptr<proto::Database> Parse(const reflex::Input& input,
-                                      const string* filename = nullptr,
-                                      int line_offset = 0) {
+                                       const string* filename = nullptr,
+                                       int line_offset = 0) {
   // Create a scanner and driver.
   scanner::ScannerWithFile scanner(input, cout);
   if (filename != nullptr) {
@@ -487,8 +487,8 @@ std::unique_ptr<proto::Database> Parse(const reflex::Input& input,
 }  // namespace parser
 
 std::unique_ptr<proto::Database> ParseString(const string_view& input_string,
-                                            const string_view& filename,
-                                            int line_offset) {
+                                             const string_view& filename,
+                                             int line_offset) {
   // Ensure the string is converted to UTF8 by using reflex::Input and
   // instantiate a scanner.
   reflex::Input input(input_string.data(), input_string.size());

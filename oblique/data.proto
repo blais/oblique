@@ -39,7 +39,6 @@ message Ref {
   // The unique identifier for the object. This string is unique within the set
   // of objects of the same type.
   optional string ident = 2;
-
 }
 
 // An instance of an entity, an object, a node, etc.

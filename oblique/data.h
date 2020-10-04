@@ -13,6 +13,7 @@ class Ref;
 namespace data {
 
 // The type name of the default item type.
+// TODO(blais): Consider defining this as enums in the proto file.
 extern const char* kItemType;
 extern const char* kTypeType;
 

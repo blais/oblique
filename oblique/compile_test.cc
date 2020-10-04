@@ -78,8 +78,7 @@ TEST(ResolveTest, RefToUndeclared) {
   )");
 }
 
-// TODO(blais): Add test with eror
-
+// TODO(blais): Add test with error.
 
 // A reference to a strictly declared type but it is not found.
 TEST(ResolveTest, RefToStrictInvalid) {
@@ -107,7 +106,7 @@ TEST(ResolveTest, RefToStrictValid) {
     type {type: "task" contents: "Task"}
     object {id {type: "task" ident: "conquer"}
             contents: "Conquer it"}
-    object {id {type: "item" ident: "0"}
+    object {id {type: "item" ident: "1"}
             contents: "All the world. task/conquer"
             refs {type: "task" ident: "conquer"}}
   )");
@@ -161,8 +160,8 @@ TEST(ResolveTest, RefToIgnoreInvalid) {
   )");
 }
 
-// A reference to an apparently known instance of an ignored type should be kept
-// as a word as well.
+// A reference to an known instance of an ignored type should be kept as a word
+// as well.
 TEST(ResolveTest, RefToIgnoreValid) {
   EXPECT_COMPILE(u8R"(
     /ignore/task Task

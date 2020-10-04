@@ -49,7 +49,7 @@ TEST(ParserTest, OneItem) {
     Conquer the world.
   )", u8R"(
     type {type: "item" contents: "Item type" flavor: LAZY}
-    object {id {type: "item" ident: "0"} contents: "Conquer the world."}
+    object {id {type: "item"} contents: "Conquer the world."}
   )");
 }
 
@@ -61,9 +61,9 @@ TEST(ParserTest, ManyItems) {
     And again.
   )", u8R"(
     type {type: "item" contents: "Item type" flavor: LAZY}
-    object {id {type: "item" ident: "0"} contents: "Conquer the world."}
-    object {id {type: "item" ident: "1"} contents: "Conquer the world again."}
-    object {id {type: "item" ident: "2"} contents: "And again."}
+    object {id {type: "item"} contents: "Conquer the world."}
+    object {id {type: "item"} contents: "Conquer the world again."}
+    object {id {type: "item"} contents: "And again."}
   )");
 }
 
@@ -73,7 +73,7 @@ TEST(ParserTest, UseOneRef) {
     Conquer the world with u/caroline
   )", u8R"(
     type {type: "item" contents: "Item type" flavor: LAZY}
-    object {id {type: "item" ident: "0"}
+    object {id {type: "item"}
             contents: "Conquer the world with u/caroline"
             unresolved_refs {type: "u" ident: "caroline"}}
   )");
@@ -85,7 +85,7 @@ TEST(ParserTest, UseMultiRef) {
     Conquer the world with u/caroline and u/kai
   )", u8R"(
     type {type: "item" contents: "Item type" flavor: LAZY}
-    object {id {type: "item" ident: "0"}
+    object {id {type: "item"}
             contents: "Conquer the world with u/caroline and u/kai"
             unresolved_refs {type: "u" ident: "caroline"}
             unresolved_refs {type: "u" ident: "kai"}}
@@ -115,7 +115,7 @@ TEST(ParserTest, ObjAutoDef) {
     type {type: "item" contents: "Item type" flavor: LAZY}
     object {id {type: "type" ident: "task"}
             contents: "Task"}
-    object {id {type: "task" ident: "0"}
+    object {id {type: "task"}
             contents: "Conquer the world"}
   )");
 }
