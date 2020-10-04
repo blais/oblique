@@ -8,6 +8,10 @@ from oblique import extmodule
 
 class ApiTests(absltest.TestCase):
 
+  def test_constants(self):
+    self.assertEqual('item', extmodule.ITEM_TYPE)
+    self.assertEqual('type', extmodule.TYPE_TYPE)
+
   def test_parse_string(self):
     db = extmodule.parse_string("""\
        Conquer the world.

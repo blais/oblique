@@ -63,11 +63,17 @@ void ExportProtos(py::module& mod) {
 PYBIND11_MODULE(extmodule, mod) {
   mod.doc() = "Pybind11 bindings for Oblique";
 
+  using namespace oblique;
+
   // Export the read-only proto interface.
-  oblique::ExportProtos(mod);
+  ExportProtos(mod);
+
+  // Export constants.
+  mod.attr("ITEM_TYPE") = data::kItemType;
+  mod.attr("TYPE_TYPE") = data::kTypeType;
 
   // Top-level entry point.
-  mod.def("parse_string", &oblique::parse_string, "Parse an Oblique language string");
-  mod.def("parse_file", &oblique::parse_file, "Parse an Oblique language file");
-  mod.def("parse_stdin", &oblique::parse_stdin, "Parse an Oblique language from stdin");
+  mod.def("parse_string", &parse_string, "Parse an Oblique language string");
+  mod.def("parse_file", &parse_file, "Parse an Oblique language file");
+  mod.def("parse_stdin", &parse_stdin, "Parse an Oblique language from stdin");
 }
