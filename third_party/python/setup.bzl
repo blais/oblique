@@ -28,19 +28,19 @@ def setup_python():
         )
 
     # Rules for easy extension modules.
-    # 2020-10-03
+    # 2020-05-11
     http_archive(
         name = "pybind11_bazel",
-        strip_prefix = "pybind11_bazel-26973c0ff320cb4b39e45bc3e4297b82bc3a6c09",
-        sha256 = "a5666d950c3344a8b0d3892a88dc6b55c8e0c78764f9294e806d69213c03f19d",
-        urls = ["https://github.com/pybind/pybind11_bazel/archive/26973c0ff320cb4b39e45bc3e4297b82bc3a6c09.zip"],
+        strip_prefix = "pybind11_bazel-16ed1b8f308d2b3dec9d7e6decaad49ce4d28b43",
+        sha256 = "f1044df0475bbe819e285785ee9599d94f98ac3c86ddfb73fe16cfeb568bb381",
+        urls = ["https://github.com/pybind/pybind11_bazel/archive/16ed1b8f308d2b3dec9d7e6decaad49ce4d28b43.zip"],
     )
     http_archive(
         name = "pybind11",
         build_file = "@pybind11_bazel//:pybind11.BUILD",
-        sha256 = "ee90cb41680c3f28a9f07e838d12a739b2531ce8cf60256494d6f9b169a222e7",
-        strip_prefix = "pybind11-2.6.0b1",
-        urls = ["https://github.com/pybind/pybind11/archive/v2.6.0b1.tar.gz"],
+        sha256 = "97504db65640570f32d3fdf701c25a340c8643037c3b69aec469c10c93dc8504",
+        strip_prefix = "pybind11-2.5.0",
+        urls = ["https://github.com/pybind/pybind11/archive/v2.5.0.tar.gz"],
     )
 
     # abseil (Python)
