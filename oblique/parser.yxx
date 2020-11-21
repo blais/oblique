@@ -438,7 +438,7 @@ public:
   }
 
   // Override the location to include the filename.
-  oblique::parser::location location() const override
+  oblique::parser::location location() override
   {
     /* yylloc.begin.line = static_cast<unsigned int>(matcher().lineno()); */
     /* yylloc.begin.column = static_cast<unsigned int>(matcher().columno()); */
