@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# My environment initialization for this project.
+
+USERPATH=$USERPATH:$PROJDIR/python/bin
+PYTHONPATH=$PYTHONPATH:$PROJDIR/python
