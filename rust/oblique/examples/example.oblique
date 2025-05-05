@@ -1,0 +1,23 @@
+# Example Oblique file
+
+/type/task Task
+/lazytype/user User
+/type/project Project
+
+# Define some projects
+project/apollo Apollo mission
+project/gemini Gemini mission
+
+# Define some tasks
+task/conquer Conquer the world with user/alice
+task/explore Explore the moon for project/apollo
+task/document Document the findings
+
+# Define a macro for usernames
+/macro \b([a-z]+)@\b user/\1
+
+# Use the macro
+Meeting with bob@
+
+# A default item
+This is just a note without any specific type.
