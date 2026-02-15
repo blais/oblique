@@ -64,18 +64,18 @@ pub fn tokenize_line(line: &str) -> Vec<Token> {
         return tokens;
     }
 
-    // Comment
-    if let Some(captures) = COMMENT_RE.captures(remaining) {
-        tokens.push(Token::Comment(captures[1].to_string()));
-        tokens.push(Token::EOL);
-        return tokens;
-    }
-
     // Process tokens until the line is empty
     while !remaining.is_empty() {
         if remaining.starts_with(' ') {
             remaining = remaining.trim_start();
             continue;
+        }
+
+        // Comment
+        if let Some(captures) = COMMENT_RE.captures(remaining) {
+            tokens.push(Token::Comment(captures[1].to_string()));
+            tokens.push(Token::EOL);
+            return tokens;
         }
 
         // Try to match each token type
@@ -118,4 +118,149 @@ pub fn tokenize_line(line: &str) -> Vec<Token> {
 
     tokens.push(Token::EOL);
     tokens
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_tokenize_simple_words() {
+        let tokens = tokenize_line("hello world");
+        assert_eq!(
+            tokens,
+            vec![
+                Token::Word("hello".to_string()),
+                Token::Word("world".to_string()),
+                Token::EOL
+            ]
+        );
+    }
+
+    #[test]
+    fn test_tokenize_reference() {
+        let tokens = tokenize_line("p/alpha");
+        assert_eq!(
+            tokens,
+            vec![
+                Token::Reference {
+                    type_name: "p".to_string(),
+                    ident: "alpha".to_string()
+                },
+                Token::EOL
+            ]
+        );
+    }
+
+    #[test]
+    fn test_tokenize_mixed() {
+        let tokens = tokenize_line("Task p/alpha needs action");
+        assert_eq!(
+            tokens,
+            vec![
+                Token::Word("Task".to_string()),
+                Token::Reference {
+                    type_name: "p".to_string(),
+                    ident: "alpha".to_string()
+                },
+                Token::Word("needs".to_string()),
+                Token::Word("action".to_string()),
+                Token::EOL
+            ]
+        );
+    }
+
+    #[test]
+    fn test_tokenize_declarations() {
+        assert_eq!(
+            tokenize_line("/type/p Project"),
+            vec![
+                Token::TypeDecl("p".to_string()),
+                Token::Word("Project".to_string()),
+                Token::EOL
+            ]
+        );
+        
+        assert_eq!(
+            tokenize_line("/lazytype/u User"),
+            vec![
+                Token::LazyTypeDecl("u".to_string()),
+                Token::Word("User".to_string()),
+                Token::EOL
+            ]
+        );
+
+        assert_eq!(
+            tokenize_line("/ignore/x IgnoreMe"),
+            vec![
+                Token::IgnoreTypeDecl("x".to_string()),
+                Token::Word("IgnoreMe".to_string()),
+                Token::EOL
+            ]
+        );
+    }
+
+    #[test]
+    fn test_tokenize_commands() {
+        assert_eq!(
+            tokenize_line("/macro pattern replacement"),
+            vec![
+                Token::MacroDecl,
+                Token::Word("pattern".to_string()),
+                Token::Word("replacement".to_string()),
+                Token::EOL
+            ]
+        );
+
+        assert_eq!(
+            tokenize_line("/render p <template>"),
+            vec![
+                Token::RenderDecl,
+                Token::Word("p".to_string()),
+                Token::Word("<template>".to_string()),
+                Token::EOL
+            ]
+        );
+
+        assert_eq!(
+            tokenize_line("/import file.oblique"),
+            vec![
+                Token::ImportDecl,
+                Token::Word("file.oblique".to_string()),
+                Token::EOL
+            ]
+        );
+    }
+
+    #[test]
+    fn test_tokenize_comments() {
+        assert_eq!(
+            tokenize_line("# This is a comment"),
+            vec![
+                Token::Comment(" This is a comment".to_string()),
+                Token::EOL
+            ]
+        );
+
+        assert_eq!(
+            tokenize_line("content # comment"),
+            vec![
+                Token::Word("content".to_string()),
+                Token::Comment(" comment".to_string()),
+                Token::EOL
+            ]
+        );
+    }
+
+    #[test]
+    fn test_tokenize_auto_reference() {
+        assert_eq!(
+            tokenize_line("p/ content"),
+            vec![
+                Token::AutoReference("p".to_string()),
+                Token::Word("content".to_string()),
+                Token::EOL
+            ]
+        );
+    }
 }

@@ -176,25 +176,88 @@ impl Database {
         }
         
         // Merge render system
-        // We need to expose the inner map or add a merge method.
-        // For now, since we can't easily access the inner map of RenderSystem if fields are private,
-        // we might need to rely on what parser returns.
-        // Wait, RenderSystem fields are private in `macros.rs`? 
-        // Let's check `macros.rs`.
-        // If they are private, I should replace the whole system or add merge capability.
-        // Since `RenderSystem` is in the crate, and fields are likely private unless pub.
-        // In `macros.rs`: `renders: HashMap<String, String>`. If it's not pub, I can't merge easily.
-        // But `Database` is in the same crate (lib), so it can access private fields?
-        // No, module privacy rules apply.
-        
-        // For now, let's assume I need to modify `macros.rs` to allow merging or exposing renders.
-        // But wait, I'm replacing `import_file` implementation.
-        // I'll assume I can just swap it if it's the first import, or I need to merge.
-        // Let's just keep the new one for now as a simple merge strategy (overwrite).
-        self.render_system = render_system;
+        self.render_system.merge(render_system);
 
         self.resolve_references()?;
 
         Ok(())
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_duplicate_definition() {
+        let mut db = Database::new();
+        let obj1 = Object {
+            id: ObjectId { type_name: "t".to_string(), ident: Some("1".to_string()) },
+            contents: "test".to_string(),
+            refs: HashSet::new(),
+            unresolved_refs: HashSet::new(),
+            lineno: Some(1),
+        };
+        db.add_object(obj1.clone()).unwrap();
+
+        let result = db.add_object(obj1);
+        assert!(matches!(result, Err(Error::DuplicateDefinition(_, _, _))));
+    }
+
+    #[test]
+    fn test_strict_type_missing_reference() {
+        let mut db = Database::new();
+        
+        // Define strict type 's'
+        db.add_type(Type {
+            name: "s".to_string(),
+            contents: "Strict".to_string(),
+            flavor: TypeFlavor::Strict,
+            lineno: None,
+        });
+
+        // Add object referring to non-existent 's/1'
+        let mut unresolved = HashSet::new();
+        unresolved.insert(crate::ast::Reference { type_name: "s".to_string(), ident: "1".to_string() });
+        
+        db.add_object(Object {
+            id: ObjectId { type_name: "i".to_string(), ident: Some("1".to_string()) },
+            contents: "ref".to_string(),
+            refs: HashSet::new(),
+            unresolved_refs: unresolved,
+            lineno: Some(2),
+        }).unwrap();
+
+        // Resolving should leave it unresolved (or fail? The current implementation splits them into resolved/unresolved but doesn't error unless type is missing)
+        // Wait, looking at resolve_references:
+        // Strict -> checks if key exists. If yes -> resolved. If no -> unresolved.
+        // It does NOT return an error for missing strict references, it just keeps them in unresolved_refs.
+        // Errors only happen if type doesn't exist.
+        
+        db.resolve_references().unwrap();
+        
+        let obj = db.objects.get(&ObjectId { type_name: "i".to_string(), ident: Some("1".to_string()) }).unwrap();
+        assert!(!obj.unresolved_refs.is_empty());
+        assert!(obj.refs.is_empty());
+    }
+
+    #[test]
+    fn test_invalid_type_reference() {
+        let mut db = Database::new();
+        
+        // Add object referring to unknown type 'x'
+        let mut unresolved = HashSet::new();
+        unresolved.insert(crate::ast::Reference { type_name: "x".to_string(), ident: "1".to_string() });
+        
+        db.add_object(Object {
+            id: ObjectId { type_name: "i".to_string(), ident: Some("1".to_string()) },
+            contents: "ref".to_string(),
+            refs: HashSet::new(),
+            unresolved_refs: unresolved,
+            lineno: Some(2),
+        }).unwrap();
+
+        let result = db.resolve_references();
+        assert!(matches!(result, Err(Error::InvalidType(_, _, _))));
     }
 }

@@ -91,4 +91,55 @@ impl RenderSystem {
             format!("{}/{}", type_name, ident)
         }
     }
+
+    /// Merge another render system into this one
+    pub fn merge(&mut self, other: RenderSystem) {
+        self.renders.extend(other.renders);
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_macro_system_basic() {
+        let mut ms = MacroSystem::new();
+        ms.add_macro(r"\bP(\d)\b", "p/$1").unwrap();
+        
+        assert_eq!(ms.apply("Task P0"), "Task p/0");
+        assert_eq!(ms.apply("P1 and P2"), "p/1 and p/2");
+        assert_eq!(ms.apply("No match"), "No match");
+    }
+
+    #[test]
+    fn test_macro_system_backreference_conversion() {
+        let mut ms = MacroSystem::new();
+        // Test \1 conversion to $1
+        ms.add_macro(r"test(\d)", r"result/\1").unwrap();
+        assert_eq!(ms.apply("test5"), "result/5");
+    }
+
+    #[test]
+    fn test_render_system() {
+        let mut rs = RenderSystem::new();
+        rs.add_render("p", "Project: \\1");
+        
+        assert_eq!(rs.render("p", "alpha"), "Project: alpha");
+        assert_eq!(rs.render("u", "bob"), "u/bob"); // Default
+    }
+
+    #[test]
+    fn test_render_system_merge() {
+        let mut rs1 = RenderSystem::new();
+        rs1.add_render("p", "P: \\1");
+        
+        let mut rs2 = RenderSystem::new();
+        rs2.add_render("u", "U: \\1");
+        
+        rs1.merge(rs2);
+        
+        assert_eq!(rs1.render("p", "test"), "P: test");
+        assert_eq!(rs1.render("u", "test"), "U: test");
+    }
 }
