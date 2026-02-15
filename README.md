@@ -12,6 +12,19 @@ define objects (rows).
 > This project is not released yet. This is work-in-progress for now.
 > There isn't much to use as of yet, but if you do, do at your own peril.
 
+## Documentation
+
+See the [User Manual](doc/manual.md) for detailed usage instructions, syntax guide, and examples.
+
+## Implementation
+
+The core implementation is currently in Rust.
+
+```bash
+cd rust/oblique
+cargo run -- examples/example.oblique
+```
+
 ## Author
 
 Martin Blais <blais@furius.ca>
