@@ -13,4 +13,4 @@ mod macros;
 pub use ast::{Type, TypeFlavor, Object, ObjectId, Reference};
 pub use error::Error;
 pub use database::Database;
-pub use parser::parse_file;
+pub use parser::{parse_file, parse_string};

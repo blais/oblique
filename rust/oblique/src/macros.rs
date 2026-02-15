@@ -33,9 +33,15 @@ impl MacroSystem {
         let regex =
             Regex::new(pattern).map_err(|_| Error::InvalidMacroPattern(pattern.to_string()))?;
 
+        // Convert \1 to $1 for Rust regex compatibility
+        let rust_replacement = Regex::new(r"\\(\d+)")
+            .unwrap()
+            .replace_all(replacement, "$$${1}")
+            .to_string();
+
         self.macros.push(Macro {
             pattern: regex,
-            replacement: replacement.to_string(),
+            replacement: rust_replacement,
         });
 
         Ok(())

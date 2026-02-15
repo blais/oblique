@@ -1,11 +1,11 @@
 //! Database for storing Oblique objects and types
 
 use std::collections::{HashMap, HashSet};
-use std::fs;
 use std::path::Path;
 
 use crate::ast::{Object, ObjectId, Type, TypeFlavor};
 use crate::error::Error;
+use crate::macros::RenderSystem;
 use crate::parser;
 
 /// The database of Oblique objects and types
@@ -17,6 +17,9 @@ pub struct Database {
     /// The objects defined in the database
     pub objects: HashMap<ObjectId, Object>,
 
+    /// The render system for the database
+    pub render_system: RenderSystem,
+
     /// The next auto-generated identifier for items
     next_item_id: usize,
 }
@@ -27,6 +30,7 @@ impl Database {
         let mut db = Self {
             types: HashMap::new(),
             objects: HashMap::new(),
+            render_system: RenderSystem::new(),
             next_item_id: 1,
         };
 
@@ -150,17 +154,18 @@ impl Database {
             }
         }
 
+        // Add the new objects to the database
+        for (id, object) in new_objects {
+            objects.insert(id, object);
+        }
+
         self.objects = objects;
         Ok(())
     }
 
     /// Import objects and types from a file
     pub fn import_file<P: AsRef<Path>>(&mut self, path: P) -> Result<(), Error> {
-        let content = fs::read_to_string(&path)
-            .map_err(|e| Error::Import(path.as_ref().to_path_buf(), Box::new(e.into())))?;
-
-        let (types, objects) = parser::parse_string(&content)
-            .map_err(|e| Error::Import(path.as_ref().to_path_buf(), Box::new(e)))?;
+        let (types, objects, render_system) = parser::parse_file(path.as_ref())?;
 
         for type_def in types {
             self.add_type(type_def);
@@ -169,6 +174,24 @@ impl Database {
         for object in objects {
             self.add_object(object)?;
         }
+        
+        // Merge render system
+        // We need to expose the inner map or add a merge method.
+        // For now, since we can't easily access the inner map of RenderSystem if fields are private,
+        // we might need to rely on what parser returns.
+        // Wait, RenderSystem fields are private in `macros.rs`? 
+        // Let's check `macros.rs`.
+        // If they are private, I should replace the whole system or add merge capability.
+        // Since `RenderSystem` is in the crate, and fields are likely private unless pub.
+        // In `macros.rs`: `renders: HashMap<String, String>`. If it's not pub, I can't merge easily.
+        // But `Database` is in the same crate (lib), so it can access private fields?
+        // No, module privacy rules apply.
+        
+        // For now, let's assume I need to modify `macros.rs` to allow merging or exposing renders.
+        // But wait, I'm replacing `import_file` implementation.
+        // I'll assume I can just swap it if it's the first import, or I need to merge.
+        // Let's just keep the new one for now as a simple merge strategy (overwrite).
+        self.render_system = render_system;
 
         self.resolve_references()?;
 

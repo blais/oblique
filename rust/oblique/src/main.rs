@@ -17,6 +17,10 @@ struct Args {
     /// Output format (json or text)
     #[clap(short, long, default_value = "text")]
     format: String,
+
+    /// Query string
+    #[clap(short, long)]
+    query: Option<String>,
 }
 
 fn main() {
@@ -28,6 +32,25 @@ fn main() {
     // Import the file
     match db.import_file(&args.input_file) {
         Ok(()) => {
+            if let Some(query) = args.query {
+                // TODO: Implement proper query parsing
+                // For now, simple "list items of type X"
+                // format: "type:X"
+                if query.starts_with("type:") {
+                    let type_name = &query[5..];
+                    println!("Objects of type '{}':", type_name);
+                    for (id, obj) in &db.objects {
+                        if id.type_name == type_name {
+                             let rendered_id = db.render_system.render(&id.type_name, id.ident.as_deref().unwrap_or(""));
+                             println!("  {} {}", rendered_id, obj.contents);
+                        }
+                    }
+                } else {
+                    eprintln!("Unsupported query format. Use 'type:<typename>'");
+                }
+                return;
+            }
+
             // Output the database
             match args.format.as_str() {
                 "json" => {
@@ -54,17 +77,18 @@ fn main() {
 
                     println!("\nObjects:");
                     for (id, obj) in &db.objects {
+                        let rendered_id = db.render_system.render(&id.type_name, id.ident.as_deref().unwrap_or(""));
                         println!(
-                            "  {}/{}: {}",
-                            id.type_name,
-                            id.ident.as_deref().unwrap_or("auto"),
+                            "  {}: {}",
+                            rendered_id,
                             obj.contents
                         );
 
                         if !obj.refs.is_empty() {
                             println!("    References:");
                             for reference in &obj.refs {
-                                println!("      {}/{}", reference.type_name, reference.ident);
+                                let rendered_ref = db.render_system.render(&reference.type_name, &reference.ident);
+                                println!("      {}", rendered_ref);
                             }
                         }
 

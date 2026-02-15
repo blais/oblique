@@ -1,5 +1,4 @@
-use std::collections::HashSet;
-use oblique::{Database, Type, TypeFlavor, Object, ObjectId, Reference};
+use oblique::{Database, ObjectId, TypeFlavor};
 
 #[test]
 fn test_basic_parsing() {
@@ -8,8 +7,8 @@ fn test_basic_parsing() {
     task/conquer Conquer the world
     "#;
     
-    let mut db = Database::new();
-    let (types, objects) = oblique::parse_file(input).unwrap();
+    let _db = Database::new();
+    let (types, objects, _) = oblique::parse_string(input).unwrap();
     
     // Check types
     assert_eq!(types.len(), 2); // item type + task type
@@ -36,7 +35,7 @@ fn test_references() {
     task/conquer Conquer the world with user/alice
     "#;
     
-    let (types, objects) = oblique::parse_file(input).unwrap();
+    let (_types, objects, _) = oblique::parse_string(input).unwrap();
     
     // Check objects
     assert_eq!(objects.len(), 1);
@@ -61,7 +60,7 @@ fn test_lazy_types() {
     "#;
     
     let mut db = Database::new();
-    let (types, mut objects) = oblique::parse_file(input).unwrap();
+    let (types, objects, _) = oblique::parse_string(input).unwrap();
     
     for typ in types {
         db.add_type(typ);
