@@ -77,6 +77,11 @@ impl Parser {
                 continue;
             }
             
+            // Skip comments (ignore for indentation purposes)
+            if trimmed.starts_with('#') {
+                continue;
+            }
+            
             let indent = original_line.len() - trimmed.len();
             
             // Adjust stack based on indentation
@@ -90,11 +95,6 @@ impl Parser {
             
             // Capture parent reference before processing the line
             let parent_ref = context_stack.last().map(|(_, r)| r.clone());
-
-            // Skip comments (check after indent calc but before macro/tokenizing to allow indented comments)
-            if trimmed.starts_with('#') {
-                continue;
-            }
 
             // Apply macros
             let line = self.macro_system.apply(original_line);

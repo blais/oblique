@@ -146,27 +146,43 @@ def generate_quarter_data(quarter_idx):
     q_milestones = []
     num_ms = NUM_MILESTONES // len(QUARTERS)
     
-    # Indent items under the Quarter
-    indent = "  "
-    
     for i in range(num_ms):
         current_ms_id += 1
         ms_id = f"ms_{qid}_{i+1}"
         noun = random.choice(NOUNS)
         
+        # Messy indentation
+        indent = " " * random.choice([2, 2, 2, 3, 4])
+        
         # Link to previous milestones?
         dep_text = ""
         if generated_milestones and random.random() < 0.3:
             prev = random.choice(generated_milestones)
-            dep_text = f" (requires m/{prev})"
+            # Mix of styles
+            if random.random() < 0.5:
+                dep_text = f" (requires m/{prev} )"
+            else:
+                dep_text = f" (dep: m/{prev} )"
             
-        # No explicit "in q/{qid}" needed due to inheritance
-        line = f"{indent}m/{ms_id} Final sign-off for {noun}{dep_text}"
+        # Randomly add explicit quarter link despite indentation
+        q_link = ""
+        if random.random() < 0.2:
+             q_link = f" in q/{qid}"
+
+        line = f"{indent}m/{ms_id} Final sign-off for {noun}{dep_text}{q_link}"
+        
+        # Random comments
+        if random.random() < 0.1:
+            lines.append(f"{indent}# TODO: double check this date")
+            
         lines.append(line)
         q_milestones.append(ms_id)
         generated_milestones.append(ms_id)
 
     # 2. Tasks for this quarter
+    if random.random() < 0.8: # Sometimes skip the separator
+        lines.append(f"\n# --- Tasks for {qid} ---")
+    
     num_tasks = NUM_TASKS // len(QUARTERS)
     
     q_tasks = []
@@ -180,52 +196,62 @@ def generate_quarter_data(quarter_idx):
         user = random.choice(USERS)[0]
         team = random.choice(TEAMS)[0]
         
+        # Messy indentation
+        indent = " " * random.choice([2, 2, 3, 4])
+        
         # Diverse links
         links = []
         
-        # Link to component (always)
-        links.append(f"p/{team}")
+        # Link to component (mix #macro and p/ref)
+        if random.random() < 0.6:
+            links.append(f"#{team}")
+        else:
+            links.append(f"p/{team}")
         
-        # Link to user (always)
-        links.append(f"u/{user}")
+        # Link to user (mix @macro and u/ref)
+        if random.random() < 0.7:
+            links.append(f"@{user}")
+        else:
+            links.append(f"u/{user}")
         
-        # Quarter link implicit via indentation
+        # Randomly explicit quarter
+        if random.random() < 0.1:
+            links.append(f"q/{qid}")
         
-        # Link to previous tasks (dependency)
+        # Link to previous tasks
         if generated_tasks and random.random() < 0.25:
             prev = random.choice(generated_tasks)
-            links.append(f"depends on t/{prev}")
+            # Variations in text
+            style = random.choice(["depends on", "after", "blocked by"])
+            links.append(f"{style} t/{prev}")
             
-        # Link to Milestone (blocker/relation)
+        # Link to Milestone
         if q_milestones and random.random() < 0.15:
             ms = random.choice(q_milestones)
             links.append(f"blocking m/{ms}")
             
         desc = f"{verb} {noun} logic & specs"
         
-        link_text = f"for p/{team} assigned to u/{user}"
-        extras = []
-        if generated_tasks and random.random() < 0.25:
-             prev = random.choice(generated_tasks)
-             extras.append(f"depends on t/{prev}")
+        # Construct line with "natural" language mixed in
+        link_text = " ".join(links)
         
-        if q_milestones and random.random() < 0.15:
-            ms = random.choice(q_milestones)
-            extras.append(f"targeting m/{ms}")
-            
-        if extras:
-            link_text += " (" + ", ".join(extras) + " )"
-            
-        lines.append(f"{indent}t/{tid} {desc} {link_text}")
+        # Sometimes put links in parens, sometimes inline
+        if random.random() < 0.5:
+             full_text = f"{desc} ({link_text} )"
+        else:
+             full_text = f"{desc} - {link_text}"
+
+        lines.append(f"{indent}t/{tid} {full_text}")
+        
+        # Random extra whitespace
+        if random.random() < 0.05:
+            lines.append("")
+
         q_tasks.append(tid)
         generated_tasks.append(tid)
 
-    # 3. Bugs for this quarter (linked to this quarter's tasks)
-    # Group bugs under tasks if linked?
-    # Or just under Quarter?
-    # Let's verify: "reorganize list items leveraging inheritance"
-    # Grouping bugs under Quarter is inheritance.
-    
+    # 3. Bugs for this quarter
+    lines.append(f"\n# --- Bugs reported in {qid} ---")
     num_bugs = NUM_BUGS // len(QUARTERS)
     
     for i in range(num_bugs):
@@ -237,19 +263,20 @@ def generate_quarter_data(quarter_idx):
         user = random.choice(USERS)[0]
         team = random.choice(TEAMS)[0]
         
+        indent = " " * random.choice([2, 2, 4])
+        
         # Link to a task
         task_link = ""
-        # If we link to a task, maybe we indent under that task?
-        # But we print tasks first, then bugs.
-        # To indent under task, we'd need to print the bug immediately after the task.
-        # Restructuring loop to interleave bugs would be complex for this script update.
-        # Let's stick to indenting under Quarter.
-        
         if q_tasks and random.random() < 0.7:
             task = random.choice(q_tasks)
-            task_link = f" while working on t/{task}"
+            if random.random() < 0.5:
+                 task_link = f" during t/{task}"
+            else:
+                 task_link = f" related to t/{task}"
             
-        line = f"{indent}b/{bid} {prefix} {noun} found in p/{team}{task_link} (assigned: u/{user} )"
+        assignee = f"@{user}" if random.random() < 0.8 else f"u/{user}"
+        
+        line = f"{indent}b/{bid} {prefix} {noun} found in #{team}{task_link} (assigned: {assignee} )"
         lines.append(line)
 
     return "\n".join(lines)
