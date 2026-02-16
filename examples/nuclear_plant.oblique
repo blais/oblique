@@ -1,0 +1,2059 @@
+# Nuclear Power Plant Project Plan (Generated)
+# Scope: 3 Quarters (Q2-Q4 2026)
+
+# --- Type Definitions ---
+
+# Strict Types (Must be defined)
+/type/q Quarter
+/type/p Component/Project
+/type/m Milestone
+
+# Lazy Types (Auto-created on reference)
+/lazytype/u User
+/lazytype/t Task
+/lazytype/b Bug
+
+# --- Rendering & Macros ---
+
+# Render Quarters as simple headers
+/render q [📅 \1]
+
+# Render Users with @ symbol
+/render u @\1
+
+# Render Projects as strict tags
+/render p [🏗️ \1]
+
+# Render Tasks and Bugs
+/render t Task #\1
+/render b 🐞 Bug #\1
+/render m 🚩 Milestone: \1
+
+# Macros for quick entry
+# Usage: @jdoe -> u/\1
+
+# Usage: #core -> p/\1
+
+# Usage: Q2 -> q/2026q2 (Simple alias mapping)
+/macro \bQ2\b q/2026q2
+/macro \bQ3\b q/2026q3
+/macro \bQ4\b q/2026q4
+
+# --- Static Definitions ---
+
+# --- Quarters ---
+q/2026q2 Q2 2026 - Foundation & Core Design
+q/2026q3 Q3 2026 - Cooling Systems & Safety Checks
+q/2026q4 Q4 2026 - Control Software & Initial Tests
+
+# --- Components / Teams ---
+p/core Reactor Core Design
+p/cooling Cooling & Hydraulics
+p/safety Safety & Containment
+p/control Control Systems & Software
+p/civil Civil Engineering & Construction
+p/security Site Security & Access Control
+
+# --- Users ---
+u/jmoore Joseph Moore (Lead, p/cooling)
+u/ljohnson Linda Johnson (Senior Eng, p/control)
+u/jthomas James Thomas (Senior Eng, p/civil)
+u/jthomas2 Joseph Thomas (PM, p/civil)
+u/jmiller Joseph Miller (Junior Eng, p/cooling)
+u/jgarcia Jessica Garcia (Junior Eng, p/security)
+u/wbrown William Brown (Junior Eng, p/security)
+u/mwilliams Michael Williams (Safety Officer, p/security)
+u/lrodriguez Linda Rodriguez (PM, p/security)
+u/kmartinez Karen Martinez (PM, p/cooling)
+u/lbrown Lisa Brown (Senior Eng, p/core)
+u/rsmith Richard Smith (PM, p/control)
+u/wmiller William Miller (Senior Eng, p/civil)
+u/manderson Michael Anderson (Safety Officer, p/civil)
+u/mmartin Michael Martin (Safety Officer, p/security)
+u/klopez Karen Lopez (Safety Officer, p/core)
+u/mwilson Michael Wilson (PM, p/core)
+u/jmartinez Jennifer Martinez (Lead, p/civil)
+u/jlopez John Lopez (Junior Eng, p/civil)
+u/jgonzalez John Gonzalez (Lead, p/core)
+u/jmartinez2 Jessica Martinez (PM, p/cooling)
+u/cmiller Charles Miller (Safety Officer, p/civil)
+u/sjackson Sarah Jackson (Junior Eng, p/security)
+u/tanderson Thomas Anderson (PM, p/cooling)
+u/ejones Elizabeth Jones (PM, p/civil)
+u/rwilliams Robert Williams (PM, p/security)
+u/jjackson Joseph Jackson (Lead, p/core)
+u/lbrown2 Linda Brown (Safety Officer, p/core)
+u/kjohnson Karen Johnson (Lead, p/civil)
+u/landerson Linda Anderson (Safety Officer, p/civil)
+u/jbrown Jessica Brown (PM, p/security)
+u/kmoore Karen Moore (Lead, p/safety)
+u/ljones Linda Jones (PM, p/control)
+u/emartinez Elizabeth Martinez (Safety Officer, p/cooling)
+u/wjohnson William Johnson (PM, p/cooling)
+u/staylor Sarah Taylor (Lead, p/safety)
+u/jrodriguez Joseph Rodriguez (Senior Eng, p/cooling)
+u/wjohnson2 William Johnson (Safety Officer, p/civil)
+u/jmiller2 Joseph Miller (PM, p/security)
+u/dmartinez David Martinez (PM, p/security)
+u/tjones Thomas Jones (Senior Eng, p/control)
+u/chernandez Charles Hernandez (PM, p/safety)
+u/jlopez2 Jessica Lopez (Senior Eng, p/core)
+u/tjones2 Thomas Jones (Senior Eng, p/cooling)
+u/mjones Michael Jones (Senior Eng, p/civil)
+u/jgonzalez2 John Gonzalez (Senior Eng, p/safety)
+u/cjohnson Charles Johnson (Junior Eng, p/safety)
+u/cjackson Charles Jackson (Junior Eng, p/civil)
+u/jgarcia2 John Garcia (Safety Officer, p/cooling)
+u/bmoore Barbara Moore (Lead, p/civil)
+# --- Milestones ---
+m/ms_1 Final approval for Turbine Valve in q/2026q3
+m/ms_2 Final approval for Access Control Gate in q/2026q2
+m/ms_3 Final approval for Emergency Diesel Generator in q/2026q2
+m/ms_4 Final approval for Perimeter Fence in q/2026q4
+m/ms_5 Final approval for Turbine Valve in q/2026q2
+m/ms_6 Final approval for Heat Exchanger in q/2026q4
+m/ms_7 Final approval for Graphite Moderator in q/2026q3
+m/ms_8 Final approval for Seismic Dampener in q/2026q4
+m/ms_9 Final approval for Seismic Dampener in q/2026q2
+m/ms_10 Final approval for Backup Battery Bank in q/2026q2
+m/ms_11 Final approval for Spent Fuel Pool in q/2026q4
+m/ms_12 Final approval for Pressure Vessel in q/2026q4
+m/ms_13 Final approval for Graphite Moderator in q/2026q4
+m/ms_14 Final approval for Spent Fuel Pool in q/2026q4
+m/ms_15 Final approval for Graphite Moderator in q/2026q4
+m/ms_16 Final approval for Heat Exchanger in q/2026q3
+m/ms_17 Final approval for Heat Exchanger in q/2026q2
+m/ms_18 Final approval for Seismic Dampener in q/2026q3
+m/ms_19 Final approval for Coolant Filter in q/2026q2
+m/ms_20 Final approval for Emergency Diesel Generator in q/2026q2
+m/ms_21 Final approval for Heat Exchanger in q/2026q3
+m/ms_22 Final approval for Coolant Filter in q/2026q4
+m/ms_23 Final approval for Radiation Sensor in q/2026q2
+m/ms_24 Final approval for Backup Battery Bank in q/2026q3
+m/ms_25 Final approval for Steam Generator in q/2026q3
+m/ms_26 Final approval for Access Control Gate in q/2026q4
+m/ms_27 Final approval for Pressure Vessel in q/2026q2
+m/ms_28 Final approval for Backup Battery Bank in q/2026q2
+m/ms_29 Final approval for Fire Suppression System in q/2026q2
+m/ms_30 Final approval for Ventilation Shaft in q/2026q2
+m/ms_31 Final approval for Pressure Vessel in q/2026q3
+m/ms_32 Final approval for Steam Generator in q/2026q4
+m/ms_33 Final approval for SCADA Interface in q/2026q3
+m/ms_34 Final approval for Heat Exchanger in q/2026q4
+m/ms_35 Final approval for SCADA Interface in q/2026q4
+m/ms_36 Final approval for Fire Suppression System in q/2026q2
+m/ms_37 Final approval for Control Room Display in q/2026q4
+m/ms_38 Final approval for Coolant Filter in q/2026q3
+m/ms_39 Final approval for Control Rod Actuator in q/2026q3
+m/ms_40 Final approval for Access Control Gate in q/2026q2
+m/ms_41 Final approval for Control Room Display in q/2026q2
+m/ms_42 Final approval for Control Rod Actuator in q/2026q2
+m/ms_43 Final approval for Ventilation Shaft in q/2026q4
+m/ms_44 Final approval for Fire Suppression System in q/2026q4
+m/ms_45 Final approval for Emergency Diesel Generator in q/2026q2
+m/ms_46 Final approval for Control Rod Actuator in q/2026q4
+m/ms_47 Final approval for Steam Generator in q/2026q3
+m/ms_48 Final approval for Turbine Valve in q/2026q3
+m/ms_49 Final approval for Turbine Valve in q/2026q3
+m/ms_50 Final approval for Access Control Gate in q/2026q3
+# --- Tasks & Bugs ---
+t/1001 Implement Fire Suppression System logic & specs for p/safety assigned to u/landerson in q/2026q3
+t/1002 Design Turbine Valve logic & specs for p/safety assigned to u/lbrown in q/2026q4
+t/1003 Audit Coolant Filter logic & specs for p/cooling assigned to u/jmiller in q/2026q3
+t/1004 Document Access Control Gate logic & specs for p/core assigned to u/kjohnson in q/2026q2
+t/1005 Review Emergency Diesel Generator logic & specs for p/core assigned to u/jmoore in q/2026q4
+t/1006 Inspect Fire Suppression System logic & specs for p/safety assigned to u/bmoore in q/2026q2
+t/1007 Test Access Control Gate logic & specs for p/cooling assigned to u/ljones in q/2026q3
+t/1008 Deploy Backup Battery Bank logic & specs for p/security assigned to u/kjohnson in q/2026q3
+t/1009 Construct Steam Generator logic & specs for p/control assigned to u/jgonzalez in q/2026q4
+t/1010 Calibrate Spent Fuel Pool logic & specs for p/control assigned to u/ejones in q/2026q4
+t/1011 Construct Coolant Filter logic & specs for p/core assigned to u/jgonzalez2 in q/2026q4
+t/1012 Design Turbine Valve logic & specs for p/core assigned to u/bmoore in q/2026q2
+t/1013 Construct Cooling Pump logic & specs for p/cooling assigned to u/manderson in q/2026q4
+t/1014 Implement Fire Suppression System logic & specs for p/civil assigned to u/jbrown in q/2026q2
+t/1015 Document Graphite Moderator logic & specs for p/security assigned to u/mwilson in q/2026q2
+t/1016 Calibrate Pressure Vessel logic & specs for p/cooling assigned to u/mmartin in q/2026q3
+t/1017 Refactor Spent Fuel Pool logic & specs for p/security assigned to u/cjackson in q/2026q3
+t/1018 Deploy Graphite Moderator logic & specs for p/safety assigned to u/chernandez in q/2026q4
+t/1019 Deploy Perimeter Fence logic & specs for p/safety assigned to u/chernandez in q/2026q2
+t/1020 Inspect Control Rod Actuator logic & specs for p/cooling assigned to u/kmoore in q/2026q3
+t/1021 Construct Heat Exchanger logic & specs for p/core assigned to u/emartinez in q/2026q3
+t/1022 Design Turbine Valve logic & specs for p/security assigned to u/klopez in q/2026q3
+t/1023 Implement Access Control Gate logic & specs for p/control assigned to u/kmartinez in q/2026q3
+t/1024 Audit Emergency Diesel Generator logic & specs for p/security assigned to u/jmiller in q/2026q4
+t/1025 Refactor Control Rod Actuator logic & specs for p/core assigned to u/jgonzalez2 in q/2026q3
+t/1026 Inspect Radiation Sensor logic & specs for p/safety assigned to u/tjones2 in q/2026q2
+t/1027 Deploy Steam Generator logic & specs for p/safety assigned to u/jrodriguez in q/2026q3
+t/1028 Refactor Backup Battery Bank logic & specs for p/core assigned to u/chernandez in q/2026q3
+t/1029 Design Turbine Valve logic & specs for p/cooling assigned to u/jmiller in q/2026q4
+t/1030 Calibrate Turbine Valve logic & specs for p/security assigned to u/cmiller in q/2026q3
+t/1031 Inspect Control Rod Actuator logic & specs for p/security assigned to u/tanderson in q/2026q2
+t/1032 Document Emergency Diesel Generator logic & specs for p/cooling assigned to u/kmoore in q/2026q3
+t/1033 Construct Graphite Moderator logic & specs for p/security assigned to u/wmiller in q/2026q3
+t/1034 Implement Control Room Display logic & specs for p/cooling assigned to u/wjohnson in q/2026q2
+t/1035 Inspect Graphite Moderator logic & specs for p/security assigned to u/rwilliams in q/2026q4
+t/1036 Implement Containment Dome logic & specs for p/security assigned to u/jthomas in q/2026q3
+t/1037 Test Heat Exchanger logic & specs for p/core assigned to u/tjones2 in q/2026q3
+t/1038 Review Backup Battery Bank logic & specs for p/control assigned to u/jgarcia2 in q/2026q3
+t/1039 Refactor Seismic Dampener logic & specs for p/cooling assigned to u/lbrown2 in q/2026q2
+t/1040 Document Emergency Diesel Generator logic & specs for p/safety assigned to u/jmoore in q/2026q3
+t/1041 Inspect Perimeter Fence logic & specs for p/security assigned to u/mwilson in q/2026q4
+t/1042 Design Coolant Filter logic & specs for p/security assigned to u/bmoore in q/2026q4
+t/1043 Document Radiation Sensor logic & specs for p/security assigned to u/mmartin in q/2026q3
+t/1044 Construct Perimeter Fence logic & specs for p/core assigned to u/lbrown in q/2026q3
+t/1045 Construct Access Control Gate logic & specs for p/civil assigned to u/staylor in q/2026q3
+t/1046 Refactor Access Control Gate logic & specs for p/security assigned to u/klopez in q/2026q2
+t/1047 Deploy Graphite Moderator logic & specs for p/core assigned to u/dmartinez in q/2026q2
+t/1048 Test Control Rod Actuator logic & specs for p/security assigned to u/jthomas2 in q/2026q2
+t/1049 Document Control Rod Actuator logic & specs for p/security assigned to u/wbrown in q/2026q4
+t/1050 Inspect Backup Battery Bank logic & specs for p/control assigned to u/mjones in q/2026q2
+t/1051 Review SCADA Interface logic & specs for p/control assigned to u/jmartinez2 in q/2026q2
+t/1052 Refactor Spent Fuel Pool logic & specs for p/safety assigned to u/sjackson in q/2026q3
+t/1053 Deploy Spent Fuel Pool logic & specs for p/security assigned to u/ljohnson in q/2026q2
+t/1054 Audit Containment Dome logic & specs for p/safety assigned to u/lbrown2 in q/2026q3
+t/1055 Calibrate Control Rod Actuator logic & specs for p/security assigned to u/jmoore in q/2026q3
+t/1056 Test Steam Generator logic & specs for p/security assigned to u/klopez in q/2026q2
+t/1057 Document Radiation Sensor logic & specs for p/safety assigned to u/jmartinez2 in q/2026q4
+t/1058 Implement Backup Battery Bank logic & specs for p/core assigned to u/jgonzalez in q/2026q2
+t/1059 Deploy Graphite Moderator logic & specs for p/control assigned to u/jlopez2 in q/2026q2
+t/1060 Test Control Room Display logic & specs for p/control assigned to u/tjones2 in q/2026q3
+t/1061 Calibrate Control Room Display logic & specs for p/security assigned to u/jthomas in q/2026q4
+t/1062 Review Cooling Pump logic & specs for p/safety assigned to u/wbrown in q/2026q4
+t/1063 Review Containment Dome logic & specs for p/cooling assigned to u/tjones in q/2026q2
+t/1064 Document Control Room Display logic & specs for p/security assigned to u/jgonzalez in q/2026q4
+t/1065 Implement Spent Fuel Pool logic & specs for p/control assigned to u/manderson in q/2026q2
+t/1066 Test SCADA Interface logic & specs for p/security assigned to u/jgonzalez2 in q/2026q2
+t/1067 Calibrate Fire Suppression System logic & specs for p/control assigned to u/cmiller in q/2026q2
+t/1068 Review Control Room Display logic & specs for p/security assigned to u/landerson in q/2026q3
+t/1069 Calibrate Turbine Valve logic & specs for p/safety assigned to u/wbrown in q/2026q2
+t/1070 Deploy Graphite Moderator logic & specs for p/core assigned to u/ljohnson in q/2026q4
+t/1071 Refactor Cooling Pump logic & specs for p/safety assigned to u/jmiller in q/2026q4
+t/1072 Inspect Cooling Pump logic & specs for p/safety assigned to u/tjones in q/2026q3
+t/1073 Document Emergency Diesel Generator logic & specs for p/control assigned to u/jlopez in q/2026q2
+t/1074 Construct Radiation Sensor logic & specs for p/core assigned to u/mjones in q/2026q3
+t/1075 Deploy Heat Exchanger logic & specs for p/safety assigned to u/rsmith in q/2026q3
+t/1076 Test Radiation Sensor logic & specs for p/cooling assigned to u/jlopez2 in q/2026q2
+t/1077 Calibrate Containment Dome logic & specs for p/security assigned to u/jmartinez2 in q/2026q4
+t/1078 Inspect Spent Fuel Pool logic & specs for p/control assigned to u/jthomas in q/2026q3
+t/1079 Calibrate Turbine Valve logic & specs for p/safety assigned to u/rsmith in q/2026q2
+t/1080 Inspect SCADA Interface logic & specs for p/civil assigned to u/emartinez in q/2026q3
+t/1081 Design Access Control Gate logic & specs for p/security assigned to u/mjones in q/2026q4
+t/1082 Audit Perimeter Fence logic & specs for p/safety assigned to u/jmiller2 in q/2026q2
+t/1083 Construct Seismic Dampener logic & specs for p/safety assigned to u/emartinez in q/2026q2
+t/1084 Refactor Spent Fuel Pool logic & specs for p/civil assigned to u/lrodriguez in q/2026q3
+t/1085 Design Turbine Valve logic & specs for p/core assigned to u/jgarcia2 in q/2026q4
+t/1086 Review Cooling Pump logic & specs for p/civil assigned to u/wjohnson2 in q/2026q2
+t/1087 Design Radiation Sensor logic & specs for p/security assigned to u/jmartinez in q/2026q3
+t/1088 Inspect SCADA Interface logic & specs for p/civil assigned to u/kjohnson in q/2026q4
+t/1089 Inspect Perimeter Fence logic & specs for p/safety assigned to u/jmiller in q/2026q2
+t/1090 Design Seismic Dampener logic & specs for p/cooling assigned to u/jmiller2 in q/2026q2
+t/1091 Deploy SCADA Interface logic & specs for p/control assigned to u/mjones in q/2026q4
+t/1092 Refactor Radiation Sensor logic & specs for p/safety assigned to u/cmiller in q/2026q4
+t/1093 Refactor Coolant Filter logic & specs for p/safety assigned to u/cmiller in q/2026q4
+t/1094 Review Graphite Moderator logic & specs for p/control assigned to u/jjackson in q/2026q4
+t/1095 Inspect Backup Battery Bank logic & specs for p/control assigned to u/jrodriguez in q/2026q3
+t/1096 Calibrate Control Rod Actuator logic & specs for p/control assigned to u/jmiller2 in q/2026q3
+t/1097 Audit Backup Battery Bank logic & specs for p/control assigned to u/emartinez in q/2026q4
+t/1098 Inspect Graphite Moderator logic & specs for p/safety assigned to u/jbrown in q/2026q2
+t/1099 Design Graphite Moderator logic & specs for p/core assigned to u/jbrown in q/2026q4
+t/1100 Construct Perimeter Fence logic & specs for p/security assigned to u/klopez in q/2026q2
+t/1101 Test Spent Fuel Pool logic & specs for p/civil assigned to u/kmoore in q/2026q3
+t/1102 Implement Access Control Gate logic & specs for p/core assigned to u/jmartinez2 in q/2026q4
+t/1103 Audit Control Rod Actuator logic & specs for p/core assigned to u/lrodriguez in q/2026q3
+t/1104 Audit Fire Suppression System logic & specs for p/core assigned to u/ljones in q/2026q3
+t/1105 Design Containment Dome logic & specs for p/safety assigned to u/lbrown in q/2026q4
+t/1106 Test Access Control Gate logic & specs for p/safety assigned to u/jbrown in q/2026q2
+t/1107 Calibrate Coolant Filter logic & specs for p/control assigned to u/jgarcia in q/2026q2
+t/1108 Refactor Steam Generator logic & specs for p/core assigned to u/staylor in q/2026q3
+t/1109 Document Control Rod Actuator logic & specs for p/cooling assigned to u/chernandez in q/2026q4
+t/1110 Test Turbine Valve logic & specs for p/civil assigned to u/jthomas in q/2026q2
+t/1111 Deploy Seismic Dampener logic & specs for p/civil assigned to u/tjones2 in q/2026q2
+t/1112 Deploy Control Rod Actuator logic & specs for p/core assigned to u/ljones in q/2026q3
+t/1113 Design Heat Exchanger logic & specs for p/cooling assigned to u/tjones2 in q/2026q4
+t/1114 Review Emergency Diesel Generator logic & specs for p/core assigned to u/cjackson in q/2026q3
+t/1115 Calibrate Steam Generator logic & specs for p/cooling assigned to u/ejones in q/2026q2
+t/1116 Construct Pressure Vessel logic & specs for p/security assigned to u/manderson in q/2026q3
+t/1117 Construct Ventilation Shaft logic & specs for p/security assigned to u/mwilson in q/2026q2
+t/1118 Construct Steam Generator logic & specs for p/cooling assigned to u/jgarcia2 in q/2026q3
+t/1119 Review Spent Fuel Pool logic & specs for p/core assigned to u/landerson in q/2026q4
+t/1120 Implement Steam Generator logic & specs for p/security assigned to u/jmartinez in q/2026q4
+t/1121 Calibrate Turbine Valve logic & specs for p/cooling assigned to u/wbrown in q/2026q4
+t/1122 Audit Control Rod Actuator logic & specs for p/safety assigned to u/sjackson in q/2026q3
+t/1123 Review Steam Generator logic & specs for p/cooling assigned to u/sjackson in q/2026q3
+t/1124 Review Control Rod Actuator logic & specs for p/civil assigned to u/wbrown in q/2026q2
+t/1125 Implement Heat Exchanger logic & specs for p/safety assigned to u/lrodriguez in q/2026q2
+t/1126 Implement Spent Fuel Pool logic & specs for p/control assigned to u/mjones in q/2026q4
+t/1127 Audit Turbine Valve logic & specs for p/core assigned to u/jthomas in q/2026q4
+t/1128 Document Spent Fuel Pool logic & specs for p/security assigned to u/jgonzalez in q/2026q2
+t/1129 Construct Containment Dome logic & specs for p/cooling assigned to u/cjohnson in q/2026q3
+t/1130 Refactor Control Room Display logic & specs for p/security assigned to u/dmartinez in q/2026q4
+t/1131 Test Graphite Moderator logic & specs for p/safety assigned to u/cjohnson in q/2026q2
+t/1132 Review SCADA Interface logic & specs for p/safety assigned to u/bmoore in q/2026q4
+t/1133 Document Steam Generator logic & specs for p/safety assigned to u/jmiller in q/2026q4
+t/1134 Document Heat Exchanger logic & specs for p/security assigned to u/cjohnson in q/2026q2
+t/1135 Deploy Access Control Gate logic & specs for p/control assigned to u/jthomas in q/2026q2
+t/1136 Implement Access Control Gate logic & specs for p/core assigned to u/tjones in q/2026q2
+t/1137 Deploy Turbine Valve logic & specs for p/safety assigned to u/mwilson in q/2026q4
+t/1138 Test Ventilation Shaft logic & specs for p/cooling assigned to u/emartinez in q/2026q2
+t/1139 Refactor Perimeter Fence logic & specs for p/security assigned to u/lbrown2 in q/2026q3
+t/1140 Calibrate Graphite Moderator logic & specs for p/security assigned to u/mjones in q/2026q2
+t/1141 Refactor Steam Generator logic & specs for p/control assigned to u/mmartin in q/2026q3
+t/1142 Design Perimeter Fence logic & specs for p/security assigned to u/wbrown in q/2026q2
+t/1143 Inspect Backup Battery Bank logic & specs for p/core assigned to u/wjohnson2 in q/2026q3
+t/1144 Audit Access Control Gate logic & specs for p/civil assigned to u/jgarcia2 in q/2026q4
+t/1145 Audit Graphite Moderator logic & specs for p/civil assigned to u/jmiller2 in q/2026q3
+t/1146 Review Cooling Pump logic & specs for p/civil assigned to u/mwilliams in q/2026q3
+t/1147 Audit Radiation Sensor logic & specs for p/safety assigned to u/lbrown in q/2026q2
+t/1148 Inspect Containment Dome logic & specs for p/safety assigned to u/bmoore in q/2026q2
+t/1149 Construct Spent Fuel Pool logic & specs for p/civil assigned to u/mmartin in q/2026q4
+t/1150 Inspect Control Rod Actuator logic & specs for p/core assigned to u/jmiller2 in q/2026q4
+t/1151 Design Perimeter Fence logic & specs for p/core assigned to u/chernandez in q/2026q2
+t/1152 Audit Perimeter Fence logic & specs for p/control assigned to u/klopez in q/2026q2
+t/1153 Design Ventilation Shaft logic & specs for p/core assigned to u/mwilson in q/2026q2
+t/1154 Calibrate Seismic Dampener logic & specs for p/safety assigned to u/jgarcia in q/2026q4
+t/1155 Deploy Cooling Pump logic & specs for p/control assigned to u/jmartinez in q/2026q4
+t/1156 Refactor Control Room Display logic & specs for p/safety assigned to u/wjohnson in q/2026q2
+t/1157 Deploy Coolant Filter logic & specs for p/control assigned to u/jthomas in q/2026q2
+t/1158 Document Backup Battery Bank logic & specs for p/control assigned to u/jbrown in q/2026q3
+t/1159 Test Emergency Diesel Generator logic & specs for p/cooling assigned to u/lbrown2 in q/2026q4
+t/1160 Inspect Turbine Valve logic & specs for p/security assigned to u/jjackson in q/2026q4
+t/1161 Inspect Control Room Display logic & specs for p/safety assigned to u/sjackson in q/2026q2
+t/1162 Audit Turbine Valve logic & specs for p/control assigned to u/jbrown in q/2026q4
+t/1163 Implement Control Room Display logic & specs for p/core assigned to u/jgarcia2 in q/2026q3
+t/1164 Implement Fire Suppression System logic & specs for p/cooling assigned to u/lbrown2 in q/2026q2
+t/1165 Audit Containment Dome logic & specs for p/control assigned to u/bmoore in q/2026q2
+t/1166 Inspect Ventilation Shaft logic & specs for p/safety assigned to u/wbrown in q/2026q4
+t/1167 Deploy Steam Generator logic & specs for p/control assigned to u/staylor in q/2026q2
+t/1168 Document Steam Generator logic & specs for p/safety assigned to u/jthomas in q/2026q4
+t/1169 Test Coolant Filter logic & specs for p/core assigned to u/lbrown2 in q/2026q2
+t/1170 Document Spent Fuel Pool logic & specs for p/control assigned to u/sjackson in q/2026q4
+t/1171 Construct Coolant Filter logic & specs for p/security assigned to u/bmoore in q/2026q2
+t/1172 Implement Perimeter Fence logic & specs for p/core assigned to u/kmoore in q/2026q3
+t/1173 Review Cooling Pump logic & specs for p/cooling assigned to u/lbrown in q/2026q4
+t/1174 Deploy Control Room Display logic & specs for p/security assigned to u/jmiller in q/2026q4
+t/1175 Document Fire Suppression System logic & specs for p/core assigned to u/cjohnson in q/2026q2
+t/1176 Deploy Access Control Gate logic & specs for p/security assigned to u/mwilson in q/2026q4
+t/1177 Design Heat Exchanger logic & specs for p/civil assigned to u/kjohnson in q/2026q4
+t/1178 Refactor Seismic Dampener logic & specs for p/control assigned to u/rsmith in q/2026q2
+t/1179 Audit Emergency Diesel Generator logic & specs for p/core assigned to u/lbrown in q/2026q4
+t/1180 Implement Perimeter Fence logic & specs for p/safety assigned to u/landerson in q/2026q4
+t/1181 Refactor Radiation Sensor logic & specs for p/control assigned to u/sjackson in q/2026q3
+t/1182 Inspect Fire Suppression System logic & specs for p/control assigned to u/jlopez in q/2026q4
+t/1183 Review Perimeter Fence logic & specs for p/control assigned to u/cmiller in q/2026q3
+t/1184 Inspect Cooling Pump logic & specs for p/cooling assigned to u/dmartinez in q/2026q4
+t/1185 Calibrate Spent Fuel Pool logic & specs for p/safety assigned to u/mjones in q/2026q3
+t/1186 Deploy SCADA Interface logic & specs for p/safety assigned to u/chernandez in q/2026q3
+t/1187 Review SCADA Interface logic & specs for p/core assigned to u/mwilliams in q/2026q4
+t/1188 Calibrate Coolant Filter logic & specs for p/cooling assigned to u/kmartinez in q/2026q4
+t/1189 Calibrate Perimeter Fence logic & specs for p/security assigned to u/mmartin in q/2026q4
+t/1190 Deploy Radiation Sensor logic & specs for p/core assigned to u/kmartinez in q/2026q2
+t/1191 Test Radiation Sensor logic & specs for p/core assigned to u/chernandez in q/2026q4
+t/1192 Deploy Graphite Moderator logic & specs for p/civil assigned to u/jmiller2 in q/2026q3
+t/1193 Construct Control Rod Actuator logic & specs for p/control assigned to u/emartinez in q/2026q4
+t/1194 Construct Steam Generator logic & specs for p/core assigned to u/jjackson in q/2026q3
+t/1195 Refactor Steam Generator logic & specs for p/control assigned to u/sjackson in q/2026q2
+t/1196 Deploy Emergency Diesel Generator logic & specs for p/security assigned to u/cjackson in q/2026q3
+t/1197 Audit Perimeter Fence logic & specs for p/civil assigned to u/kmoore in q/2026q3
+t/1198 Construct Pressure Vessel logic & specs for p/core assigned to u/wmiller in q/2026q3
+t/1199 Test Coolant Filter logic & specs for p/civil assigned to u/jthomas2 in q/2026q3
+t/1200 Calibrate Containment Dome logic & specs for p/safety assigned to u/mwilliams in q/2026q4
+t/1201 Document Graphite Moderator logic & specs for p/safety assigned to u/cjohnson in q/2026q3
+t/1202 Deploy Backup Battery Bank logic & specs for p/civil assigned to u/dmartinez in q/2026q4
+t/1203 Inspect Pressure Vessel logic & specs for p/safety assigned to u/kmoore in q/2026q3
+t/1204 Implement Emergency Diesel Generator logic & specs for p/civil assigned to u/wbrown in q/2026q4
+t/1205 Audit Backup Battery Bank logic & specs for p/core assigned to u/lbrown in q/2026q2
+t/1206 Review Ventilation Shaft logic & specs for p/civil assigned to u/jmartinez2 in q/2026q3
+t/1207 Design Cooling Pump logic & specs for p/security assigned to u/mwilliams in q/2026q2
+t/1208 Refactor Backup Battery Bank logic & specs for p/control assigned to u/mjones in q/2026q3
+t/1209 Calibrate Perimeter Fence logic & specs for p/core assigned to u/manderson in q/2026q3
+t/1210 Construct Emergency Diesel Generator logic & specs for p/core assigned to u/jgonzalez in q/2026q3
+t/1211 Deploy Control Room Display logic & specs for p/civil assigned to u/cjohnson in q/2026q3
+t/1212 Calibrate Radiation Sensor logic & specs for p/civil assigned to u/dmartinez in q/2026q3
+t/1213 Audit Fire Suppression System logic & specs for p/control assigned to u/dmartinez in q/2026q4
+t/1214 Construct Emergency Diesel Generator logic & specs for p/security assigned to u/wbrown in q/2026q3
+t/1215 Implement Seismic Dampener logic & specs for p/civil assigned to u/wjohnson in q/2026q3
+t/1216 Construct Access Control Gate logic & specs for p/core assigned to u/lrodriguez in q/2026q3
+t/1217 Implement Seismic Dampener logic & specs for p/core assigned to u/tanderson in q/2026q3
+t/1218 Audit Spent Fuel Pool logic & specs for p/security assigned to u/jlopez in q/2026q2
+t/1219 Inspect SCADA Interface logic & specs for p/security assigned to u/jthomas2 in q/2026q4
+t/1220 Document Pressure Vessel logic & specs for p/civil assigned to u/ljones in q/2026q3
+t/1221 Test Containment Dome logic & specs for p/safety assigned to u/kmartinez in q/2026q2
+t/1222 Test SCADA Interface logic & specs for p/civil assigned to u/rwilliams in q/2026q2
+t/1223 Deploy Access Control Gate logic & specs for p/safety assigned to u/tjones in q/2026q4
+t/1224 Design Containment Dome logic & specs for p/cooling assigned to u/tjones in q/2026q2
+t/1225 Audit Fire Suppression System logic & specs for p/cooling assigned to u/cjackson in q/2026q2
+t/1226 Review SCADA Interface logic & specs for p/civil assigned to u/chernandez in q/2026q2
+t/1227 Deploy SCADA Interface logic & specs for p/cooling assigned to u/cjohnson in q/2026q2
+t/1228 Audit Control Rod Actuator logic & specs for p/core assigned to u/mwilliams in q/2026q2
+t/1229 Test Fire Suppression System logic & specs for p/core assigned to u/wbrown in q/2026q3
+t/1230 Review Ventilation Shaft logic & specs for p/safety assigned to u/mmartin in q/2026q4
+t/1231 Deploy Ventilation Shaft logic & specs for p/security assigned to u/manderson in q/2026q4
+t/1232 Construct Control Rod Actuator logic & specs for p/safety assigned to u/mwilliams in q/2026q4
+t/1233 Inspect Spent Fuel Pool logic & specs for p/core assigned to u/cmiller in q/2026q2
+t/1234 Document Turbine Valve logic & specs for p/security assigned to u/jlopez2 in q/2026q2
+t/1235 Deploy Containment Dome logic & specs for p/core assigned to u/jgarcia2 in q/2026q2
+t/1236 Review Emergency Diesel Generator logic & specs for p/core assigned to u/jmiller in q/2026q2
+t/1237 Refactor Coolant Filter logic & specs for p/control assigned to u/jmartinez2 in q/2026q2
+t/1238 Review Containment Dome logic & specs for p/safety assigned to u/sjackson in q/2026q4
+t/1239 Inspect Access Control Gate logic & specs for p/core assigned to u/jmartinez2 in q/2026q4
+t/1240 Inspect Radiation Sensor logic & specs for p/civil assigned to u/emartinez in q/2026q3
+t/1241 Audit Emergency Diesel Generator logic & specs for p/civil assigned to u/dmartinez in q/2026q3
+t/1242 Audit Fire Suppression System logic & specs for p/control assigned to u/jgarcia2 in q/2026q4
+t/1243 Audit Heat Exchanger logic & specs for p/safety assigned to u/mwilliams in q/2026q4
+t/1244 Audit SCADA Interface logic & specs for p/civil assigned to u/jlopez2 in q/2026q3
+t/1245 Refactor Pressure Vessel logic & specs for p/civil assigned to u/jgonzalez2 in q/2026q3
+t/1246 Implement Pressure Vessel logic & specs for p/safety assigned to u/rsmith in q/2026q2
+t/1247 Construct Backup Battery Bank logic & specs for p/cooling assigned to u/mjones in q/2026q3
+t/1248 Calibrate Control Rod Actuator logic & specs for p/safety assigned to u/jmartinez2 in q/2026q3
+t/1249 Audit Steam Generator logic & specs for p/cooling assigned to u/wjohnson in q/2026q3
+t/1250 Refactor Graphite Moderator logic & specs for p/civil assigned to u/wmiller in q/2026q2
+t/1251 Test Spent Fuel Pool logic & specs for p/safety assigned to u/rwilliams in q/2026q3
+t/1252 Test Heat Exchanger logic & specs for p/core assigned to u/bmoore in q/2026q4
+t/1253 Implement Backup Battery Bank logic & specs for p/civil assigned to u/emartinez in q/2026q3
+t/1254 Document Coolant Filter logic & specs for p/core assigned to u/mwilliams in q/2026q3
+t/1255 Construct Pressure Vessel logic & specs for p/civil assigned to u/chernandez in q/2026q2
+t/1256 Audit SCADA Interface logic & specs for p/security assigned to u/jlopez in q/2026q4
+t/1257 Review SCADA Interface logic & specs for p/civil assigned to u/mjones in q/2026q2
+t/1258 Implement Containment Dome logic & specs for p/security assigned to u/tjones2 in q/2026q2
+t/1259 Deploy Graphite Moderator logic & specs for p/safety assigned to u/jthomas2 in q/2026q4
+t/1260 Deploy Control Rod Actuator logic & specs for p/civil assigned to u/jmiller in q/2026q3
+t/1261 Test Access Control Gate logic & specs for p/cooling assigned to u/sjackson in q/2026q2
+t/1262 Design Pressure Vessel logic & specs for p/cooling assigned to u/jbrown in q/2026q2
+t/1263 Refactor Coolant Filter logic & specs for p/civil assigned to u/jgarcia in q/2026q3
+t/1264 Inspect Heat Exchanger logic & specs for p/civil assigned to u/jlopez2 in q/2026q4
+t/1265 Implement Pressure Vessel logic & specs for p/security assigned to u/staylor in q/2026q4
+t/1266 Audit Containment Dome logic & specs for p/security assigned to u/jmartinez in q/2026q2
+t/1267 Test Radiation Sensor logic & specs for p/security assigned to u/jmoore in q/2026q4
+t/1268 Test Control Room Display logic & specs for p/civil assigned to u/kmoore in q/2026q4
+t/1269 Refactor Steam Generator logic & specs for p/cooling assigned to u/jgonzalez in q/2026q2
+t/1270 Test Control Rod Actuator logic & specs for p/safety assigned to u/kmartinez in q/2026q2
+t/1271 Review SCADA Interface logic & specs for p/safety assigned to u/ljohnson in q/2026q4
+t/1272 Review Control Rod Actuator logic & specs for p/cooling assigned to u/mwilson in q/2026q3
+t/1273 Inspect Access Control Gate logic & specs for p/control assigned to u/cjackson in q/2026q4
+t/1274 Inspect Pressure Vessel logic & specs for p/safety assigned to u/kmoore in q/2026q4
+t/1275 Refactor Heat Exchanger logic & specs for p/security assigned to u/rsmith in q/2026q3
+t/1276 Refactor Spent Fuel Pool logic & specs for p/cooling assigned to u/landerson in q/2026q2
+t/1277 Deploy Cooling Pump logic & specs for p/core assigned to u/cmiller in q/2026q2
+t/1278 Audit Emergency Diesel Generator logic & specs for p/security assigned to u/dmartinez in q/2026q4
+t/1279 Design Spent Fuel Pool logic & specs for p/control assigned to u/jlopez2 in q/2026q4
+t/1280 Audit Emergency Diesel Generator logic & specs for p/control assigned to u/lbrown in q/2026q2
+t/1281 Audit Perimeter Fence logic & specs for p/core assigned to u/jmiller2 in q/2026q3
+t/1282 Calibrate Turbine Valve logic & specs for p/core assigned to u/mjones in q/2026q3
+t/1283 Test Control Rod Actuator logic & specs for p/security assigned to u/ljohnson in q/2026q4
+t/1284 Construct Backup Battery Bank logic & specs for p/security assigned to u/rsmith in q/2026q4
+t/1285 Design Backup Battery Bank logic & specs for p/safety assigned to u/wjohnson in q/2026q4
+t/1286 Construct Turbine Valve logic & specs for p/core assigned to u/bmoore in q/2026q2
+t/1287 Test Control Rod Actuator logic & specs for p/civil assigned to u/jjackson in q/2026q3
+t/1288 Inspect Coolant Filter logic & specs for p/core assigned to u/staylor in q/2026q4
+t/1289 Review Control Rod Actuator logic & specs for p/control assigned to u/lbrown2 in q/2026q4
+t/1290 Test Coolant Filter logic & specs for p/cooling assigned to u/jmoore in q/2026q4
+t/1291 Audit Control Rod Actuator logic & specs for p/civil assigned to u/tanderson in q/2026q4
+t/1292 Design Coolant Filter logic & specs for p/cooling assigned to u/jrodriguez in q/2026q2
+t/1293 Review Graphite Moderator logic & specs for p/security assigned to u/wjohnson2 in q/2026q4
+t/1294 Inspect Seismic Dampener logic & specs for p/control assigned to u/jthomas2 in q/2026q3
+t/1295 Implement Cooling Pump logic & specs for p/security assigned to u/klopez in q/2026q3
+t/1296 Test Seismic Dampener logic & specs for p/control assigned to u/jjackson in q/2026q2
+t/1297 Document Ventilation Shaft logic & specs for p/safety assigned to u/rwilliams in q/2026q3
+t/1298 Test Cooling Pump logic & specs for p/core assigned to u/lbrown in q/2026q2
+t/1299 Test Access Control Gate logic & specs for p/civil assigned to u/wmiller in q/2026q4
+t/1300 Implement Cooling Pump logic & specs for p/control assigned to u/wbrown in q/2026q2
+t/1301 Refactor Radiation Sensor logic & specs for p/security assigned to u/ejones in q/2026q4
+t/1302 Design Heat Exchanger logic & specs for p/security assigned to u/mjones in q/2026q4
+t/1303 Implement SCADA Interface logic & specs for p/civil assigned to u/kjohnson in q/2026q2
+t/1304 Design Control Rod Actuator logic & specs for p/control assigned to u/cjackson in q/2026q2
+t/1305 Implement Cooling Pump logic & specs for p/cooling assigned to u/emartinez in q/2026q4
+t/1306 Calibrate Heat Exchanger logic & specs for p/safety assigned to u/wbrown in q/2026q4
+t/1307 Design SCADA Interface logic & specs for p/security assigned to u/rwilliams in q/2026q2
+t/1308 Refactor Pressure Vessel logic & specs for p/security assigned to u/lbrown2 in q/2026q4
+t/1309 Document Backup Battery Bank logic & specs for p/control assigned to u/jgonzalez2 in q/2026q2
+t/1310 Deploy Radiation Sensor logic & specs for p/security assigned to u/wjohnson in q/2026q3
+t/1311 Design Fire Suppression System logic & specs for p/civil assigned to u/kmoore in q/2026q4
+t/1312 Construct Radiation Sensor logic & specs for p/control assigned to u/jgonzalez2 in q/2026q4
+t/1313 Inspect SCADA Interface logic & specs for p/control assigned to u/jgonzalez2 in q/2026q3
+t/1314 Inspect Heat Exchanger logic & specs for p/cooling assigned to u/jjackson in q/2026q2
+t/1315 Test Turbine Valve logic & specs for p/core assigned to u/rsmith in q/2026q3
+t/1316 Document Access Control Gate logic & specs for p/cooling assigned to u/jjackson in q/2026q3
+t/1317 Review Access Control Gate logic & specs for p/safety assigned to u/mwilson in q/2026q2
+t/1318 Audit Containment Dome logic & specs for p/civil assigned to u/tjones in q/2026q4
+t/1319 Deploy SCADA Interface logic & specs for p/safety assigned to u/mwilson in q/2026q3
+t/1320 Design Spent Fuel Pool logic & specs for p/control assigned to u/landerson in q/2026q3
+t/1321 Calibrate Coolant Filter logic & specs for p/control assigned to u/jthomas in q/2026q2
+t/1322 Test Spent Fuel Pool logic & specs for p/control assigned to u/chernandez in q/2026q3
+t/1323 Refactor Control Room Display logic & specs for p/control assigned to u/lbrown2 in q/2026q4
+t/1324 Construct Pressure Vessel logic & specs for p/core assigned to u/chernandez in q/2026q3
+t/1325 Deploy Cooling Pump logic & specs for p/security assigned to u/jmoore in q/2026q3
+t/1326 Deploy Access Control Gate logic & specs for p/cooling assigned to u/jlopez in q/2026q3
+t/1327 Audit Pressure Vessel logic & specs for p/control assigned to u/manderson in q/2026q3
+t/1328 Audit Containment Dome logic & specs for p/cooling assigned to u/klopez in q/2026q4
+t/1329 Review Pressure Vessel logic & specs for p/civil assigned to u/jthomas in q/2026q2
+t/1330 Construct Radiation Sensor logic & specs for p/security assigned to u/emartinez in q/2026q2
+t/1331 Design Access Control Gate logic & specs for p/cooling assigned to u/mwilson in q/2026q3
+t/1332 Audit Coolant Filter logic & specs for p/cooling assigned to u/jthomas2 in q/2026q2
+t/1333 Construct Heat Exchanger logic & specs for p/cooling assigned to u/cjackson in q/2026q3
+t/1334 Calibrate Radiation Sensor logic & specs for p/core assigned to u/bmoore in q/2026q4
+t/1335 Implement Seismic Dampener logic & specs for p/safety assigned to u/mwilliams in q/2026q2
+t/1336 Deploy Perimeter Fence logic & specs for p/control assigned to u/wjohnson2 in q/2026q2
+t/1337 Test Perimeter Fence logic & specs for p/control assigned to u/mwilson in q/2026q4
+t/1338 Design Access Control Gate logic & specs for p/core assigned to u/kmoore in q/2026q2
+t/1339 Implement Containment Dome logic & specs for p/civil assigned to u/ejones in q/2026q2
+t/1340 Construct Heat Exchanger logic & specs for p/safety assigned to u/jgarcia in q/2026q3
+t/1341 Audit Heat Exchanger logic & specs for p/control assigned to u/jmoore in q/2026q2
+t/1342 Implement Perimeter Fence logic & specs for p/security assigned to u/cjohnson in q/2026q2
+t/1343 Calibrate Control Room Display logic & specs for p/safety assigned to u/jlopez2 in q/2026q3
+t/1344 Inspect Graphite Moderator logic & specs for p/control assigned to u/jthomas in q/2026q4
+t/1345 Deploy Containment Dome logic & specs for p/cooling assigned to u/sjackson in q/2026q4
+t/1346 Audit Containment Dome logic & specs for p/control assigned to u/jmartinez2 in q/2026q2
+t/1347 Design Control Rod Actuator logic & specs for p/civil assigned to u/tjones2 in q/2026q4
+t/1348 Construct Spent Fuel Pool logic & specs for p/core assigned to u/kmoore in q/2026q2
+t/1349 Construct Turbine Valve logic & specs for p/safety assigned to u/tjones2 in q/2026q4
+t/1350 Review Access Control Gate logic & specs for p/security assigned to u/jthomas2 in q/2026q2
+t/1351 Design Emergency Diesel Generator logic & specs for p/core assigned to u/lrodriguez in q/2026q4
+t/1352 Inspect Backup Battery Bank logic & specs for p/cooling assigned to u/mmartin in q/2026q4
+t/1353 Design Ventilation Shaft logic & specs for p/control assigned to u/bmoore in q/2026q2
+t/1354 Implement Fire Suppression System logic & specs for p/core assigned to u/lbrown2 in q/2026q3
+t/1355 Construct Backup Battery Bank logic & specs for p/control assigned to u/cjackson in q/2026q2
+t/1356 Deploy Seismic Dampener logic & specs for p/security assigned to u/ejones in q/2026q3
+t/1357 Document Control Room Display logic & specs for p/safety assigned to u/rwilliams in q/2026q4
+t/1358 Review Heat Exchanger logic & specs for p/safety assigned to u/jgarcia2 in q/2026q2
+t/1359 Deploy Coolant Filter logic & specs for p/core assigned to u/jrodriguez in q/2026q3
+t/1360 Document Control Rod Actuator logic & specs for p/civil assigned to u/rwilliams in q/2026q2
+t/1361 Implement Control Room Display logic & specs for p/control assigned to u/emartinez in q/2026q3
+t/1362 Audit Pressure Vessel logic & specs for p/control assigned to u/staylor in q/2026q3
+t/1363 Construct Containment Dome logic & specs for p/core assigned to u/wmiller in q/2026q2
+t/1364 Construct Access Control Gate logic & specs for p/core assigned to u/tjones2 in q/2026q3
+t/1365 Calibrate Access Control Gate logic & specs for p/civil assigned to u/lbrown in q/2026q3
+t/1366 Document Graphite Moderator logic & specs for p/civil assigned to u/cjohnson in q/2026q3
+t/1367 Construct Radiation Sensor logic & specs for p/security assigned to u/klopez in q/2026q3
+t/1368 Implement SCADA Interface logic & specs for p/safety assigned to u/bmoore in q/2026q2
+t/1369 Review Heat Exchanger logic & specs for p/cooling assigned to u/tjones2 in q/2026q4
+t/1370 Calibrate SCADA Interface logic & specs for p/control assigned to u/wmiller in q/2026q3
+t/1371 Inspect Fire Suppression System logic & specs for p/safety assigned to u/kjohnson in q/2026q3
+t/1372 Implement Cooling Pump logic & specs for p/cooling assigned to u/mmartin in q/2026q2
+t/1373 Test Backup Battery Bank logic & specs for p/safety assigned to u/jthomas2 in q/2026q4
+t/1374 Construct Coolant Filter logic & specs for p/civil assigned to u/jgarcia in q/2026q4
+t/1375 Implement Cooling Pump logic & specs for p/control assigned to u/lbrown in q/2026q2
+t/1376 Inspect Backup Battery Bank logic & specs for p/civil assigned to u/cmiller in q/2026q4
+t/1377 Document Backup Battery Bank logic & specs for p/core assigned to u/chernandez in q/2026q4
+t/1378 Refactor Pressure Vessel logic & specs for p/control assigned to u/jgonzalez in q/2026q3
+t/1379 Inspect Steam Generator logic & specs for p/safety assigned to u/jthomas in q/2026q4
+t/1380 Audit Emergency Diesel Generator logic & specs for p/cooling assigned to u/cjohnson in q/2026q2
+t/1381 Inspect Access Control Gate logic & specs for p/cooling assigned to u/jmartinez in q/2026q3
+t/1382 Inspect Backup Battery Bank logic & specs for p/security assigned to u/ljohnson in q/2026q3
+t/1383 Review Containment Dome logic & specs for p/civil assigned to u/wjohnson2 in q/2026q3
+t/1384 Refactor Radiation Sensor logic & specs for p/security assigned to u/sjackson in q/2026q4
+t/1385 Deploy Control Rod Actuator logic & specs for p/control assigned to u/jmiller2 in q/2026q4
+t/1386 Inspect Perimeter Fence logic & specs for p/safety assigned to u/staylor in q/2026q2
+t/1387 Audit Access Control Gate logic & specs for p/core assigned to u/wjohnson in q/2026q3
+t/1388 Document Emergency Diesel Generator logic & specs for p/core assigned to u/cjohnson in q/2026q3
+t/1389 Refactor Coolant Filter logic & specs for p/safety assigned to u/jmartinez2 in q/2026q2
+t/1390 Design Seismic Dampener logic & specs for p/civil assigned to u/wjohnson2 in q/2026q4
+t/1391 Deploy Coolant Filter logic & specs for p/civil assigned to u/jmoore in q/2026q4
+t/1392 Audit Steam Generator logic & specs for p/security assigned to u/mwilliams in q/2026q2
+t/1393 Test Pressure Vessel logic & specs for p/cooling assigned to u/mjones in q/2026q4
+t/1394 Test Cooling Pump logic & specs for p/core assigned to u/tjones in q/2026q2
+t/1395 Refactor SCADA Interface logic & specs for p/safety assigned to u/klopez in q/2026q4
+t/1396 Test Cooling Pump logic & specs for p/core assigned to u/ejones in q/2026q2
+t/1397 Test Radiation Sensor logic & specs for p/cooling assigned to u/mwilliams in q/2026q4
+t/1398 Review Seismic Dampener logic & specs for p/security assigned to u/mwilson in q/2026q2
+t/1399 Test Cooling Pump logic & specs for p/control assigned to u/manderson in q/2026q3
+t/1400 Implement Perimeter Fence logic & specs for p/control assigned to u/dmartinez in q/2026q2
+t/1401 Review Access Control Gate logic & specs for p/cooling assigned to u/cjackson in q/2026q2
+t/1402 Inspect Turbine Valve logic & specs for p/safety assigned to u/chernandez in q/2026q3
+t/1403 Design Cooling Pump logic & specs for p/security assigned to u/bmoore in q/2026q3
+t/1404 Implement Access Control Gate logic & specs for p/civil assigned to u/lbrown in q/2026q3
+t/1405 Deploy Turbine Valve logic & specs for p/civil assigned to u/wbrown in q/2026q4
+t/1406 Audit Turbine Valve logic & specs for p/safety assigned to u/ejones in q/2026q4
+t/1407 Document SCADA Interface logic & specs for p/civil assigned to u/jgarcia2 in q/2026q4
+t/1408 Implement Ventilation Shaft logic & specs for p/core assigned to u/tjones2 in q/2026q2
+t/1409 Test Steam Generator logic & specs for p/safety assigned to u/jrodriguez in q/2026q3
+t/1410 Test Control Rod Actuator logic & specs for p/control assigned to u/landerson in q/2026q3
+t/1411 Review Turbine Valve logic & specs for p/cooling assigned to u/mjones in q/2026q3
+t/1412 Test Coolant Filter logic & specs for p/cooling assigned to u/lbrown in q/2026q4
+t/1413 Document Perimeter Fence logic & specs for p/cooling assigned to u/bmoore in q/2026q4
+t/1414 Deploy Graphite Moderator logic & specs for p/control assigned to u/mwilliams in q/2026q4
+t/1415 Construct Containment Dome logic & specs for p/cooling assigned to u/jbrown in q/2026q3
+t/1416 Review Seismic Dampener logic & specs for p/safety assigned to u/jjackson in q/2026q4
+t/1417 Inspect Heat Exchanger logic & specs for p/security assigned to u/jlopez2 in q/2026q2
+t/1418 Inspect Fire Suppression System logic & specs for p/control assigned to u/mwilson in q/2026q2
+t/1419 Audit Graphite Moderator logic & specs for p/civil assigned to u/wbrown in q/2026q3
+t/1420 Test SCADA Interface logic & specs for p/safety assigned to u/lbrown in q/2026q3
+t/1421 Test Cooling Pump logic & specs for p/core assigned to u/jgarcia2 in q/2026q2
+t/1422 Inspect Backup Battery Bank logic & specs for p/control assigned to u/jrodriguez in q/2026q4
+t/1423 Inspect Steam Generator logic & specs for p/civil assigned to u/lbrown in q/2026q3
+t/1424 Design Seismic Dampener logic & specs for p/core assigned to u/mwilliams in q/2026q4
+t/1425 Review Control Rod Actuator logic & specs for p/control assigned to u/jthomas2 in q/2026q2
+t/1426 Deploy Seismic Dampener logic & specs for p/security assigned to u/kmoore in q/2026q4
+t/1427 Design Coolant Filter logic & specs for p/cooling assigned to u/jjackson in q/2026q3
+t/1428 Review Emergency Diesel Generator logic & specs for p/security assigned to u/tanderson in q/2026q2
+t/1429 Deploy Containment Dome logic & specs for p/core assigned to u/ejones in q/2026q3
+t/1430 Implement Spent Fuel Pool logic & specs for p/control assigned to u/mwilson in q/2026q4
+t/1431 Deploy Ventilation Shaft logic & specs for p/security assigned to u/bmoore in q/2026q3
+t/1432 Refactor Cooling Pump logic & specs for p/safety assigned to u/jgonzalez in q/2026q2
+t/1433 Refactor SCADA Interface logic & specs for p/safety assigned to u/jgarcia in q/2026q4
+t/1434 Test Perimeter Fence logic & specs for p/cooling assigned to u/jlopez in q/2026q3
+t/1435 Document SCADA Interface logic & specs for p/cooling assigned to u/cjackson in q/2026q3
+t/1436 Design Control Rod Actuator logic & specs for p/safety assigned to u/jthomas in q/2026q4
+t/1437 Review Heat Exchanger logic & specs for p/control assigned to u/jmartinez in q/2026q3
+t/1438 Deploy Ventilation Shaft logic & specs for p/control assigned to u/rwilliams in q/2026q4
+t/1439 Design Backup Battery Bank logic & specs for p/cooling assigned to u/tjones in q/2026q2
+t/1440 Deploy Access Control Gate logic & specs for p/security assigned to u/emartinez in q/2026q4
+t/1441 Review Control Room Display logic & specs for p/core assigned to u/kjohnson in q/2026q3
+t/1442 Calibrate Heat Exchanger logic & specs for p/core assigned to u/manderson in q/2026q2
+t/1443 Test Fire Suppression System logic & specs for p/civil assigned to u/lbrown2 in q/2026q4
+t/1444 Deploy Perimeter Fence logic & specs for p/control assigned to u/jmartinez2 in q/2026q3
+t/1445 Deploy Heat Exchanger logic & specs for p/security assigned to u/landerson in q/2026q4
+t/1446 Refactor Ventilation Shaft logic & specs for p/core assigned to u/cjohnson in q/2026q4
+t/1447 Audit Turbine Valve logic & specs for p/control assigned to u/jthomas in q/2026q4
+t/1448 Implement Ventilation Shaft logic & specs for p/core assigned to u/jmartinez in q/2026q3
+t/1449 Review Ventilation Shaft logic & specs for p/control assigned to u/jgonzalez in q/2026q2
+t/1450 Audit Heat Exchanger logic & specs for p/safety assigned to u/mjones in q/2026q3
+t/1451 Audit Emergency Diesel Generator logic & specs for p/civil assigned to u/rwilliams in q/2026q3
+t/1452 Refactor Containment Dome logic & specs for p/control assigned to u/tanderson in q/2026q4
+t/1453 Construct Cooling Pump logic & specs for p/security assigned to u/lrodriguez in q/2026q4
+t/1454 Implement Containment Dome logic & specs for p/cooling assigned to u/cjackson in q/2026q3
+t/1455 Document Turbine Valve logic & specs for p/security assigned to u/jgonzalez2 in q/2026q3
+t/1456 Construct Control Rod Actuator logic & specs for p/civil assigned to u/jthomas in q/2026q4
+t/1457 Test Access Control Gate logic & specs for p/civil assigned to u/ljones in q/2026q2
+t/1458 Review Containment Dome logic & specs for p/security assigned to u/klopez in q/2026q2
+t/1459 Refactor Control Rod Actuator logic & specs for p/core assigned to u/jgonzalez in q/2026q3
+t/1460 Inspect Spent Fuel Pool logic & specs for p/safety assigned to u/jrodriguez in q/2026q4
+t/1461 Review Control Rod Actuator logic & specs for p/safety assigned to u/chernandez in q/2026q2
+t/1462 Test Radiation Sensor logic & specs for p/core assigned to u/cjohnson in q/2026q3
+t/1463 Deploy Radiation Sensor logic & specs for p/control assigned to u/jmiller2 in q/2026q3
+t/1464 Construct Containment Dome logic & specs for p/civil assigned to u/jbrown in q/2026q2
+t/1465 Implement Steam Generator logic & specs for p/safety assigned to u/wmiller in q/2026q3
+t/1466 Document Access Control Gate logic & specs for p/safety assigned to u/chernandez in q/2026q3
+t/1467 Construct Steam Generator logic & specs for p/security assigned to u/jmoore in q/2026q2
+t/1468 Test Control Room Display logic & specs for p/control assigned to u/jlopez2 in q/2026q4
+t/1469 Refactor Emergency Diesel Generator logic & specs for p/security assigned to u/jthomas in q/2026q2
+t/1470 Construct Control Room Display logic & specs for p/civil assigned to u/mwilson in q/2026q4
+t/1471 Review Perimeter Fence logic & specs for p/control assigned to u/dmartinez in q/2026q2
+t/1472 Audit Heat Exchanger logic & specs for p/control assigned to u/tjones2 in q/2026q3
+t/1473 Test Heat Exchanger logic & specs for p/core assigned to u/jlopez2 in q/2026q2
+t/1474 Implement Radiation Sensor logic & specs for p/core assigned to u/jmartinez in q/2026q3
+t/1475 Refactor Containment Dome logic & specs for p/civil assigned to u/kmoore in q/2026q2
+t/1476 Refactor Spent Fuel Pool logic & specs for p/civil assigned to u/lrodriguez in q/2026q2
+t/1477 Construct Backup Battery Bank logic & specs for p/safety assigned to u/wjohnson2 in q/2026q2
+t/1478 Refactor Steam Generator logic & specs for p/security assigned to u/jbrown in q/2026q2
+t/1479 Construct Cooling Pump logic & specs for p/control assigned to u/jgonzalez2 in q/2026q4
+t/1480 Calibrate Control Rod Actuator logic & specs for p/civil assigned to u/mwilliams in q/2026q4
+t/1481 Implement Spent Fuel Pool logic & specs for p/cooling assigned to u/jthomas2 in q/2026q3
+t/1482 Audit Spent Fuel Pool logic & specs for p/safety assigned to u/kmartinez in q/2026q3
+t/1483 Inspect Pressure Vessel logic & specs for p/cooling assigned to u/jmartinez in q/2026q3
+t/1484 Inspect Seismic Dampener logic & specs for p/cooling assigned to u/mwilliams in q/2026q2
+t/1485 Inspect Cooling Pump logic & specs for p/control assigned to u/cmiller in q/2026q4
+t/1486 Audit Access Control Gate logic & specs for p/safety assigned to u/mwilliams in q/2026q2
+t/1487 Deploy Coolant Filter logic & specs for p/security assigned to u/ejones in q/2026q3
+t/1488 Deploy Fire Suppression System logic & specs for p/safety assigned to u/jlopez in q/2026q2
+t/1489 Document Fire Suppression System logic & specs for p/civil assigned to u/mwilson in q/2026q4
+t/1490 Refactor Seismic Dampener logic & specs for p/core assigned to u/jmiller2 in q/2026q2
+t/1491 Review Control Rod Actuator logic & specs for p/civil assigned to u/tjones2 in q/2026q3
+t/1492 Test Turbine Valve logic & specs for p/civil assigned to u/jgonzalez in q/2026q4
+t/1493 Inspect Spent Fuel Pool logic & specs for p/security assigned to u/dmartinez in q/2026q2
+t/1494 Refactor Backup Battery Bank logic & specs for p/safety assigned to u/ljohnson in q/2026q3
+t/1495 Document Turbine Valve logic & specs for p/civil assigned to u/jmiller2 in q/2026q3
+t/1496 Document Emergency Diesel Generator logic & specs for p/cooling assigned to u/lbrown in q/2026q3
+t/1497 Document Containment Dome logic & specs for p/security assigned to u/lrodriguez in q/2026q4
+t/1498 Audit Steam Generator logic & specs for p/security assigned to u/jmartinez2 in q/2026q3
+t/1499 Review Radiation Sensor logic & specs for p/cooling assigned to u/jrodriguez in q/2026q2
+t/1500 Construct Radiation Sensor logic & specs for p/core assigned to u/jthomas2 in q/2026q3
+t/1501 Construct Steam Generator logic & specs for p/safety assigned to u/rsmith in q/2026q2
+t/1502 Review Seismic Dampener logic & specs for p/civil assigned to u/mjones in q/2026q4
+t/1503 Refactor Perimeter Fence logic & specs for p/civil assigned to u/jlopez in q/2026q3
+t/1504 Deploy Steam Generator logic & specs for p/control assigned to u/ljohnson in q/2026q3
+t/1505 Calibrate Perimeter Fence logic & specs for p/control assigned to u/dmartinez in q/2026q2
+t/1506 Inspect Heat Exchanger logic & specs for p/safety assigned to u/lrodriguez in q/2026q4
+t/1507 Test Emergency Diesel Generator logic & specs for p/civil assigned to u/lrodriguez in q/2026q3
+t/1508 Document Control Room Display logic & specs for p/cooling assigned to u/lbrown in q/2026q2
+t/1509 Deploy Perimeter Fence logic & specs for p/security assigned to u/emartinez in q/2026q3
+t/1510 Test Steam Generator logic & specs for p/core assigned to u/ljohnson in q/2026q4
+t/1511 Document Turbine Valve logic & specs for p/core assigned to u/jgarcia in q/2026q4
+t/1512 Calibrate Emergency Diesel Generator logic & specs for p/safety assigned to u/wmiller in q/2026q2
+t/1513 Refactor Fire Suppression System logic & specs for p/core assigned to u/rsmith in q/2026q4
+t/1514 Implement Fire Suppression System logic & specs for p/cooling assigned to u/mmartin in q/2026q2
+t/1515 Implement Steam Generator logic & specs for p/control assigned to u/cjohnson in q/2026q3
+t/1516 Audit Radiation Sensor logic & specs for p/control assigned to u/ljohnson in q/2026q4
+t/1517 Audit SCADA Interface logic & specs for p/civil assigned to u/jlopez2 in q/2026q3
+t/1518 Inspect Control Rod Actuator logic & specs for p/safety assigned to u/emartinez in q/2026q3
+t/1519 Construct Containment Dome logic & specs for p/safety assigned to u/emartinez in q/2026q3
+t/1520 Construct Ventilation Shaft logic & specs for p/civil assigned to u/tjones in q/2026q4
+t/1521 Review Coolant Filter logic & specs for p/safety assigned to u/kmartinez in q/2026q2
+t/1522 Calibrate Turbine Valve logic & specs for p/safety assigned to u/jgonzalez2 in q/2026q4
+t/1523 Inspect Emergency Diesel Generator logic & specs for p/core assigned to u/wjohnson in q/2026q3
+t/1524 Construct Heat Exchanger logic & specs for p/civil assigned to u/rwilliams in q/2026q3
+t/1525 Review Ventilation Shaft logic & specs for p/control assigned to u/dmartinez in q/2026q3
+t/1526 Audit Perimeter Fence logic & specs for p/security assigned to u/jmiller2 in q/2026q3
+t/1527 Calibrate Containment Dome logic & specs for p/cooling assigned to u/emartinez in q/2026q2
+t/1528 Construct Control Room Display logic & specs for p/cooling assigned to u/bmoore in q/2026q3
+t/1529 Test SCADA Interface logic & specs for p/security assigned to u/jgonzalez2 in q/2026q3
+t/1530 Test Ventilation Shaft logic & specs for p/core assigned to u/tjones in q/2026q2
+t/1531 Deploy Control Rod Actuator logic & specs for p/core assigned to u/sjackson in q/2026q3
+t/1532 Design Pressure Vessel logic & specs for p/civil assigned to u/bmoore in q/2026q4
+t/1533 Design Control Room Display logic & specs for p/cooling assigned to u/cjohnson in q/2026q3
+t/1534 Design Cooling Pump logic & specs for p/civil assigned to u/jbrown in q/2026q2
+t/1535 Audit Cooling Pump logic & specs for p/core assigned to u/manderson in q/2026q2
+t/1536 Deploy Turbine Valve logic & specs for p/safety assigned to u/ljones in q/2026q3
+t/1537 Review Heat Exchanger logic & specs for p/security assigned to u/lbrown in q/2026q2
+t/1538 Construct Graphite Moderator logic & specs for p/safety assigned to u/mjones in q/2026q2
+t/1539 Refactor Ventilation Shaft logic & specs for p/civil assigned to u/kjohnson in q/2026q2
+t/1540 Implement Radiation Sensor logic & specs for p/civil assigned to u/klopez in q/2026q4
+t/1541 Audit Spent Fuel Pool logic & specs for p/civil assigned to u/jgarcia in q/2026q2
+t/1542 Refactor Coolant Filter logic & specs for p/cooling assigned to u/jbrown in q/2026q3
+t/1543 Calibrate Backup Battery Bank logic & specs for p/cooling assigned to u/ejones in q/2026q4
+t/1544 Implement SCADA Interface logic & specs for p/civil assigned to u/jmoore in q/2026q2
+t/1545 Inspect Cooling Pump logic & specs for p/civil assigned to u/jbrown in q/2026q4
+t/1546 Review Seismic Dampener logic & specs for p/core assigned to u/jmiller2 in q/2026q4
+t/1547 Audit Control Rod Actuator logic & specs for p/cooling assigned to u/jbrown in q/2026q3
+t/1548 Implement Steam Generator logic & specs for p/control assigned to u/jlopez in q/2026q3
+t/1549 Calibrate Radiation Sensor logic & specs for p/control assigned to u/wjohnson2 in q/2026q4
+t/1550 Inspect Access Control Gate logic & specs for p/control assigned to u/manderson in q/2026q2
+t/1551 Audit Backup Battery Bank logic & specs for p/civil assigned to u/jmiller in q/2026q3
+t/1552 Audit Ventilation Shaft logic & specs for p/core assigned to u/kjohnson in q/2026q3
+t/1553 Document Radiation Sensor logic & specs for p/core assigned to u/kmoore in q/2026q4
+t/1554 Test Control Rod Actuator logic & specs for p/security assigned to u/sjackson in q/2026q4
+t/1555 Audit Turbine Valve logic & specs for p/control assigned to u/jmiller2 in q/2026q4
+t/1556 Calibrate Access Control Gate logic & specs for p/core assigned to u/staylor in q/2026q3
+t/1557 Construct SCADA Interface logic & specs for p/civil assigned to u/jmartinez in q/2026q2
+t/1558 Deploy Fire Suppression System logic & specs for p/security assigned to u/tanderson in q/2026q3
+t/1559 Inspect Control Rod Actuator logic & specs for p/core assigned to u/klopez in q/2026q3
+t/1560 Review Heat Exchanger logic & specs for p/security assigned to u/lbrown in q/2026q3
+t/1561 Construct Coolant Filter logic & specs for p/core assigned to u/wmiller in q/2026q3
+t/1562 Calibrate Radiation Sensor logic & specs for p/civil assigned to u/wbrown in q/2026q2
+t/1563 Review Steam Generator logic & specs for p/security assigned to u/lbrown in q/2026q2
+t/1564 Document Graphite Moderator logic & specs for p/security assigned to u/cmiller in q/2026q4
+t/1565 Audit Steam Generator logic & specs for p/security assigned to u/tjones2 in q/2026q2
+t/1566 Review Ventilation Shaft logic & specs for p/civil assigned to u/jjackson in q/2026q2
+t/1567 Implement Radiation Sensor logic & specs for p/control assigned to u/jmiller in q/2026q3
+t/1568 Deploy Steam Generator logic & specs for p/cooling assigned to u/cmiller in q/2026q4
+t/1569 Refactor Control Rod Actuator logic & specs for p/security assigned to u/wmiller in q/2026q4
+t/1570 Audit Perimeter Fence logic & specs for p/security assigned to u/cjackson in q/2026q4
+t/1571 Calibrate Steam Generator logic & specs for p/security assigned to u/jjackson in q/2026q2
+t/1572 Design Steam Generator logic & specs for p/cooling assigned to u/rwilliams in q/2026q4
+t/1573 Construct Backup Battery Bank logic & specs for p/security assigned to u/mmartin in q/2026q4
+t/1574 Construct Control Room Display logic & specs for p/safety assigned to u/lrodriguez in q/2026q3
+t/1575 Test Access Control Gate logic & specs for p/cooling assigned to u/landerson in q/2026q3
+t/1576 Design Heat Exchanger logic & specs for p/control assigned to u/cmiller in q/2026q4
+t/1577 Deploy Containment Dome logic & specs for p/core assigned to u/lrodriguez in q/2026q2
+t/1578 Construct Ventilation Shaft logic & specs for p/security assigned to u/jgarcia in q/2026q4
+t/1579 Refactor Control Rod Actuator logic & specs for p/cooling assigned to u/kmoore in q/2026q2
+t/1580 Design Backup Battery Bank logic & specs for p/control assigned to u/bmoore in q/2026q2
+t/1581 Implement Ventilation Shaft logic & specs for p/cooling assigned to u/jgarcia2 in q/2026q2
+t/1582 Implement Access Control Gate logic & specs for p/core assigned to u/staylor in q/2026q3
+t/1583 Design Emergency Diesel Generator logic & specs for p/cooling assigned to u/cmiller in q/2026q3
+t/1584 Document Backup Battery Bank logic & specs for p/safety assigned to u/jlopez in q/2026q4
+t/1585 Audit Control Rod Actuator logic & specs for p/cooling assigned to u/ljohnson in q/2026q2
+t/1586 Deploy Heat Exchanger logic & specs for p/civil assigned to u/lbrown in q/2026q3
+t/1587 Calibrate Radiation Sensor logic & specs for p/civil assigned to u/jmartinez2 in q/2026q4
+t/1588 Test Control Room Display logic & specs for p/safety assigned to u/kmartinez in q/2026q3
+t/1589 Review Control Rod Actuator logic & specs for p/cooling assigned to u/jbrown in q/2026q4
+t/1590 Test Pressure Vessel logic & specs for p/cooling assigned to u/tjones2 in q/2026q2
+t/1591 Audit Control Room Display logic & specs for p/civil assigned to u/lbrown in q/2026q2
+t/1592 Inspect Turbine Valve logic & specs for p/security assigned to u/kjohnson in q/2026q4
+t/1593 Review Emergency Diesel Generator logic & specs for p/civil assigned to u/sjackson in q/2026q2
+t/1594 Calibrate Spent Fuel Pool logic & specs for p/security assigned to u/cmiller in q/2026q4
+t/1595 Refactor Heat Exchanger logic & specs for p/security assigned to u/ljones in q/2026q4
+t/1596 Refactor Backup Battery Bank logic & specs for p/core assigned to u/klopez in q/2026q2
+t/1597 Document Emergency Diesel Generator logic & specs for p/core assigned to u/landerson in q/2026q3
+t/1598 Construct Pressure Vessel logic & specs for p/control assigned to u/jgonzalez2 in q/2026q4
+t/1599 Audit Spent Fuel Pool logic & specs for p/cooling assigned to u/wbrown in q/2026q3
+t/1600 Deploy Turbine Valve logic & specs for p/safety assigned to u/lbrown2 in q/2026q4
+t/1601 Inspect Pressure Vessel logic & specs for p/cooling assigned to u/chernandez in q/2026q3
+t/1602 Refactor Coolant Filter logic & specs for p/security assigned to u/tjones in q/2026q2
+t/1603 Design Graphite Moderator logic & specs for p/cooling assigned to u/wjohnson in q/2026q2
+t/1604 Calibrate Backup Battery Bank logic & specs for p/core assigned to u/klopez in q/2026q3
+t/1605 Test Graphite Moderator logic & specs for p/civil assigned to u/emartinez in q/2026q3
+t/1606 Inspect Fire Suppression System logic & specs for p/core assigned to u/rwilliams in q/2026q3
+t/1607 Implement Graphite Moderator logic & specs for p/cooling assigned to u/mjones in q/2026q4
+t/1608 Calibrate Pressure Vessel logic & specs for p/core assigned to u/jmoore in q/2026q3
+t/1609 Audit Spent Fuel Pool logic & specs for p/civil assigned to u/jthomas in q/2026q4
+t/1610 Test Pressure Vessel logic & specs for p/safety assigned to u/jmiller2 in q/2026q2
+t/1611 Construct Ventilation Shaft logic & specs for p/control assigned to u/jgarcia in q/2026q3
+t/1612 Review Control Rod Actuator logic & specs for p/safety assigned to u/cjackson in q/2026q3
+t/1613 Implement Radiation Sensor logic & specs for p/control assigned to u/rsmith in q/2026q3
+t/1614 Calibrate Emergency Diesel Generator logic & specs for p/security assigned to u/sjackson in q/2026q3
+t/1615 Calibrate Control Rod Actuator logic & specs for p/core assigned to u/staylor in q/2026q3
+t/1616 Review Ventilation Shaft logic & specs for p/security assigned to u/dmartinez in q/2026q2
+t/1617 Refactor Access Control Gate logic & specs for p/safety assigned to u/kmartinez in q/2026q4
+t/1618 Review Spent Fuel Pool logic & specs for p/safety assigned to u/jmiller in q/2026q2
+t/1619 Review Turbine Valve logic & specs for p/security assigned to u/ljohnson in q/2026q3
+t/1620 Test Steam Generator logic & specs for p/safety assigned to u/wmiller in q/2026q4
+t/1621 Document Steam Generator logic & specs for p/core assigned to u/rsmith in q/2026q3
+t/1622 Audit Perimeter Fence logic & specs for p/cooling assigned to u/chernandez in q/2026q2
+t/1623 Audit Cooling Pump logic & specs for p/civil assigned to u/mwilson in q/2026q2
+t/1624 Implement Pressure Vessel logic & specs for p/cooling assigned to u/mmartin in q/2026q2
+t/1625 Deploy Coolant Filter logic & specs for p/core assigned to u/jthomas in q/2026q4
+t/1626 Implement Backup Battery Bank logic & specs for p/safety assigned to u/kjohnson in q/2026q4
+t/1627 Calibrate Turbine Valve logic & specs for p/core assigned to u/kmoore in q/2026q2
+t/1628 Calibrate Steam Generator logic & specs for p/core assigned to u/ljohnson in q/2026q3
+t/1629 Refactor SCADA Interface logic & specs for p/security assigned to u/mmartin in q/2026q2
+t/1630 Review Heat Exchanger logic & specs for p/core assigned to u/mjones in q/2026q3
+t/1631 Audit Graphite Moderator logic & specs for p/security assigned to u/cmiller in q/2026q3
+t/1632 Review Perimeter Fence logic & specs for p/core assigned to u/jgonzalez2 in q/2026q4
+t/1633 Review Fire Suppression System logic & specs for p/safety assigned to u/lrodriguez in q/2026q3
+t/1634 Audit Control Rod Actuator logic & specs for p/control assigned to u/sjackson in q/2026q2
+t/1635 Deploy Access Control Gate logic & specs for p/civil assigned to u/jgarcia2 in q/2026q2
+t/1636 Audit Fire Suppression System logic & specs for p/core assigned to u/jmiller in q/2026q3
+t/1637 Implement Fire Suppression System logic & specs for p/core assigned to u/tjones in q/2026q3
+t/1638 Calibrate Spent Fuel Pool logic & specs for p/core assigned to u/wbrown in q/2026q4
+t/1639 Calibrate Seismic Dampener logic & specs for p/core assigned to u/jbrown in q/2026q4
+t/1640 Test Control Rod Actuator logic & specs for p/core assigned to u/mwilliams in q/2026q2
+t/1641 Deploy Containment Dome logic & specs for p/safety assigned to u/jmiller2 in q/2026q3
+t/1642 Test Emergency Diesel Generator logic & specs for p/core assigned to u/jjackson in q/2026q2
+t/1643 Implement Containment Dome logic & specs for p/civil assigned to u/jlopez2 in q/2026q3
+t/1644 Audit Radiation Sensor logic & specs for p/security assigned to u/rwilliams in q/2026q2
+t/1645 Implement Emergency Diesel Generator logic & specs for p/safety assigned to u/kjohnson in q/2026q2
+t/1646 Test Radiation Sensor logic & specs for p/safety assigned to u/ljohnson in q/2026q3
+t/1647 Design Control Room Display logic & specs for p/control assigned to u/emartinez in q/2026q4
+t/1648 Audit Spent Fuel Pool logic & specs for p/core assigned to u/jmartinez2 in q/2026q4
+t/1649 Deploy Containment Dome logic & specs for p/control assigned to u/jgonzalez in q/2026q4
+t/1650 Test SCADA Interface logic & specs for p/cooling assigned to u/jgonzalez2 in q/2026q2
+t/1651 Construct Steam Generator logic & specs for p/civil assigned to u/manderson in q/2026q3
+t/1652 Inspect Spent Fuel Pool logic & specs for p/cooling assigned to u/jjackson in q/2026q2
+t/1653 Document Emergency Diesel Generator logic & specs for p/civil assigned to u/wbrown in q/2026q4
+t/1654 Review Turbine Valve logic & specs for p/cooling assigned to u/wjohnson2 in q/2026q2
+t/1655 Construct Graphite Moderator logic & specs for p/control assigned to u/wmiller in q/2026q2
+t/1656 Review Control Room Display logic & specs for p/cooling assigned to u/lrodriguez in q/2026q3
+t/1657 Design Perimeter Fence logic & specs for p/cooling assigned to u/mjones in q/2026q3
+t/1658 Implement Control Rod Actuator logic & specs for p/control assigned to u/jrodriguez in q/2026q3
+t/1659 Implement Perimeter Fence logic & specs for p/core assigned to u/chernandez in q/2026q3
+t/1660 Implement Heat Exchanger logic & specs for p/safety assigned to u/wjohnson2 in q/2026q3
+t/1661 Calibrate Coolant Filter logic & specs for p/civil assigned to u/cjackson in q/2026q4
+t/1662 Calibrate Ventilation Shaft logic & specs for p/cooling assigned to u/bmoore in q/2026q2
+t/1663 Inspect Perimeter Fence logic & specs for p/control assigned to u/tanderson in q/2026q3
+t/1664 Deploy Heat Exchanger logic & specs for p/core assigned to u/jrodriguez in q/2026q2
+t/1665 Design Control Rod Actuator logic & specs for p/cooling assigned to u/cjackson in q/2026q4
+t/1666 Calibrate Seismic Dampener logic & specs for p/safety assigned to u/lbrown2 in q/2026q2
+t/1667 Test Control Rod Actuator logic & specs for p/cooling assigned to u/wmiller in q/2026q2
+t/1668 Audit Heat Exchanger logic & specs for p/cooling assigned to u/mmartin in q/2026q2
+t/1669 Design Seismic Dampener logic & specs for p/safety assigned to u/klopez in q/2026q2
+t/1670 Document Coolant Filter logic & specs for p/safety assigned to u/mwilliams in q/2026q4
+t/1671 Audit Containment Dome logic & specs for p/cooling assigned to u/tjones in q/2026q4
+t/1672 Inspect Steam Generator logic & specs for p/security assigned to u/sjackson in q/2026q4
+t/1673 Review Perimeter Fence logic & specs for p/civil assigned to u/sjackson in q/2026q2
+t/1674 Document Spent Fuel Pool logic & specs for p/safety assigned to u/dmartinez in q/2026q2
+t/1675 Calibrate Graphite Moderator logic & specs for p/cooling assigned to u/ljohnson in q/2026q3
+t/1676 Implement Cooling Pump logic & specs for p/civil assigned to u/jgarcia in q/2026q3
+t/1677 Refactor Control Rod Actuator logic & specs for p/cooling assigned to u/kmartinez in q/2026q3
+t/1678 Calibrate Graphite Moderator logic & specs for p/civil assigned to u/jbrown in q/2026q2
+t/1679 Refactor Radiation Sensor logic & specs for p/civil assigned to u/cmiller in q/2026q2
+t/1680 Calibrate Cooling Pump logic & specs for p/civil assigned to u/mmartin in q/2026q3
+t/1681 Construct Control Rod Actuator logic & specs for p/control assigned to u/lbrown in q/2026q4
+t/1682 Implement Coolant Filter logic & specs for p/civil assigned to u/mjones in q/2026q4
+t/1683 Document Coolant Filter logic & specs for p/control assigned to u/cjohnson in q/2026q4
+t/1684 Refactor Fire Suppression System logic & specs for p/security assigned to u/mwilson in q/2026q3
+t/1685 Test Graphite Moderator logic & specs for p/cooling assigned to u/ljohnson in q/2026q3
+t/1686 Audit Perimeter Fence logic & specs for p/control assigned to u/jmiller2 in q/2026q2
+t/1687 Audit Heat Exchanger logic & specs for p/control assigned to u/ljones in q/2026q2
+t/1688 Inspect Heat Exchanger logic & specs for p/safety assigned to u/tjones in q/2026q4
+t/1689 Construct Seismic Dampener logic & specs for p/safety assigned to u/lbrown2 in q/2026q2
+t/1690 Construct Containment Dome logic & specs for p/core assigned to u/mmartin in q/2026q2
+t/1691 Inspect Fire Suppression System logic & specs for p/cooling assigned to u/jlopez2 in q/2026q2
+t/1692 Deploy Heat Exchanger logic & specs for p/core assigned to u/jbrown in q/2026q3
+t/1693 Inspect Heat Exchanger logic & specs for p/core assigned to u/sjackson in q/2026q2
+t/1694 Calibrate Radiation Sensor logic & specs for p/security assigned to u/jbrown in q/2026q3
+t/1695 Review Graphite Moderator logic & specs for p/security assigned to u/jgarcia2 in q/2026q4
+t/1696 Implement Control Room Display logic & specs for p/cooling assigned to u/mwilliams in q/2026q3
+t/1697 Calibrate Control Room Display logic & specs for p/control assigned to u/kmartinez in q/2026q4
+t/1698 Refactor Ventilation Shaft logic & specs for p/security assigned to u/jmartinez in q/2026q2
+t/1699 Refactor Emergency Diesel Generator logic & specs for p/security assigned to u/cjohnson in q/2026q4
+t/1700 Document Graphite Moderator logic & specs for p/civil assigned to u/wmiller in q/2026q3
+t/1701 Implement Spent Fuel Pool logic & specs for p/cooling assigned to u/ejones in q/2026q2
+t/1702 Test Ventilation Shaft logic & specs for p/control assigned to u/tjones2 in q/2026q4
+t/1703 Deploy Perimeter Fence logic & specs for p/security assigned to u/emartinez in q/2026q4
+t/1704 Calibrate Heat Exchanger logic & specs for p/security assigned to u/chernandez in q/2026q4
+t/1705 Test Perimeter Fence logic & specs for p/civil assigned to u/jmiller2 in q/2026q2
+t/1706 Construct Fire Suppression System logic & specs for p/civil assigned to u/ljohnson in q/2026q2
+t/1707 Inspect Seismic Dampener logic & specs for p/core assigned to u/wmiller in q/2026q4
+t/1708 Document Coolant Filter logic & specs for p/cooling assigned to u/jmiller2 in q/2026q2
+t/1709 Audit Perimeter Fence logic & specs for p/control assigned to u/cmiller in q/2026q3
+t/1710 Implement Heat Exchanger logic & specs for p/civil assigned to u/bmoore in q/2026q4
+t/1711 Test Control Rod Actuator logic & specs for p/safety assigned to u/jmartinez2 in q/2026q2
+t/1712 Implement Steam Generator logic & specs for p/cooling assigned to u/tjones in q/2026q2
+t/1713 Test Spent Fuel Pool logic & specs for p/civil assigned to u/klopez in q/2026q4
+t/1714 Design Fire Suppression System logic & specs for p/control assigned to u/cjackson in q/2026q3
+t/1715 Construct Access Control Gate logic & specs for p/cooling assigned to u/jthomas2 in q/2026q3
+t/1716 Design Coolant Filter logic & specs for p/safety assigned to u/jbrown in q/2026q3
+t/1717 Inspect Seismic Dampener logic & specs for p/cooling assigned to u/dmartinez in q/2026q4
+t/1718 Document Graphite Moderator logic & specs for p/civil assigned to u/kjohnson in q/2026q3
+t/1719 Review Radiation Sensor logic & specs for p/cooling assigned to u/jmoore in q/2026q3
+t/1720 Construct Radiation Sensor logic & specs for p/core assigned to u/staylor in q/2026q3
+t/1721 Document Graphite Moderator logic & specs for p/civil assigned to u/dmartinez in q/2026q3
+t/1722 Deploy Pressure Vessel logic & specs for p/cooling assigned to u/mwilliams in q/2026q3
+t/1723 Review Fire Suppression System logic & specs for p/control assigned to u/jmiller in q/2026q2
+t/1724 Calibrate Heat Exchanger logic & specs for p/cooling assigned to u/wjohnson2 in q/2026q3
+t/1725 Design Graphite Moderator logic & specs for p/cooling assigned to u/rwilliams in q/2026q4
+t/1726 Audit Control Room Display logic & specs for p/safety assigned to u/tjones in q/2026q3
+t/1727 Implement Turbine Valve logic & specs for p/core assigned to u/dmartinez in q/2026q3
+t/1728 Refactor Perimeter Fence logic & specs for p/cooling assigned to u/emartinez in q/2026q2
+t/1729 Audit Pressure Vessel logic & specs for p/safety assigned to u/jthomas in q/2026q3
+t/1730 Audit Backup Battery Bank logic & specs for p/security assigned to u/klopez in q/2026q3
+t/1731 Calibrate Backup Battery Bank logic & specs for p/cooling assigned to u/kmartinez in q/2026q4
+t/1732 Review Pressure Vessel logic & specs for p/core assigned to u/wjohnson2 in q/2026q4
+t/1733 Audit Seismic Dampener logic & specs for p/core assigned to u/rsmith in q/2026q3
+t/1734 Test Emergency Diesel Generator logic & specs for p/control assigned to u/cjackson in q/2026q4
+t/1735 Test Backup Battery Bank logic & specs for p/civil assigned to u/jthomas in q/2026q2
+t/1736 Design Access Control Gate logic & specs for p/safety assigned to u/wmiller in q/2026q4
+t/1737 Refactor Cooling Pump logic & specs for p/security assigned to u/tjones2 in q/2026q4
+t/1738 Inspect Emergency Diesel Generator logic & specs for p/security assigned to u/jgonzalez2 in q/2026q3
+t/1739 Design Coolant Filter logic & specs for p/security assigned to u/jthomas2 in q/2026q3
+t/1740 Deploy Ventilation Shaft logic & specs for p/safety assigned to u/landerson in q/2026q4
+t/1741 Calibrate Backup Battery Bank logic & specs for p/cooling assigned to u/jmartinez in q/2026q4
+t/1742 Document Fire Suppression System logic & specs for p/security assigned to u/sjackson in q/2026q4
+t/1743 Deploy Graphite Moderator logic & specs for p/core assigned to u/jthomas in q/2026q2
+t/1744 Implement SCADA Interface logic & specs for p/control assigned to u/wjohnson2 in q/2026q2
+t/1745 Document Spent Fuel Pool logic & specs for p/security assigned to u/mwilson in q/2026q3
+t/1746 Refactor Cooling Pump logic & specs for p/safety assigned to u/lbrown in q/2026q2
+t/1747 Construct Control Rod Actuator logic & specs for p/security assigned to u/lbrown2 in q/2026q2
+t/1748 Audit Fire Suppression System logic & specs for p/cooling assigned to u/kjohnson in q/2026q2
+t/1749 Construct Control Room Display logic & specs for p/security assigned to u/mjones in q/2026q3
+t/1750 Deploy Control Room Display logic & specs for p/safety assigned to u/jgonzalez2 in q/2026q3
+t/1751 Review Containment Dome logic & specs for p/cooling assigned to u/lbrown in q/2026q2
+t/1752 Design Cooling Pump logic & specs for p/control assigned to u/jmoore in q/2026q4
+t/1753 Test Radiation Sensor logic & specs for p/control assigned to u/jbrown in q/2026q4
+t/1754 Audit Graphite Moderator logic & specs for p/cooling assigned to u/jgarcia2 in q/2026q3
+t/1755 Design Fire Suppression System logic & specs for p/civil assigned to u/wmiller in q/2026q2
+t/1756 Design Fire Suppression System logic & specs for p/safety assigned to u/emartinez in q/2026q4
+t/1757 Inspect Emergency Diesel Generator logic & specs for p/safety assigned to u/jlopez2 in q/2026q4
+t/1758 Deploy Access Control Gate logic & specs for p/control assigned to u/lrodriguez in q/2026q2
+t/1759 Implement Control Room Display logic & specs for p/core assigned to u/tjones in q/2026q3
+t/1760 Deploy Coolant Filter logic & specs for p/civil assigned to u/jlopez in q/2026q3
+t/1761 Calibrate Steam Generator logic & specs for p/safety assigned to u/klopez in q/2026q4
+t/1762 Refactor Containment Dome logic & specs for p/safety assigned to u/sjackson in q/2026q2
+t/1763 Construct Control Rod Actuator logic & specs for p/safety assigned to u/mmartin in q/2026q4
+t/1764 Review Fire Suppression System logic & specs for p/control assigned to u/jthomas in q/2026q2
+t/1765 Implement Graphite Moderator logic & specs for p/cooling assigned to u/mwilson in q/2026q2
+t/1766 Design Seismic Dampener logic & specs for p/civil assigned to u/jmiller2 in q/2026q3
+t/1767 Review Steam Generator logic & specs for p/control assigned to u/jmartinez2 in q/2026q4
+t/1768 Deploy Seismic Dampener logic & specs for p/civil assigned to u/rwilliams in q/2026q3
+t/1769 Implement Spent Fuel Pool logic & specs for p/control assigned to u/jthomas2 in q/2026q4
+t/1770 Calibrate Backup Battery Bank logic & specs for p/core assigned to u/jgarcia2 in q/2026q3
+t/1771 Document Emergency Diesel Generator logic & specs for p/security assigned to u/wbrown in q/2026q4
+t/1772 Refactor Access Control Gate logic & specs for p/security assigned to u/mwilliams in q/2026q4
+t/1773 Construct Ventilation Shaft logic & specs for p/core assigned to u/rwilliams in q/2026q3
+t/1774 Review Containment Dome logic & specs for p/safety assigned to u/mjones in q/2026q2
+t/1775 Inspect Radiation Sensor logic & specs for p/safety assigned to u/rsmith in q/2026q4
+t/1776 Audit Heat Exchanger logic & specs for p/civil assigned to u/kjohnson in q/2026q2
+t/1777 Inspect Seismic Dampener logic & specs for p/civil assigned to u/jmartinez in q/2026q2
+t/1778 Design Fire Suppression System logic & specs for p/cooling assigned to u/jrodriguez in q/2026q2
+t/1779 Audit Control Rod Actuator logic & specs for p/safety assigned to u/lbrown in q/2026q4
+t/1780 Implement Steam Generator logic & specs for p/core assigned to u/jthomas in q/2026q2
+t/1781 Calibrate Emergency Diesel Generator logic & specs for p/security assigned to u/mwilson in q/2026q2
+t/1782 Document Heat Exchanger logic & specs for p/civil assigned to u/wjohnson in q/2026q3
+t/1783 Document Steam Generator logic & specs for p/core assigned to u/jgonzalez in q/2026q2
+t/1784 Test Steam Generator logic & specs for p/security assigned to u/jmartinez2 in q/2026q3
+t/1785 Audit Turbine Valve logic & specs for p/security assigned to u/ejones in q/2026q4
+t/1786 Document Emergency Diesel Generator logic & specs for p/cooling assigned to u/rwilliams in q/2026q4
+t/1787 Construct Graphite Moderator logic & specs for p/core assigned to u/jgarcia in q/2026q3
+t/1788 Deploy Turbine Valve logic & specs for p/control assigned to u/emartinez in q/2026q3
+t/1789 Deploy Steam Generator logic & specs for p/security assigned to u/jbrown in q/2026q4
+t/1790 Audit Access Control Gate logic & specs for p/safety assigned to u/staylor in q/2026q4
+t/1791 Implement Steam Generator logic & specs for p/security assigned to u/lrodriguez in q/2026q3
+t/1792 Inspect Control Room Display logic & specs for p/control assigned to u/kmartinez in q/2026q2
+t/1793 Review Seismic Dampener logic & specs for p/civil assigned to u/jthomas2 in q/2026q3
+t/1794 Review Fire Suppression System logic & specs for p/civil assigned to u/chernandez in q/2026q4
+t/1795 Calibrate Graphite Moderator logic & specs for p/safety assigned to u/jgarcia in q/2026q4
+t/1796 Inspect Emergency Diesel Generator logic & specs for p/civil assigned to u/chernandez in q/2026q4
+t/1797 Inspect Ventilation Shaft logic & specs for p/security assigned to u/wjohnson2 in q/2026q2
+t/1798 Document Seismic Dampener logic & specs for p/control assigned to u/jthomas in q/2026q2
+t/1799 Implement Cooling Pump logic & specs for p/safety assigned to u/lbrown2 in q/2026q3
+t/1800 Design Ventilation Shaft logic & specs for p/core assigned to u/sjackson in q/2026q2
+t/1801 Refactor Spent Fuel Pool logic & specs for p/civil assigned to u/ejones in q/2026q2
+t/1802 Audit Backup Battery Bank logic & specs for p/cooling assigned to u/mwilson in q/2026q2
+t/1803 Review Perimeter Fence logic & specs for p/safety assigned to u/wbrown in q/2026q2
+t/1804 Inspect Seismic Dampener logic & specs for p/control assigned to u/lbrown2 in q/2026q4
+t/1805 Document Containment Dome logic & specs for p/security assigned to u/tjones in q/2026q3
+t/1806 Design Heat Exchanger logic & specs for p/safety assigned to u/jgarcia2 in q/2026q2
+t/1807 Inspect Backup Battery Bank logic & specs for p/cooling assigned to u/tjones2 in q/2026q2
+t/1808 Review Pressure Vessel logic & specs for p/core assigned to u/lrodriguez in q/2026q3
+t/1809 Review Containment Dome logic & specs for p/safety assigned to u/bmoore in q/2026q4
+t/1810 Calibrate Perimeter Fence logic & specs for p/cooling assigned to u/dmartinez in q/2026q4
+t/1811 Document Perimeter Fence logic & specs for p/civil assigned to u/ejones in q/2026q2
+t/1812 Design Cooling Pump logic & specs for p/cooling assigned to u/jmiller in q/2026q4
+t/1813 Test Radiation Sensor logic & specs for p/control assigned to u/jmiller2 in q/2026q2
+t/1814 Document Radiation Sensor logic & specs for p/safety assigned to u/ljohnson in q/2026q4
+t/1815 Implement Turbine Valve logic & specs for p/safety assigned to u/lrodriguez in q/2026q2
+t/1816 Document Backup Battery Bank logic & specs for p/security assigned to u/jgarcia in q/2026q4
+t/1817 Audit Coolant Filter logic & specs for p/security assigned to u/jmartinez in q/2026q2
+t/1818 Test Turbine Valve logic & specs for p/cooling assigned to u/chernandez in q/2026q2
+t/1819 Refactor Backup Battery Bank logic & specs for p/security assigned to u/lrodriguez in q/2026q2
+t/1820 Refactor Steam Generator logic & specs for p/security assigned to u/jmoore in q/2026q2
+t/1821 Calibrate Graphite Moderator logic & specs for p/control assigned to u/jthomas in q/2026q2
+t/1822 Calibrate Radiation Sensor logic & specs for p/cooling assigned to u/wjohnson in q/2026q2
+t/1823 Calibrate Perimeter Fence logic & specs for p/control assigned to u/landerson in q/2026q2
+t/1824 Inspect Coolant Filter logic & specs for p/safety assigned to u/jlopez in q/2026q3
+t/1825 Deploy Fire Suppression System logic & specs for p/security assigned to u/cjohnson in q/2026q3
+t/1826 Construct Containment Dome logic & specs for p/civil assigned to u/cmiller in q/2026q3
+t/1827 Design Cooling Pump logic & specs for p/civil assigned to u/lrodriguez in q/2026q4
+t/1828 Design Cooling Pump logic & specs for p/control assigned to u/bmoore in q/2026q2
+t/1829 Calibrate Fire Suppression System logic & specs for p/civil assigned to u/mmartin in q/2026q4
+t/1830 Deploy Heat Exchanger logic & specs for p/civil assigned to u/sjackson in q/2026q2
+t/1831 Calibrate Emergency Diesel Generator logic & specs for p/cooling assigned to u/jbrown in q/2026q2
+t/1832 Design SCADA Interface logic & specs for p/security assigned to u/jgarcia in q/2026q4
+t/1833 Review Backup Battery Bank logic & specs for p/control assigned to u/jlopez2 in q/2026q3
+t/1834 Refactor Access Control Gate logic & specs for p/control assigned to u/jgonzalez in q/2026q3
+t/1835 Deploy Radiation Sensor logic & specs for p/core assigned to u/jthomas2 in q/2026q3
+t/1836 Test Fire Suppression System logic & specs for p/control assigned to u/wmiller in q/2026q4
+t/1837 Construct SCADA Interface logic & specs for p/control assigned to u/landerson in q/2026q2
+t/1838 Implement Graphite Moderator logic & specs for p/safety assigned to u/jgonzalez2 in q/2026q2
+t/1839 Implement Control Rod Actuator logic & specs for p/control assigned to u/jmartinez in q/2026q2
+t/1840 Calibrate SCADA Interface logic & specs for p/core assigned to u/jmoore in q/2026q2
+t/1841 Deploy Emergency Diesel Generator logic & specs for p/control assigned to u/manderson in q/2026q4
+t/1842 Refactor Steam Generator logic & specs for p/core assigned to u/mwilson in q/2026q3
+t/1843 Inspect Heat Exchanger logic & specs for p/core assigned to u/kjohnson in q/2026q3
+t/1844 Inspect Graphite Moderator logic & specs for p/security assigned to u/klopez in q/2026q3
+t/1845 Inspect Spent Fuel Pool logic & specs for p/cooling assigned to u/lrodriguez in q/2026q2
+t/1846 Audit Cooling Pump logic & specs for p/cooling assigned to u/wbrown in q/2026q2
+t/1847 Inspect Perimeter Fence logic & specs for p/security assigned to u/jgarcia in q/2026q3
+t/1848 Calibrate Emergency Diesel Generator logic & specs for p/security assigned to u/cjohnson in q/2026q4
+t/1849 Test Cooling Pump logic & specs for p/civil assigned to u/jgonzalez2 in q/2026q3
+t/1850 Implement Spent Fuel Pool logic & specs for p/civil assigned to u/jlopez2 in q/2026q4
+t/1851 Design Cooling Pump logic & specs for p/civil assigned to u/wbrown in q/2026q4
+t/1852 Refactor Seismic Dampener logic & specs for p/security assigned to u/lrodriguez in q/2026q4
+t/1853 Implement Emergency Diesel Generator logic & specs for p/control assigned to u/mwilliams in q/2026q2
+t/1854 Refactor Radiation Sensor logic & specs for p/core assigned to u/jmoore in q/2026q4
+t/1855 Inspect Cooling Pump logic & specs for p/cooling assigned to u/landerson in q/2026q3
+t/1856 Calibrate Ventilation Shaft logic & specs for p/cooling assigned to u/sjackson in q/2026q3
+t/1857 Implement Graphite Moderator logic & specs for p/cooling assigned to u/jmartinez in q/2026q2
+t/1858 Refactor Heat Exchanger logic & specs for p/core assigned to u/jgarcia in q/2026q2
+t/1859 Audit Turbine Valve logic & specs for p/control assigned to u/ljohnson in q/2026q4
+t/1860 Implement SCADA Interface logic & specs for p/control assigned to u/rwilliams in q/2026q4
+t/1861 Inspect Access Control Gate logic & specs for p/cooling assigned to u/jthomas2 in q/2026q2
+t/1862 Test SCADA Interface logic & specs for p/core assigned to u/landerson in q/2026q2
+t/1863 Review Access Control Gate logic & specs for p/cooling assigned to u/tjones in q/2026q2
+t/1864 Implement Radiation Sensor logic & specs for p/safety assigned to u/jthomas2 in q/2026q4
+t/1865 Document Backup Battery Bank logic & specs for p/cooling assigned to u/tjones in q/2026q3
+t/1866 Design Control Rod Actuator logic & specs for p/safety assigned to u/bmoore in q/2026q4
+t/1867 Document Emergency Diesel Generator logic & specs for p/control assigned to u/staylor in q/2026q2
+t/1868 Inspect Emergency Diesel Generator logic & specs for p/cooling assigned to u/lrodriguez in q/2026q3
+t/1869 Document Access Control Gate logic & specs for p/safety assigned to u/mjones in q/2026q2
+t/1870 Calibrate Control Rod Actuator logic & specs for p/safety assigned to u/landerson in q/2026q4
+t/1871 Implement Access Control Gate logic & specs for p/cooling assigned to u/tanderson in q/2026q3
+t/1872 Audit Control Rod Actuator logic & specs for p/civil assigned to u/wmiller in q/2026q3
+t/1873 Document Seismic Dampener logic & specs for p/cooling assigned to u/cjohnson in q/2026q3
+t/1874 Audit Access Control Gate logic & specs for p/security assigned to u/klopez in q/2026q4
+t/1875 Audit Emergency Diesel Generator logic & specs for p/safety assigned to u/jgonzalez in q/2026q3
+t/1876 Document Steam Generator logic & specs for p/safety assigned to u/landerson in q/2026q2
+t/1877 Test Radiation Sensor logic & specs for p/control assigned to u/mwilson in q/2026q2
+t/1878 Refactor Heat Exchanger logic & specs for p/control assigned to u/lrodriguez in q/2026q3
+t/1879 Document Control Rod Actuator logic & specs for p/civil assigned to u/mwilliams in q/2026q4
+t/1880 Calibrate Cooling Pump logic & specs for p/civil assigned to u/wbrown in q/2026q2
+t/1881 Test Cooling Pump logic & specs for p/cooling assigned to u/ljohnson in q/2026q2
+t/1882 Refactor Coolant Filter logic & specs for p/security assigned to u/jrodriguez in q/2026q4
+t/1883 Document SCADA Interface logic & specs for p/core assigned to u/tjones in q/2026q2
+t/1884 Audit Control Room Display logic & specs for p/civil assigned to u/lrodriguez in q/2026q3
+t/1885 Inspect Backup Battery Bank logic & specs for p/civil assigned to u/wjohnson2 in q/2026q2
+t/1886 Document Radiation Sensor logic & specs for p/control assigned to u/bmoore in q/2026q2
+t/1887 Deploy Containment Dome logic & specs for p/core assigned to u/jmoore in q/2026q4
+t/1888 Deploy SCADA Interface logic & specs for p/control assigned to u/lbrown2 in q/2026q2
+t/1889 Implement Pressure Vessel logic & specs for p/security assigned to u/wmiller in q/2026q4
+t/1890 Test Turbine Valve logic & specs for p/safety assigned to u/kmoore in q/2026q4
+t/1891 Deploy Emergency Diesel Generator logic & specs for p/core assigned to u/mmartin in q/2026q2
+t/1892 Audit Turbine Valve logic & specs for p/cooling assigned to u/jgarcia2 in q/2026q4
+t/1893 Deploy Pressure Vessel logic & specs for p/core assigned to u/tjones in q/2026q4
+t/1894 Deploy Containment Dome logic & specs for p/civil assigned to u/jbrown in q/2026q3
+t/1895 Design Pressure Vessel logic & specs for p/control assigned to u/rwilliams in q/2026q3
+t/1896 Implement Seismic Dampener logic & specs for p/control assigned to u/kmoore in q/2026q2
+t/1897 Document Pressure Vessel logic & specs for p/core assigned to u/jgonzalez in q/2026q4
+t/1898 Test Perimeter Fence logic & specs for p/cooling assigned to u/tanderson in q/2026q2
+t/1899 Refactor Control Room Display logic & specs for p/security assigned to u/jgarcia2 in q/2026q3
+t/1900 Deploy Perimeter Fence logic & specs for p/civil assigned to u/ejones in q/2026q4
+t/1901 Test Access Control Gate logic & specs for p/civil assigned to u/lbrown2 in q/2026q3
+t/1902 Document Backup Battery Bank logic & specs for p/safety assigned to u/jgonzalez in q/2026q4
+t/1903 Test Emergency Diesel Generator logic & specs for p/cooling assigned to u/jgonzalez2 in q/2026q4
+t/1904 Construct Backup Battery Bank logic & specs for p/core assigned to u/lrodriguez in q/2026q3
+t/1905 Document Turbine Valve logic & specs for p/security assigned to u/staylor in q/2026q4
+t/1906 Inspect Radiation Sensor logic & specs for p/safety assigned to u/rsmith in q/2026q2
+t/1907 Audit Control Room Display logic & specs for p/core assigned to u/mmartin in q/2026q4
+t/1908 Deploy Containment Dome logic & specs for p/core assigned to u/staylor in q/2026q2
+t/1909 Audit Radiation Sensor logic & specs for p/control assigned to u/rwilliams in q/2026q2
+t/1910 Deploy Access Control Gate logic & specs for p/security assigned to u/jrodriguez in q/2026q4
+t/1911 Review Seismic Dampener logic & specs for p/civil assigned to u/wjohnson in q/2026q2
+t/1912 Refactor SCADA Interface logic & specs for p/core assigned to u/sjackson in q/2026q2
+t/1913 Review Radiation Sensor logic & specs for p/control assigned to u/jmartinez2 in q/2026q3
+t/1914 Audit Graphite Moderator logic & specs for p/core assigned to u/mmartin in q/2026q4
+t/1915 Deploy Spent Fuel Pool logic & specs for p/civil assigned to u/manderson in q/2026q2
+t/1916 Deploy Turbine Valve logic & specs for p/civil assigned to u/wjohnson2 in q/2026q2
+t/1917 Document Seismic Dampener logic & specs for p/control assigned to u/wmiller in q/2026q3
+t/1918 Calibrate Control Room Display logic & specs for p/core assigned to u/mjones in q/2026q4
+t/1919 Review Spent Fuel Pool logic & specs for p/core assigned to u/jmiller in q/2026q4
+t/1920 Inspect Access Control Gate logic & specs for p/control assigned to u/jgonzalez in q/2026q3
+t/1921 Audit Graphite Moderator logic & specs for p/core assigned to u/jmiller in q/2026q2
+t/1922 Document Control Rod Actuator logic & specs for p/cooling assigned to u/jgarcia in q/2026q4
+t/1923 Design Fire Suppression System logic & specs for p/control assigned to u/lbrown2 in q/2026q2
+t/1924 Calibrate Spent Fuel Pool logic & specs for p/security assigned to u/jgarcia in q/2026q3
+t/1925 Inspect Radiation Sensor logic & specs for p/cooling assigned to u/kjohnson in q/2026q3
+t/1926 Implement Spent Fuel Pool logic & specs for p/control assigned to u/ljohnson in q/2026q3
+t/1927 Audit Coolant Filter logic & specs for p/safety assigned to u/mjones in q/2026q2
+t/1928 Implement Graphite Moderator logic & specs for p/control assigned to u/jlopez in q/2026q3
+t/1929 Review Control Room Display logic & specs for p/civil assigned to u/manderson in q/2026q4
+t/1930 Implement Containment Dome logic & specs for p/core assigned to u/jlopez2 in q/2026q3
+t/1931 Design Pressure Vessel logic & specs for p/control assigned to u/wmiller in q/2026q2
+t/1932 Refactor Steam Generator logic & specs for p/security assigned to u/bmoore in q/2026q4
+t/1933 Review Control Rod Actuator logic & specs for p/civil assigned to u/cmiller in q/2026q3
+t/1934 Calibrate Cooling Pump logic & specs for p/core assigned to u/mwilson in q/2026q2
+t/1935 Refactor Graphite Moderator logic & specs for p/security assigned to u/lbrown in q/2026q3
+t/1936 Document Cooling Pump logic & specs for p/cooling assigned to u/jgonzalez in q/2026q3
+t/1937 Audit Control Room Display logic & specs for p/security assigned to u/wmiller in q/2026q3
+t/1938 Test SCADA Interface logic & specs for p/safety assigned to u/jlopez in q/2026q4
+t/1939 Test Backup Battery Bank logic & specs for p/civil assigned to u/mjones in q/2026q4
+t/1940 Construct Graphite Moderator logic & specs for p/cooling assigned to u/jmiller in q/2026q4
+t/1941 Refactor Coolant Filter logic & specs for p/safety assigned to u/landerson in q/2026q3
+t/1942 Implement Perimeter Fence logic & specs for p/security assigned to u/jgonzalez in q/2026q2
+t/1943 Design Graphite Moderator logic & specs for p/security assigned to u/cjohnson in q/2026q2
+t/1944 Refactor Graphite Moderator logic & specs for p/cooling assigned to u/jmiller in q/2026q4
+t/1945 Document Graphite Moderator logic & specs for p/security assigned to u/kmartinez in q/2026q3
+t/1946 Document SCADA Interface logic & specs for p/security assigned to u/jgonzalez in q/2026q4
+t/1947 Audit Cooling Pump logic & specs for p/security assigned to u/bmoore in q/2026q4
+t/1948 Design Access Control Gate logic & specs for p/cooling assigned to u/staylor in q/2026q2
+t/1949 Inspect Containment Dome logic & specs for p/safety assigned to u/mjones in q/2026q4
+t/1950 Implement Ventilation Shaft logic & specs for p/control assigned to u/manderson in q/2026q2
+t/1951 Construct Steam Generator logic & specs for p/safety assigned to u/staylor in q/2026q2
+t/1952 Inspect Perimeter Fence logic & specs for p/core assigned to u/jmartinez2 in q/2026q4
+t/1953 Audit SCADA Interface logic & specs for p/core assigned to u/mmartin in q/2026q4
+t/1954 Inspect Containment Dome logic & specs for p/core assigned to u/tjones2 in q/2026q4
+t/1955 Calibrate Fire Suppression System logic & specs for p/cooling assigned to u/wjohnson in q/2026q2
+t/1956 Calibrate Graphite Moderator logic & specs for p/control assigned to u/jgonzalez2 in q/2026q4
+t/1957 Document Access Control Gate logic & specs for p/safety assigned to u/klopez in q/2026q2
+t/1958 Document SCADA Interface logic & specs for p/cooling assigned to u/ljones in q/2026q3
+t/1959 Refactor Containment Dome logic & specs for p/civil assigned to u/klopez in q/2026q3
+t/1960 Test SCADA Interface logic & specs for p/core assigned to u/mwilson in q/2026q2
+t/1961 Document Steam Generator logic & specs for p/control assigned to u/jgarcia in q/2026q2
+t/1962 Construct SCADA Interface logic & specs for p/cooling assigned to u/wmiller in q/2026q3
+t/1963 Refactor Containment Dome logic & specs for p/control assigned to u/tjones in q/2026q2
+t/1964 Review Steam Generator logic & specs for p/core assigned to u/manderson in q/2026q2
+t/1965 Refactor Graphite Moderator logic & specs for p/civil assigned to u/jmoore in q/2026q2
+t/1966 Deploy Control Room Display logic & specs for p/cooling assigned to u/chernandez in q/2026q2
+t/1967 Calibrate Access Control Gate logic & specs for p/cooling assigned to u/jgarcia in q/2026q2
+t/1968 Implement Backup Battery Bank logic & specs for p/control assigned to u/jmartinez2 in q/2026q4
+t/1969 Design Pressure Vessel logic & specs for p/core assigned to u/cjackson in q/2026q3
+t/1970 Review Control Rod Actuator logic & specs for p/cooling assigned to u/tanderson in q/2026q4
+t/1971 Document Backup Battery Bank logic & specs for p/civil assigned to u/wjohnson2 in q/2026q2
+t/1972 Review Seismic Dampener logic & specs for p/control assigned to u/cmiller in q/2026q2
+t/1973 Calibrate Fire Suppression System logic & specs for p/control assigned to u/jthomas2 in q/2026q3
+t/1974 Audit Cooling Pump logic & specs for p/core assigned to u/jmartinez in q/2026q3
+t/1975 Implement SCADA Interface logic & specs for p/safety assigned to u/jgonzalez2 in q/2026q2
+t/1976 Document Seismic Dampener logic & specs for p/control assigned to u/chernandez in q/2026q4
+t/1977 Test Backup Battery Bank logic & specs for p/safety assigned to u/jgonzalez in q/2026q4
+t/1978 Audit Heat Exchanger logic & specs for p/core assigned to u/ljohnson in q/2026q3
+t/1979 Inspect Fire Suppression System logic & specs for p/cooling assigned to u/jgarcia2 in q/2026q4
+t/1980 Inspect Seismic Dampener logic & specs for p/core assigned to u/wbrown in q/2026q3
+t/1981 Refactor Coolant Filter logic & specs for p/safety assigned to u/mwilson in q/2026q4
+t/1982 Construct Cooling Pump logic & specs for p/civil assigned to u/dmartinez in q/2026q3
+t/1983 Test Access Control Gate logic & specs for p/civil assigned to u/jgonzalez2 in q/2026q3
+t/1984 Inspect Control Room Display logic & specs for p/cooling assigned to u/lbrown in q/2026q3
+t/1985 Refactor Steam Generator logic & specs for p/safety assigned to u/jgarcia2 in q/2026q4
+t/1986 Refactor Graphite Moderator logic & specs for p/safety assigned to u/klopez in q/2026q3
+t/1987 Inspect Pressure Vessel logic & specs for p/control assigned to u/jmiller in q/2026q2
+t/1988 Deploy Ventilation Shaft logic & specs for p/control assigned to u/bmoore in q/2026q4
+t/1989 Calibrate Access Control Gate logic & specs for p/safety assigned to u/wmiller in q/2026q3
+t/1990 Refactor Fire Suppression System logic & specs for p/safety assigned to u/dmartinez in q/2026q4
+t/1991 Document Cooling Pump logic & specs for p/safety assigned to u/jmartinez in q/2026q4
+t/1992 Implement Emergency Diesel Generator logic & specs for p/security assigned to u/cjackson in q/2026q4
+t/1993 Design Emergency Diesel Generator logic & specs for p/core assigned to u/sjackson in q/2026q2
+t/1994 Implement Emergency Diesel Generator logic & specs for p/core assigned to u/jrodriguez in q/2026q2
+t/1995 Deploy Fire Suppression System logic & specs for p/security assigned to u/cjackson in q/2026q4
+t/1996 Design Containment Dome logic & specs for p/safety assigned to u/wbrown in q/2026q3
+t/1997 Refactor Containment Dome logic & specs for p/cooling assigned to u/jthomas in q/2026q3
+t/1998 Refactor Heat Exchanger logic & specs for p/safety assigned to u/landerson in q/2026q3
+t/1999 Refactor Steam Generator logic & specs for p/control assigned to u/tjones in q/2026q3
+t/2000 Document Heat Exchanger logic & specs for p/safety assigned to u/cmiller in q/2026q2
+t/2001 Document Containment Dome logic & specs for p/security assigned to u/staylor in q/2026q4
+t/2002 Document Cooling Pump logic & specs for p/control assigned to u/wjohnson in q/2026q3
+t/2003 Refactor Cooling Pump logic & specs for p/core assigned to u/chernandez in q/2026q4
+t/2004 Deploy SCADA Interface logic & specs for p/control assigned to u/jgarcia in q/2026q2
+t/2005 Audit Access Control Gate logic & specs for p/safety assigned to u/landerson in q/2026q2
+t/2006 Implement Heat Exchanger logic & specs for p/security assigned to u/wmiller in q/2026q4
+t/2007 Inspect Control Room Display logic & specs for p/control assigned to u/ejones in q/2026q2
+t/2008 Document Seismic Dampener logic & specs for p/civil assigned to u/kjohnson in q/2026q3
+t/2009 Audit Graphite Moderator logic & specs for p/safety assigned to u/ljohnson in q/2026q4
+t/2010 Construct Control Room Display logic & specs for p/core assigned to u/rwilliams in q/2026q4
+t/2011 Deploy Ventilation Shaft logic & specs for p/cooling assigned to u/mjones in q/2026q2
+t/2012 Refactor Turbine Valve logic & specs for p/civil assigned to u/tanderson in q/2026q2
+t/2013 Inspect Steam Generator logic & specs for p/cooling assigned to u/sjackson in q/2026q3
+t/2014 Calibrate Control Room Display logic & specs for p/civil assigned to u/jmiller in q/2026q3
+t/2015 Refactor Perimeter Fence logic & specs for p/cooling assigned to u/mwilson in q/2026q2
+t/2016 Deploy Radiation Sensor logic & specs for p/control assigned to u/bmoore in q/2026q4
+t/2017 Construct Control Rod Actuator logic & specs for p/security assigned to u/jthomas in q/2026q2
+t/2018 Test Backup Battery Bank logic & specs for p/control assigned to u/lrodriguez in q/2026q4
+t/2019 Test Control Rod Actuator logic & specs for p/security assigned to u/lrodriguez in q/2026q3
+t/2020 Calibrate Cooling Pump logic & specs for p/control assigned to u/klopez in q/2026q3
+t/2021 Refactor Emergency Diesel Generator logic & specs for p/civil assigned to u/ljones in q/2026q2
+t/2022 Design Radiation Sensor logic & specs for p/civil assigned to u/wjohnson2 in q/2026q4
+t/2023 Calibrate Access Control Gate logic & specs for p/civil assigned to u/jthomas in q/2026q2
+t/2024 Test SCADA Interface logic & specs for p/control assigned to u/ljohnson in q/2026q4
+t/2025 Construct Ventilation Shaft logic & specs for p/civil assigned to u/jjackson in q/2026q4
+t/2026 Design Access Control Gate logic & specs for p/control assigned to u/tjones in q/2026q4
+t/2027 Calibrate Radiation Sensor logic & specs for p/civil assigned to u/manderson in q/2026q3
+t/2028 Construct Heat Exchanger logic & specs for p/core assigned to u/rwilliams in q/2026q4
+t/2029 Document Graphite Moderator logic & specs for p/cooling assigned to u/mwilliams in q/2026q3
+t/2030 Calibrate Seismic Dampener logic & specs for p/security assigned to u/jmoore in q/2026q3
+t/2031 Calibrate Access Control Gate logic & specs for p/safety assigned to u/jbrown in q/2026q3
+t/2032 Inspect Seismic Dampener logic & specs for p/security assigned to u/lbrown in q/2026q4
+t/2033 Audit Access Control Gate logic & specs for p/security assigned to u/ljones in q/2026q3
+t/2034 Inspect Pressure Vessel logic & specs for p/civil assigned to u/jlopez2 in q/2026q4
+t/2035 Audit Cooling Pump logic & specs for p/civil assigned to u/kmoore in q/2026q3
+t/2036 Review Heat Exchanger logic & specs for p/control assigned to u/wmiller in q/2026q3
+t/2037 Test Heat Exchanger logic & specs for p/core assigned to u/cmiller in q/2026q2
+t/2038 Construct Radiation Sensor logic & specs for p/control assigned to u/jbrown in q/2026q3
+t/2039 Test Coolant Filter logic & specs for p/security assigned to u/jmiller in q/2026q3
+t/2040 Document Access Control Gate logic & specs for p/control assigned to u/landerson in q/2026q3
+t/2041 Construct Emergency Diesel Generator logic & specs for p/security assigned to u/jgonzalez in q/2026q3
+t/2042 Document Fire Suppression System logic & specs for p/cooling assigned to u/mmartin in q/2026q3
+t/2043 Construct Pressure Vessel logic & specs for p/cooling assigned to u/wmiller in q/2026q4
+t/2044 Deploy Control Rod Actuator logic & specs for p/control assigned to u/lbrown2 in q/2026q3
+t/2045 Inspect Pressure Vessel logic & specs for p/civil assigned to u/cmiller in q/2026q2
+t/2046 Refactor Containment Dome logic & specs for p/security assigned to u/lbrown in q/2026q4
+t/2047 Calibrate Turbine Valve logic & specs for p/security assigned to u/jjackson in q/2026q4
+t/2048 Audit Radiation Sensor logic & specs for p/security assigned to u/mmartin in q/2026q4
+t/2049 Deploy Spent Fuel Pool logic & specs for p/core assigned to u/mmartin in q/2026q4
+t/2050 Design Backup Battery Bank logic & specs for p/control assigned to u/jgonzalez in q/2026q3
+t/2051 Construct Perimeter Fence logic & specs for p/cooling assigned to u/mjones in q/2026q3
+t/2052 Deploy Emergency Diesel Generator logic & specs for p/safety assigned to u/klopez in q/2026q4
+t/2053 Design Turbine Valve logic & specs for p/control assigned to u/emartinez in q/2026q3
+t/2054 Document Fire Suppression System logic & specs for p/control assigned to u/kmartinez in q/2026q4
+t/2055 Design Emergency Diesel Generator logic & specs for p/safety assigned to u/lrodriguez in q/2026q4
+t/2056 Review Control Rod Actuator logic & specs for p/core assigned to u/mjones in q/2026q2
+t/2057 Document Turbine Valve logic & specs for p/civil assigned to u/lrodriguez in q/2026q3
+t/2058 Inspect Ventilation Shaft logic & specs for p/cooling assigned to u/jgonzalez in q/2026q3
+t/2059 Construct Emergency Diesel Generator logic & specs for p/cooling assigned to u/jmiller2 in q/2026q3
+t/2060 Construct Control Room Display logic & specs for p/security assigned to u/sjackson in q/2026q2
+t/2061 Review Graphite Moderator logic & specs for p/civil assigned to u/lbrown in q/2026q4
+t/2062 Test Control Room Display logic & specs for p/security assigned to u/mmartin in q/2026q2
+t/2063 Calibrate Fire Suppression System logic & specs for p/core assigned to u/jmartinez in q/2026q4
+t/2064 Implement Seismic Dampener logic & specs for p/security assigned to u/mwilson in q/2026q4
+t/2065 Deploy Heat Exchanger logic & specs for p/cooling assigned to u/tanderson in q/2026q2
+t/2066 Inspect Coolant Filter logic & specs for p/safety assigned to u/rsmith in q/2026q4
+t/2067 Audit Ventilation Shaft logic & specs for p/core assigned to u/jthomas2 in q/2026q4
+t/2068 Deploy Control Room Display logic & specs for p/cooling assigned to u/tjones in q/2026q3
+t/2069 Design Seismic Dampener logic & specs for p/cooling assigned to u/jmiller2 in q/2026q3
+t/2070 Refactor Steam Generator logic & specs for p/control assigned to u/jgarcia in q/2026q3
+t/2071 Audit Heat Exchanger logic & specs for p/security assigned to u/jgonzalez in q/2026q2
+t/2072 Implement Turbine Valve logic & specs for p/civil assigned to u/cmiller in q/2026q3
+t/2073 Implement Control Room Display logic & specs for p/safety assigned to u/cmiller in q/2026q4
+t/2074 Refactor Heat Exchanger logic & specs for p/safety assigned to u/staylor in q/2026q4
+t/2075 Inspect Control Room Display logic & specs for p/cooling assigned to u/wjohnson2 in q/2026q2
+t/2076 Audit Control Rod Actuator logic & specs for p/core assigned to u/wjohnson2 in q/2026q4
+t/2077 Inspect Spent Fuel Pool logic & specs for p/civil assigned to u/staylor in q/2026q4
+t/2078 Inspect Seismic Dampener logic & specs for p/core assigned to u/wmiller in q/2026q4
+t/2079 Construct SCADA Interface logic & specs for p/civil assigned to u/jgonzalez in q/2026q4
+t/2080 Deploy Ventilation Shaft logic & specs for p/civil assigned to u/tjones2 in q/2026q2
+t/2081 Calibrate Steam Generator logic & specs for p/safety assigned to u/jmoore in q/2026q4
+t/2082 Implement Fire Suppression System logic & specs for p/cooling assigned to u/lbrown in q/2026q3
+t/2083 Document Containment Dome logic & specs for p/security assigned to u/mwilson in q/2026q2
+t/2084 Review Radiation Sensor logic & specs for p/security assigned to u/jmoore in q/2026q3
+t/2085 Test Graphite Moderator logic & specs for p/cooling assigned to u/jlopez2 in q/2026q2
+t/2086 Implement Containment Dome logic & specs for p/safety assigned to u/jgonzalez in q/2026q2
+t/2087 Refactor Spent Fuel Pool logic & specs for p/civil assigned to u/jmartinez2 in q/2026q3
+t/2088 Review Access Control Gate logic & specs for p/safety assigned to u/chernandez in q/2026q3
+t/2089 Design Turbine Valve logic & specs for p/civil assigned to u/jgarcia2 in q/2026q3
+t/2090 Inspect Radiation Sensor logic & specs for p/core assigned to u/wjohnson2 in q/2026q2
+t/2091 Inspect Ventilation Shaft logic & specs for p/security assigned to u/tanderson in q/2026q4
+t/2092 Inspect Ventilation Shaft logic & specs for p/safety assigned to u/jmiller2 in q/2026q2
+t/2093 Audit Access Control Gate logic & specs for p/safety assigned to u/tanderson in q/2026q2
+t/2094 Inspect Perimeter Fence logic & specs for p/civil assigned to u/kjohnson in q/2026q2
+t/2095 Test Control Rod Actuator logic & specs for p/safety assigned to u/chernandez in q/2026q4
+t/2096 Design Seismic Dampener logic & specs for p/control assigned to u/jmartinez2 in q/2026q4
+t/2097 Document Radiation Sensor logic & specs for p/security assigned to u/jmiller in q/2026q3
+t/2098 Inspect Steam Generator logic & specs for p/safety assigned to u/jmartinez2 in q/2026q2
+t/2099 Implement Heat Exchanger logic & specs for p/safety assigned to u/wbrown in q/2026q3
+t/2100 Test Ventilation Shaft logic & specs for p/civil assigned to u/tanderson in q/2026q3
+t/2101 Deploy Containment Dome logic & specs for p/security assigned to u/cmiller in q/2026q3
+t/2102 Calibrate Spent Fuel Pool logic & specs for p/control assigned to u/manderson in q/2026q2
+t/2103 Document Control Room Display logic & specs for p/control assigned to u/mjones in q/2026q3
+t/2104 Document Radiation Sensor logic & specs for p/control assigned to u/ljones in q/2026q4
+t/2105 Review Control Rod Actuator logic & specs for p/cooling assigned to u/wmiller in q/2026q2
+t/2106 Deploy Emergency Diesel Generator logic & specs for p/control assigned to u/dmartinez in q/2026q4
+t/2107 Document Pressure Vessel logic & specs for p/civil assigned to u/mwilson in q/2026q4
+t/2108 Document Ventilation Shaft logic & specs for p/security assigned to u/cjohnson in q/2026q4
+t/2109 Review Backup Battery Bank logic & specs for p/security assigned to u/jgarcia2 in q/2026q3
+t/2110 Review Access Control Gate logic & specs for p/control assigned to u/emartinez in q/2026q3
+t/2111 Document Containment Dome logic & specs for p/core assigned to u/tjones in q/2026q2
+t/2112 Refactor Control Room Display logic & specs for p/cooling assigned to u/landerson in q/2026q4
+t/2113 Calibrate Coolant Filter logic & specs for p/civil assigned to u/cjohnson in q/2026q3
+t/2114 Construct Perimeter Fence logic & specs for p/safety assigned to u/jmartinez in q/2026q4
+t/2115 Audit Seismic Dampener logic & specs for p/core assigned to u/jlopez in q/2026q4
+t/2116 Deploy Heat Exchanger logic & specs for p/safety assigned to u/jmartinez2 in q/2026q4
+t/2117 Design Radiation Sensor logic & specs for p/safety assigned to u/dmartinez in q/2026q3
+t/2118 Construct Pressure Vessel logic & specs for p/control assigned to u/jmiller in q/2026q4
+t/2119 Calibrate Containment Dome logic & specs for p/cooling assigned to u/jgonzalez in q/2026q3
+t/2120 Design Heat Exchanger logic & specs for p/core assigned to u/staylor in q/2026q4
+t/2121 Construct Seismic Dampener logic & specs for p/cooling assigned to u/jjackson in q/2026q2
+t/2122 Construct Spent Fuel Pool logic & specs for p/safety assigned to u/tjones in q/2026q2
+t/2123 Inspect Ventilation Shaft logic & specs for p/core assigned to u/tjones in q/2026q4
+t/2124 Construct Containment Dome logic & specs for p/civil assigned to u/ljohnson in q/2026q4
+t/2125 Design Spent Fuel Pool logic & specs for p/cooling assigned to u/lbrown in q/2026q2
+t/2126 Audit Ventilation Shaft logic & specs for p/security assigned to u/jmiller in q/2026q4
+t/2127 Inspect Fire Suppression System logic & specs for p/security assigned to u/manderson in q/2026q3
+t/2128 Construct Control Rod Actuator logic & specs for p/civil assigned to u/jmartinez in q/2026q3
+t/2129 Design Pressure Vessel logic & specs for p/security assigned to u/lbrown in q/2026q4
+t/2130 Refactor Seismic Dampener logic & specs for p/core assigned to u/jgarcia2 in q/2026q4
+t/2131 Inspect Radiation Sensor logic & specs for p/civil assigned to u/chernandez in q/2026q3
+t/2132 Construct Graphite Moderator logic & specs for p/civil assigned to u/jgonzalez2 in q/2026q4
+t/2133 Calibrate Emergency Diesel Generator logic & specs for p/core assigned to u/jthomas in q/2026q4
+t/2134 Audit Steam Generator logic & specs for p/security assigned to u/manderson in q/2026q4
+t/2135 Refactor Cooling Pump logic & specs for p/civil assigned to u/cjohnson in q/2026q2
+t/2136 Review Control Room Display logic & specs for p/security assigned to u/tjones in q/2026q4
+t/2137 Audit Seismic Dampener logic & specs for p/cooling assigned to u/wjohnson2 in q/2026q3
+t/2138 Implement Ventilation Shaft logic & specs for p/core assigned to u/chernandez in q/2026q3
+t/2139 Calibrate Cooling Pump logic & specs for p/safety assigned to u/kmartinez in q/2026q2
+t/2140 Refactor Radiation Sensor logic & specs for p/core assigned to u/kjohnson in q/2026q4
+t/2141 Design Control Rod Actuator logic & specs for p/security assigned to u/mjones in q/2026q4
+t/2142 Test Fire Suppression System logic & specs for p/security assigned to u/mwilson in q/2026q3
+t/2143 Audit Emergency Diesel Generator logic & specs for p/cooling assigned to u/jgonzalez2 in q/2026q2
+t/2144 Review Seismic Dampener logic & specs for p/core assigned to u/jbrown in q/2026q4
+t/2145 Refactor Heat Exchanger logic & specs for p/core assigned to u/lbrown2 in q/2026q3
+t/2146 Test Radiation Sensor logic & specs for p/cooling assigned to u/cmiller in q/2026q3
+t/2147 Calibrate Control Room Display logic & specs for p/safety assigned to u/mmartin in q/2026q4
+t/2148 Audit Perimeter Fence logic & specs for p/control assigned to u/klopez in q/2026q2
+t/2149 Document Seismic Dampener logic & specs for p/civil assigned to u/kmartinez in q/2026q2
+t/2150 Deploy Containment Dome logic & specs for p/cooling assigned to u/cmiller in q/2026q4
+t/2151 Implement Spent Fuel Pool logic & specs for p/safety assigned to u/sjackson in q/2026q2
+t/2152 Review Backup Battery Bank logic & specs for p/security assigned to u/jjackson in q/2026q2
+t/2153 Review Spent Fuel Pool logic & specs for p/control assigned to u/kjohnson in q/2026q2
+t/2154 Design Control Room Display logic & specs for p/cooling assigned to u/wjohnson in q/2026q3
+t/2155 Test Spent Fuel Pool logic & specs for p/security assigned to u/mwilson in q/2026q3
+t/2156 Implement Control Rod Actuator logic & specs for p/cooling assigned to u/rwilliams in q/2026q3
+t/2157 Test Steam Generator logic & specs for p/control assigned to u/jmiller in q/2026q2
+t/2158 Refactor Radiation Sensor logic & specs for p/security assigned to u/wbrown in q/2026q2
+t/2159 Document Backup Battery Bank logic & specs for p/safety assigned to u/mjones in q/2026q4
+t/2160 Test Fire Suppression System logic & specs for p/control assigned to u/jthomas2 in q/2026q4
+t/2161 Refactor Containment Dome logic & specs for p/control assigned to u/mwilson in q/2026q3
+t/2162 Document Graphite Moderator logic & specs for p/safety assigned to u/wjohnson in q/2026q2
+t/2163 Deploy Steam Generator logic & specs for p/security assigned to u/jthomas in q/2026q3
+t/2164 Implement Coolant Filter logic & specs for p/control assigned to u/jjackson in q/2026q4
+t/2165 Deploy Pressure Vessel logic & specs for p/security assigned to u/jthomas in q/2026q3
+t/2166 Deploy Seismic Dampener logic & specs for p/core assigned to u/jmoore in q/2026q3
+t/2167 Construct Seismic Dampener logic & specs for p/control assigned to u/jthomas in q/2026q2
+t/2168 Construct Coolant Filter logic & specs for p/control assigned to u/landerson in q/2026q2
+t/2169 Deploy Radiation Sensor logic & specs for p/safety assigned to u/mwilliams in q/2026q2
+t/2170 Construct Pressure Vessel logic & specs for p/safety assigned to u/ejones in q/2026q4
+t/2171 Construct Control Rod Actuator logic & specs for p/core assigned to u/wmiller in q/2026q4
+t/2172 Document Graphite Moderator logic & specs for p/civil assigned to u/tanderson in q/2026q4
+t/2173 Test Pressure Vessel logic & specs for p/cooling assigned to u/dmartinez in q/2026q4
+t/2174 Deploy Fire Suppression System logic & specs for p/civil assigned to u/jrodriguez in q/2026q3
+t/2175 Inspect Backup Battery Bank logic & specs for p/cooling assigned to u/jbrown in q/2026q4
+t/2176 Review Pressure Vessel logic & specs for p/security assigned to u/mwilliams in q/2026q3
+t/2177 Document Cooling Pump logic & specs for p/core assigned to u/jgarcia2 in q/2026q2
+t/2178 Audit Control Room Display logic & specs for p/safety assigned to u/cjackson in q/2026q3
+t/2179 Refactor Heat Exchanger logic & specs for p/cooling assigned to u/jgonzalez2 in q/2026q2
+t/2180 Audit Control Room Display logic & specs for p/civil assigned to u/emartinez in q/2026q2
+t/2181 Audit Perimeter Fence logic & specs for p/civil assigned to u/jlopez in q/2026q2
+t/2182 Refactor Steam Generator logic & specs for p/core assigned to u/tjones2 in q/2026q2
+t/2183 Audit Turbine Valve logic & specs for p/security assigned to u/lrodriguez in q/2026q3
+t/2184 Test SCADA Interface logic & specs for p/safety assigned to u/jmartinez in q/2026q4
+t/2185 Test Radiation Sensor logic & specs for p/control assigned to u/tjones2 in q/2026q4
+t/2186 Refactor Spent Fuel Pool logic & specs for p/control assigned to u/sjackson in q/2026q4
+t/2187 Refactor Ventilation Shaft logic & specs for p/control assigned to u/staylor in q/2026q4
+t/2188 Review Fire Suppression System logic & specs for p/core assigned to u/lbrown2 in q/2026q2
+t/2189 Implement Emergency Diesel Generator logic & specs for p/safety assigned to u/chernandez in q/2026q4
+t/2190 Audit Emergency Diesel Generator logic & specs for p/core assigned to u/chernandez in q/2026q3
+t/2191 Audit Fire Suppression System logic & specs for p/core assigned to u/bmoore in q/2026q4
+t/2192 Refactor Coolant Filter logic & specs for p/control assigned to u/lrodriguez in q/2026q2
+t/2193 Document Coolant Filter logic & specs for p/civil assigned to u/rsmith in q/2026q3
+t/2194 Construct Radiation Sensor logic & specs for p/cooling assigned to u/tjones in q/2026q4
+t/2195 Audit Seismic Dampener logic & specs for p/control assigned to u/landerson in q/2026q3
+t/2196 Construct Cooling Pump logic & specs for p/safety assigned to u/jmoore in q/2026q4
+t/2197 Implement Graphite Moderator logic & specs for p/cooling assigned to u/jlopez2 in q/2026q4
+t/2198 Design Backup Battery Bank logic & specs for p/civil assigned to u/chernandez in q/2026q2
+t/2199 Document Containment Dome logic & specs for p/cooling assigned to u/mwilson in q/2026q4
+t/2200 Implement Fire Suppression System logic & specs for p/safety assigned to u/mwilliams in q/2026q3
+t/2201 Inspect Ventilation Shaft logic & specs for p/cooling assigned to u/jmartinez2 in q/2026q3
+t/2202 Deploy Emergency Diesel Generator logic & specs for p/cooling assigned to u/jgonzalez2 in q/2026q2
+t/2203 Inspect Containment Dome logic & specs for p/safety assigned to u/chernandez in q/2026q4
+t/2204 Design Pressure Vessel logic & specs for p/cooling assigned to u/jbrown in q/2026q4
+t/2205 Document Spent Fuel Pool logic & specs for p/control assigned to u/jthomas2 in q/2026q3
+t/2206 Inspect Turbine Valve logic & specs for p/control assigned to u/tanderson in q/2026q3
+t/2207 Calibrate Control Room Display logic & specs for p/security assigned to u/rwilliams in q/2026q4
+t/2208 Inspect Radiation Sensor logic & specs for p/civil assigned to u/tjones2 in q/2026q4
+t/2209 Test Cooling Pump logic & specs for p/core assigned to u/lbrown in q/2026q4
+t/2210 Deploy Steam Generator logic & specs for p/cooling assigned to u/wjohnson in q/2026q2
+t/2211 Refactor Pressure Vessel logic & specs for p/security assigned to u/jmiller in q/2026q2
+t/2212 Review SCADA Interface logic & specs for p/cooling assigned to u/wbrown in q/2026q4
+t/2213 Review Fire Suppression System logic & specs for p/safety assigned to u/jmoore in q/2026q2
+t/2214 Design Backup Battery Bank logic & specs for p/security assigned to u/bmoore in q/2026q2
+t/2215 Document Perimeter Fence logic & specs for p/core assigned to u/klopez in q/2026q4
+t/2216 Design Radiation Sensor logic & specs for p/cooling assigned to u/cjackson in q/2026q2
+t/2217 Calibrate Control Rod Actuator logic & specs for p/security assigned to u/ejones in q/2026q4
+t/2218 Deploy Coolant Filter logic & specs for p/control assigned to u/jmartinez2 in q/2026q2
+t/2219 Document Cooling Pump logic & specs for p/civil assigned to u/jjackson in q/2026q3
+t/2220 Test Steam Generator logic & specs for p/safety assigned to u/wmiller in q/2026q4
+t/2221 Review Turbine Valve logic & specs for p/control assigned to u/manderson in q/2026q4
+t/2222 Refactor Seismic Dampener logic & specs for p/security assigned to u/emartinez in q/2026q4
+t/2223 Deploy Turbine Valve logic & specs for p/cooling assigned to u/jmoore in q/2026q4
+t/2224 Deploy Ventilation Shaft logic & specs for p/safety assigned to u/jgonzalez2 in q/2026q4
+t/2225 Design Coolant Filter logic & specs for p/safety assigned to u/chernandez in q/2026q4
+t/2226 Construct Spent Fuel Pool logic & specs for p/security assigned to u/staylor in q/2026q3
+t/2227 Construct Spent Fuel Pool logic & specs for p/civil assigned to u/jmartinez2 in q/2026q4
+t/2228 Inspect Radiation Sensor logic & specs for p/civil assigned to u/kmoore in q/2026q3
+t/2229 Inspect Turbine Valve logic & specs for p/safety assigned to u/jthomas2 in q/2026q3
+t/2230 Test Access Control Gate logic & specs for p/civil assigned to u/jmartinez in q/2026q4
+t/2231 Deploy SCADA Interface logic & specs for p/control assigned to u/jmoore in q/2026q3
+t/2232 Design Turbine Valve logic & specs for p/core assigned to u/jbrown in q/2026q3
+t/2233 Construct SCADA Interface logic & specs for p/control assigned to u/jthomas in q/2026q3
+t/2234 Document Control Rod Actuator logic & specs for p/safety assigned to u/jjackson in q/2026q2
+t/2235 Calibrate Cooling Pump logic & specs for p/control assigned to u/jlopez in q/2026q2
+t/2236 Document Fire Suppression System logic & specs for p/safety assigned to u/lbrown2 in q/2026q4
+t/2237 Inspect Backup Battery Bank logic & specs for p/safety assigned to u/rsmith in q/2026q3
+t/2238 Deploy Coolant Filter logic & specs for p/security assigned to u/cjohnson in q/2026q3
+t/2239 Audit Cooling Pump logic & specs for p/cooling assigned to u/kmoore in q/2026q3
+t/2240 Deploy Coolant Filter logic & specs for p/core assigned to u/jbrown in q/2026q4
+t/2241 Review Cooling Pump logic & specs for p/civil assigned to u/jmiller2 in q/2026q2
+t/2242 Deploy Access Control Gate logic & specs for p/control assigned to u/jmoore in q/2026q4
+t/2243 Inspect Spent Fuel Pool logic & specs for p/safety assigned to u/jlopez in q/2026q3
+t/2244 Inspect SCADA Interface logic & specs for p/security assigned to u/mjones in q/2026q2
+t/2245 Test Pressure Vessel logic & specs for p/security assigned to u/lbrown2 in q/2026q2
+t/2246 Construct Cooling Pump logic & specs for p/safety assigned to u/cjackson in q/2026q2
+t/2247 Implement SCADA Interface logic & specs for p/cooling assigned to u/rwilliams in q/2026q2
+t/2248 Implement Radiation Sensor logic & specs for p/core assigned to u/jgonzalez in q/2026q2
+t/2249 Test Radiation Sensor logic & specs for p/cooling assigned to u/kmartinez in q/2026q2
+t/2250 Document Fire Suppression System logic & specs for p/control assigned to u/jmartinez in q/2026q3
+t/2251 Deploy Cooling Pump logic & specs for p/security assigned to u/jgarcia2 in q/2026q3
+t/2252 Review Emergency Diesel Generator logic & specs for p/core assigned to u/rsmith in q/2026q3
+t/2253 Implement Heat Exchanger logic & specs for p/safety assigned to u/ljohnson in q/2026q4
+t/2254 Review Ventilation Shaft logic & specs for p/core assigned to u/chernandez in q/2026q3
+t/2255 Design Steam Generator logic & specs for p/security assigned to u/jlopez2 in q/2026q2
+t/2256 Review Radiation Sensor logic & specs for p/security assigned to u/jgonzalez in q/2026q3
+t/2257 Calibrate SCADA Interface logic & specs for p/core assigned to u/ljones in q/2026q3
+t/2258 Deploy Graphite Moderator logic & specs for p/core assigned to u/lbrown2 in q/2026q2
+t/2259 Design Backup Battery Bank logic & specs for p/cooling assigned to u/kmoore in q/2026q4
+t/2260 Document Control Room Display logic & specs for p/cooling assigned to u/bmoore in q/2026q3
+t/2261 Implement Control Room Display logic & specs for p/core assigned to u/lbrown in q/2026q4
+t/2262 Calibrate Emergency Diesel Generator logic & specs for p/security assigned to u/cjackson in q/2026q4
+t/2263 Review Backup Battery Bank logic & specs for p/control assigned to u/jbrown in q/2026q4
+t/2264 Audit Heat Exchanger logic & specs for p/security assigned to u/lbrown2 in q/2026q3
+t/2265 Calibrate Spent Fuel Pool logic & specs for p/cooling assigned to u/kmoore in q/2026q2
+t/2266 Inspect Control Rod Actuator logic & specs for p/security assigned to u/kmoore in q/2026q3
+t/2267 Construct SCADA Interface logic & specs for p/core assigned to u/lrodriguez in q/2026q3
+t/2268 Document Radiation Sensor logic & specs for p/civil assigned to u/jmartinez2 in q/2026q4
+t/2269 Document Graphite Moderator logic & specs for p/control assigned to u/jgarcia2 in q/2026q4
+t/2270 Review Radiation Sensor logic & specs for p/control assigned to u/wmiller in q/2026q4
+t/2271 Calibrate Ventilation Shaft logic & specs for p/cooling assigned to u/jgonzalez in q/2026q4
+t/2272 Implement Pressure Vessel logic & specs for p/control assigned to u/jbrown in q/2026q3
+t/2273 Document Emergency Diesel Generator logic & specs for p/safety assigned to u/emartinez in q/2026q2
+t/2274 Test Coolant Filter logic & specs for p/security assigned to u/lbrown in q/2026q4
+t/2275 Deploy Cooling Pump logic & specs for p/cooling assigned to u/tanderson in q/2026q4
+t/2276 Construct Backup Battery Bank logic & specs for p/core assigned to u/staylor in q/2026q3
+t/2277 Review Control Rod Actuator logic & specs for p/control assigned to u/jgonzalez in q/2026q4
+t/2278 Deploy Fire Suppression System logic & specs for p/control assigned to u/rsmith in q/2026q2
+t/2279 Test Radiation Sensor logic & specs for p/core assigned to u/ejones in q/2026q4
+t/2280 Calibrate Cooling Pump logic & specs for p/cooling assigned to u/kjohnson in q/2026q3
+t/2281 Audit Control Room Display logic & specs for p/cooling assigned to u/wjohnson in q/2026q4
+t/2282 Deploy Turbine Valve logic & specs for p/core assigned to u/wbrown in q/2026q3
+t/2283 Deploy Access Control Gate logic & specs for p/security assigned to u/mwilliams in q/2026q2
+t/2284 Design Spent Fuel Pool logic & specs for p/safety assigned to u/landerson in q/2026q4
+t/2285 Audit Perimeter Fence logic & specs for p/core assigned to u/jgonzalez in q/2026q4
+t/2286 Deploy SCADA Interface logic & specs for p/civil assigned to u/wjohnson2 in q/2026q4
+t/2287 Audit Cooling Pump logic & specs for p/cooling assigned to u/jgarcia2 in q/2026q3
+t/2288 Audit Ventilation Shaft logic & specs for p/civil assigned to u/wmiller in q/2026q3
+t/2289 Calibrate Backup Battery Bank logic & specs for p/cooling assigned to u/jrodriguez in q/2026q2
+t/2290 Deploy Heat Exchanger logic & specs for p/cooling assigned to u/sjackson in q/2026q3
+t/2291 Audit Ventilation Shaft logic & specs for p/control assigned to u/bmoore in q/2026q3
+t/2292 Inspect Ventilation Shaft logic & specs for p/security assigned to u/lbrown in q/2026q3
+t/2293 Test Access Control Gate logic & specs for p/cooling assigned to u/landerson in q/2026q3
+t/2294 Document Containment Dome logic & specs for p/core assigned to u/jbrown in q/2026q3
+t/2295 Calibrate Spent Fuel Pool logic & specs for p/safety assigned to u/wbrown in q/2026q2
+t/2296 Construct Cooling Pump logic & specs for p/security assigned to u/lrodriguez in q/2026q4
+t/2297 Review Turbine Valve logic & specs for p/cooling assigned to u/staylor in q/2026q4
+t/2298 Implement SCADA Interface logic & specs for p/civil assigned to u/kmartinez in q/2026q3
+t/2299 Test Cooling Pump logic & specs for p/control assigned to u/jgonzalez in q/2026q4
+t/2300 Design Ventilation Shaft logic & specs for p/security assigned to u/bmoore in q/2026q4
+t/2301 Review Seismic Dampener logic & specs for p/cooling assigned to u/cjohnson in q/2026q2
+t/2302 Test Coolant Filter logic & specs for p/core assigned to u/chernandez in q/2026q4
+t/2303 Inspect Spent Fuel Pool logic & specs for p/safety assigned to u/tanderson in q/2026q2
+t/2304 Deploy Seismic Dampener logic & specs for p/core assigned to u/emartinez in q/2026q2
+t/2305 Design Heat Exchanger logic & specs for p/civil assigned to u/jrodriguez in q/2026q3
+t/2306 Implement Containment Dome logic & specs for p/control assigned to u/bmoore in q/2026q4
+t/2307 Deploy Fire Suppression System logic & specs for p/security assigned to u/ljones in q/2026q4
+t/2308 Deploy Graphite Moderator logic & specs for p/civil assigned to u/tanderson in q/2026q4
+t/2309 Refactor Spent Fuel Pool logic & specs for p/core assigned to u/lbrown in q/2026q3
+t/2310 Review Access Control Gate logic & specs for p/civil assigned to u/bmoore in q/2026q4
+t/2311 Deploy Control Room Display logic & specs for p/control assigned to u/lbrown2 in q/2026q4
+t/2312 Review Backup Battery Bank logic & specs for p/security assigned to u/ejones in q/2026q2
+t/2313 Refactor Control Rod Actuator logic & specs for p/core assigned to u/jmartinez2 in q/2026q3
+t/2314 Audit Backup Battery Bank logic & specs for p/safety assigned to u/wjohnson2 in q/2026q4
+t/2315 Review Coolant Filter logic & specs for p/security assigned to u/jgonzalez2 in q/2026q2
+t/2316 Refactor Control Rod Actuator logic & specs for p/cooling assigned to u/wjohnson in q/2026q4
+t/2317 Review Cooling Pump logic & specs for p/core assigned to u/jjackson in q/2026q2
+t/2318 Test Turbine Valve logic & specs for p/cooling assigned to u/jthomas2 in q/2026q3
+t/2319 Construct Cooling Pump logic & specs for p/cooling assigned to u/rsmith in q/2026q3
+t/2320 Document Heat Exchanger logic & specs for p/core assigned to u/jgonzalez2 in q/2026q3
+t/2321 Deploy Pressure Vessel logic & specs for p/core assigned to u/kjohnson in q/2026q4
+t/2322 Deploy Containment Dome logic & specs for p/security assigned to u/tjones2 in q/2026q3
+t/2323 Calibrate Graphite Moderator logic & specs for p/security assigned to u/landerson in q/2026q2
+t/2324 Refactor Fire Suppression System logic & specs for p/cooling assigned to u/jthomas2 in q/2026q2
+t/2325 Inspect Radiation Sensor logic & specs for p/safety assigned to u/cmiller in q/2026q2
+t/2326 Deploy Coolant Filter logic & specs for p/safety assigned to u/kmartinez in q/2026q2
+t/2327 Review Turbine Valve logic & specs for p/security assigned to u/lrodriguez in q/2026q4
+t/2328 Test Emergency Diesel Generator logic & specs for p/control assigned to u/jmiller in q/2026q2
+t/2329 Document SCADA Interface logic & specs for p/core assigned to u/rsmith in q/2026q4
+t/2330 Inspect Emergency Diesel Generator logic & specs for p/civil assigned to u/wjohnson2 in q/2026q3
+t/2331 Construct Graphite Moderator logic & specs for p/safety assigned to u/lbrown2 in q/2026q2
+t/2332 Refactor Coolant Filter logic & specs for p/cooling assigned to u/lbrown2 in q/2026q3
+t/2333 Test Containment Dome logic & specs for p/safety assigned to u/wjohnson2 in q/2026q4
+t/2334 Document Coolant Filter logic & specs for p/control assigned to u/tjones in q/2026q4
+t/2335 Design Perimeter Fence logic & specs for p/core assigned to u/chernandez in q/2026q2
+t/2336 Design Turbine Valve logic & specs for p/control assigned to u/lrodriguez in q/2026q4
+t/2337 Construct Backup Battery Bank logic & specs for p/control assigned to u/wjohnson2 in q/2026q4
+t/2338 Implement Access Control Gate logic & specs for p/control assigned to u/staylor in q/2026q4
+t/2339 Audit SCADA Interface logic & specs for p/security assigned to u/mjones in q/2026q2
+t/2340 Document Pressure Vessel logic & specs for p/control assigned to u/jmiller in q/2026q3
+t/2341 Design Control Room Display logic & specs for p/safety assigned to u/jmartinez2 in q/2026q3
+t/2342 Construct Emergency Diesel Generator logic & specs for p/security assigned to u/mjones in q/2026q3
+t/2343 Refactor Containment Dome logic & specs for p/safety assigned to u/cjackson in q/2026q3
+t/2344 Review Containment Dome logic & specs for p/core assigned to u/landerson in q/2026q3
+t/2345 Review Containment Dome logic & specs for p/control assigned to u/jmartinez2 in q/2026q4
+t/2346 Deploy SCADA Interface logic & specs for p/civil assigned to u/wjohnson in q/2026q4
+t/2347 Audit Spent Fuel Pool logic & specs for p/control assigned to u/jlopez in q/2026q2
+t/2348 Design Control Rod Actuator logic & specs for p/core assigned to u/jgarcia in q/2026q3
+t/2349 Implement Heat Exchanger logic & specs for p/security assigned to u/cjohnson in q/2026q3
+t/2350 Audit Containment Dome logic & specs for p/core assigned to u/ljones in q/2026q4
+t/2351 Calibrate Emergency Diesel Generator logic & specs for p/security assigned to u/cmiller in q/2026q3
+t/2352 Audit Emergency Diesel Generator logic & specs for p/control assigned to u/cjohnson in q/2026q2
+t/2353 Deploy Turbine Valve logic & specs for p/security assigned to u/wmiller in q/2026q3
+t/2354 Calibrate Seismic Dampener logic & specs for p/civil assigned to u/mmartin in q/2026q4
+t/2355 Test Radiation Sensor logic & specs for p/control assigned to u/cjackson in q/2026q4
+t/2356 Deploy SCADA Interface logic & specs for p/control assigned to u/jgarcia2 in q/2026q2
+t/2357 Refactor SCADA Interface logic & specs for p/core assigned to u/mwilson in q/2026q3
+t/2358 Construct Access Control Gate logic & specs for p/cooling assigned to u/chernandez in q/2026q3
+t/2359 Test Turbine Valve logic & specs for p/core assigned to u/jlopez in q/2026q3
+t/2360 Document Turbine Valve logic & specs for p/civil assigned to u/lbrown in q/2026q3
+t/2361 Document Radiation Sensor logic & specs for p/control assigned to u/sjackson in q/2026q2
+t/2362 Audit Seismic Dampener logic & specs for p/civil assigned to u/jgarcia in q/2026q3
+t/2363 Inspect Perimeter Fence logic & specs for p/cooling assigned to u/jgarcia in q/2026q2
+t/2364 Document Control Room Display logic & specs for p/civil assigned to u/jmiller2 in q/2026q2
+t/2365 Test Spent Fuel Pool logic & specs for p/security assigned to u/chernandez in q/2026q2
+t/2366 Review Control Room Display logic & specs for p/control assigned to u/wmiller in q/2026q2
+t/2367 Construct Access Control Gate logic & specs for p/security assigned to u/bmoore in q/2026q3
+t/2368 Inspect Heat Exchanger logic & specs for p/security assigned to u/tjones in q/2026q2
+t/2369 Review Ventilation Shaft logic & specs for p/safety assigned to u/jmartinez2 in q/2026q3
+t/2370 Refactor Graphite Moderator logic & specs for p/security assigned to u/jbrown in q/2026q2
+t/2371 Document Coolant Filter logic & specs for p/cooling assigned to u/wbrown in q/2026q3
+t/2372 Inspect Graphite Moderator logic & specs for p/core assigned to u/jgarcia in q/2026q4
+t/2373 Test Steam Generator logic & specs for p/core assigned to u/ejones in q/2026q3
+t/2374 Audit Seismic Dampener logic & specs for p/cooling assigned to u/sjackson in q/2026q3
+t/2375 Calibrate Spent Fuel Pool logic & specs for p/civil assigned to u/jmartinez in q/2026q2
+t/2376 Implement Graphite Moderator logic & specs for p/civil assigned to u/mjones in q/2026q2
+t/2377 Deploy Backup Battery Bank logic & specs for p/civil assigned to u/tjones in q/2026q3
+t/2378 Implement SCADA Interface logic & specs for p/security assigned to u/cjackson in q/2026q4
+t/2379 Test Control Rod Actuator logic & specs for p/security assigned to u/jlopez2 in q/2026q3
+t/2380 Construct Emergency Diesel Generator logic & specs for p/control assigned to u/jbrown in q/2026q3
+t/2381 Calibrate Containment Dome logic & specs for p/control assigned to u/jmartinez in q/2026q2
+t/2382 Design Emergency Diesel Generator logic & specs for p/cooling assigned to u/manderson in q/2026q2
+t/2383 Deploy Turbine Valve logic & specs for p/core assigned to u/mwilliams in q/2026q3
+t/2384 Review Turbine Valve logic & specs for p/civil assigned to u/cjackson in q/2026q3
+t/2385 Design Spent Fuel Pool logic & specs for p/control assigned to u/jthomas in q/2026q4
+t/2386 Audit Pressure Vessel logic & specs for p/core assigned to u/wjohnson2 in q/2026q3
+t/2387 Refactor Turbine Valve logic & specs for p/control assigned to u/kjohnson in q/2026q4
+t/2388 Deploy Turbine Valve logic & specs for p/cooling assigned to u/jrodriguez in q/2026q2
+t/2389 Document Access Control Gate logic & specs for p/control assigned to u/mjones in q/2026q3
+t/2390 Review Heat Exchanger logic & specs for p/civil assigned to u/jmartinez2 in q/2026q3
+t/2391 Design Coolant Filter logic & specs for p/security assigned to u/cjackson in q/2026q3
+t/2392 Calibrate Cooling Pump logic & specs for p/core assigned to u/jmartinez in q/2026q4
+t/2393 Deploy Cooling Pump logic & specs for p/security assigned to u/mjones in q/2026q4
+t/2394 Test Backup Battery Bank logic & specs for p/control assigned to u/sjackson in q/2026q2
+t/2395 Refactor Containment Dome logic & specs for p/security assigned to u/kjohnson in q/2026q4
+t/2396 Refactor Access Control Gate logic & specs for p/safety assigned to u/bmoore in q/2026q2
+t/2397 Design Radiation Sensor logic & specs for p/core assigned to u/tanderson in q/2026q2
+t/2398 Test Access Control Gate logic & specs for p/civil assigned to u/jgarcia2 in q/2026q4
+t/2399 Test Turbine Valve logic & specs for p/cooling assigned to u/jgarcia in q/2026q4
+t/2400 Inspect Backup Battery Bank logic & specs for p/civil assigned to u/manderson in q/2026q4
+t/2401 Design Backup Battery Bank logic & specs for p/core assigned to u/cmiller in q/2026q2
+t/2402 Document Seismic Dampener logic & specs for p/safety assigned to u/wmiller in q/2026q3
+t/2403 Inspect Emergency Diesel Generator logic & specs for p/civil assigned to u/rwilliams in q/2026q2
+t/2404 Refactor Seismic Dampener logic & specs for p/safety assigned to u/rsmith in q/2026q4
+t/2405 Audit Turbine Valve logic & specs for p/safety assigned to u/tjones in q/2026q4
+t/2406 Test Control Room Display logic & specs for p/control assigned to u/jthomas in q/2026q2
+t/2407 Implement Spent Fuel Pool logic & specs for p/security assigned to u/jlopez2 in q/2026q2
+t/2408 Review Pressure Vessel logic & specs for p/core assigned to u/jmartinez2 in q/2026q3
+t/2409 Construct Radiation Sensor logic & specs for p/security assigned to u/jgarcia in q/2026q2
+t/2410 Document Access Control Gate logic & specs for p/cooling assigned to u/jthomas2 in q/2026q4
+t/2411 Calibrate Cooling Pump logic & specs for p/civil assigned to u/ljones in q/2026q3
+t/2412 Calibrate Ventilation Shaft logic & specs for p/core assigned to u/ejones in q/2026q2
+t/2413 Review Ventilation Shaft logic & specs for p/cooling assigned to u/dmartinez in q/2026q3
+t/2414 Audit Graphite Moderator logic & specs for p/security assigned to u/cjackson in q/2026q3
+t/2415 Inspect Turbine Valve logic & specs for p/safety assigned to u/chernandez in q/2026q3
+t/2416 Construct Ventilation Shaft logic & specs for p/security assigned to u/lbrown in q/2026q2
+t/2417 Document Radiation Sensor logic & specs for p/core assigned to u/jmiller2 in q/2026q3
+t/2418 Construct Fire Suppression System logic & specs for p/safety assigned to u/jgonzalez2 in q/2026q3
+t/2419 Document Emergency Diesel Generator logic & specs for p/control assigned to u/jmartinez in q/2026q2
+t/2420 Audit Containment Dome logic & specs for p/core assigned to u/ljohnson in q/2026q3
+t/2421 Calibrate Backup Battery Bank logic & specs for p/safety assigned to u/jthomas in q/2026q3
+t/2422 Document Containment Dome logic & specs for p/cooling assigned to u/lbrown2 in q/2026q4
+t/2423 Calibrate Perimeter Fence logic & specs for p/control assigned to u/tjones in q/2026q2
+t/2424 Audit Coolant Filter logic & specs for p/control assigned to u/lrodriguez in q/2026q3
+t/2425 Implement Cooling Pump logic & specs for p/security assigned to u/manderson in q/2026q4
+t/2426 Calibrate Coolant Filter logic & specs for p/cooling assigned to u/jgonzalez in q/2026q2
+t/2427 Inspect Pressure Vessel logic & specs for p/core assigned to u/mwilliams in q/2026q2
+t/2428 Document SCADA Interface logic & specs for p/cooling assigned to u/jbrown in q/2026q3
+t/2429 Inspect Steam Generator logic & specs for p/security assigned to u/chernandez in q/2026q4
+t/2430 Document Control Room Display logic & specs for p/security assigned to u/dmartinez in q/2026q4
+t/2431 Design Fire Suppression System logic & specs for p/control assigned to u/jjackson in q/2026q3
+t/2432 Inspect Graphite Moderator logic & specs for p/cooling assigned to u/kmartinez in q/2026q4
+t/2433 Test Pressure Vessel logic & specs for p/security assigned to u/mjones in q/2026q2
+t/2434 Calibrate Steam Generator logic & specs for p/civil assigned to u/mmartin in q/2026q3
+t/2435 Deploy Turbine Valve logic & specs for p/core assigned to u/jgonzalez2 in q/2026q2
+t/2436 Implement Graphite Moderator logic & specs for p/control assigned to u/wjohnson in q/2026q4
+t/2437 Audit Fire Suppression System logic & specs for p/civil assigned to u/ljones in q/2026q2
+t/2438 Construct SCADA Interface logic & specs for p/core assigned to u/ejones in q/2026q3
+t/2439 Design Graphite Moderator logic & specs for p/security assigned to u/mjones in q/2026q4
+t/2440 Test Control Rod Actuator logic & specs for p/cooling assigned to u/ejones in q/2026q2
+t/2441 Inspect Backup Battery Bank logic & specs for p/safety assigned to u/dmartinez in q/2026q3
+t/2442 Refactor Access Control Gate logic & specs for p/security assigned to u/cjackson in q/2026q2
+t/2443 Inspect Emergency Diesel Generator logic & specs for p/security assigned to u/rwilliams in q/2026q3
+t/2444 Audit Turbine Valve logic & specs for p/control assigned to u/cmiller in q/2026q2
+t/2445 Audit Radiation Sensor logic & specs for p/civil assigned to u/tanderson in q/2026q3
+t/2446 Document Heat Exchanger logic & specs for p/civil assigned to u/wjohnson2 in q/2026q3
+t/2447 Construct Control Rod Actuator logic & specs for p/cooling assigned to u/jbrown in q/2026q3
+t/2448 Calibrate Emergency Diesel Generator logic & specs for p/cooling assigned to u/lbrown2 in q/2026q4
+t/2449 Construct Containment Dome logic & specs for p/cooling assigned to u/jmartinez in q/2026q2
+t/2450 Implement Radiation Sensor logic & specs for p/security assigned to u/bmoore in q/2026q3
+t/2451 Inspect Coolant Filter logic & specs for p/security assigned to u/ljohnson in q/2026q4
+t/2452 Audit SCADA Interface logic & specs for p/core assigned to u/wjohnson2 in q/2026q3
+t/2453 Inspect Coolant Filter logic & specs for p/security assigned to u/bmoore in q/2026q3
+t/2454 Implement Coolant Filter logic & specs for p/cooling assigned to u/jlopez2 in q/2026q2
+t/2455 Implement Heat Exchanger logic & specs for p/security assigned to u/dmartinez in q/2026q2
+t/2456 Construct SCADA Interface logic & specs for p/civil assigned to u/jmiller in q/2026q3
+t/2457 Implement Access Control Gate logic & specs for p/security assigned to u/wbrown in q/2026q2
+t/2458 Audit Pressure Vessel logic & specs for p/cooling assigned to u/sjackson in q/2026q3
+t/2459 Document Radiation Sensor logic & specs for p/control assigned to u/cmiller in q/2026q3
+t/2460 Implement Perimeter Fence logic & specs for p/core assigned to u/bmoore in q/2026q4
+t/2461 Implement Cooling Pump logic & specs for p/cooling assigned to u/jmiller in q/2026q2
+t/2462 Review Backup Battery Bank logic & specs for p/civil assigned to u/kmoore in q/2026q3
+t/2463 Document Spent Fuel Pool logic & specs for p/security assigned to u/jthomas2 in q/2026q4
+t/2464 Inspect Access Control Gate logic & specs for p/cooling assigned to u/jthomas2 in q/2026q3
+t/2465 Review Ventilation Shaft logic & specs for p/control assigned to u/wjohnson2 in q/2026q3
+t/2466 Document Backup Battery Bank logic & specs for p/safety assigned to u/jthomas in q/2026q4
+t/2467 Refactor Radiation Sensor logic & specs for p/civil assigned to u/ejones in q/2026q2
+t/2468 Implement Coolant Filter logic & specs for p/control assigned to u/kmoore in q/2026q4
+t/2469 Design Perimeter Fence logic & specs for p/control assigned to u/emartinez in q/2026q3
+t/2470 Document Control Room Display logic & specs for p/core assigned to u/mjones in q/2026q2
+t/2471 Deploy Radiation Sensor logic & specs for p/security assigned to u/ejones in q/2026q4
+t/2472 Document Control Rod Actuator logic & specs for p/safety assigned to u/jgonzalez2 in q/2026q4
+t/2473 Deploy Control Room Display logic & specs for p/civil assigned to u/jthomas2 in q/2026q2
+t/2474 Construct Graphite Moderator logic & specs for p/cooling assigned to u/jthomas2 in q/2026q3
+t/2475 Deploy Emergency Diesel Generator logic & specs for p/cooling assigned to u/jbrown in q/2026q4
+t/2476 Audit Steam Generator logic & specs for p/safety assigned to u/jlopez2 in q/2026q4
+t/2477 Review Spent Fuel Pool logic & specs for p/safety assigned to u/jthomas2 in q/2026q2
+t/2478 Deploy Control Rod Actuator logic & specs for p/safety assigned to u/jthomas in q/2026q2
+t/2479 Test Containment Dome logic & specs for p/security assigned to u/jgarcia2 in q/2026q4
+t/2480 Test Radiation Sensor logic & specs for p/safety assigned to u/emartinez in q/2026q2
+t/2481 Refactor Ventilation Shaft logic & specs for p/cooling assigned to u/bmoore in q/2026q4
+t/2482 Test Emergency Diesel Generator logic & specs for p/core assigned to u/rwilliams in q/2026q2
+t/2483 Audit Cooling Pump logic & specs for p/civil assigned to u/mwilson in q/2026q4
+t/2484 Test Fire Suppression System logic & specs for p/cooling assigned to u/jthomas in q/2026q4
+t/2485 Test Spent Fuel Pool logic & specs for p/safety assigned to u/jmiller in q/2026q4
+t/2486 Test Pressure Vessel logic & specs for p/civil assigned to u/mjones in q/2026q4
+t/2487 Document Heat Exchanger logic & specs for p/core assigned to u/jthomas in q/2026q3
+t/2488 Review Coolant Filter logic & specs for p/civil assigned to u/lbrown in q/2026q2
+t/2489 Inspect Spent Fuel Pool logic & specs for p/security assigned to u/jgonzalez2 in q/2026q2
+t/2490 Calibrate SCADA Interface logic & specs for p/core assigned to u/jgonzalez in q/2026q2
+t/2491 Inspect Perimeter Fence logic & specs for p/core assigned to u/jmoore in q/2026q2
+t/2492 Test Radiation Sensor logic & specs for p/safety assigned to u/jbrown in q/2026q2
+t/2493 Calibrate Pressure Vessel logic & specs for p/security assigned to u/jmartinez2 in q/2026q3
+t/2494 Design Ventilation Shaft logic & specs for p/control assigned to u/dmartinez in q/2026q2
+t/2495 Document Containment Dome logic & specs for p/core assigned to u/emartinez in q/2026q4
+t/2496 Design Heat Exchanger logic & specs for p/cooling assigned to u/tjones2 in q/2026q4
+t/2497 Deploy Access Control Gate logic & specs for p/security assigned to u/jgonzalez2 in q/2026q3
+t/2498 Implement Control Rod Actuator logic & specs for p/cooling assigned to u/kmartinez in q/2026q2
+t/2499 Design Steam Generator logic & specs for p/cooling assigned to u/jlopez2 in q/2026q3
+t/2500 Review Backup Battery Bank logic & specs for p/safety assigned to u/jthomas in q/2026q4
+b/5001 Auth failure in Emergency Diesel Generator found in p/civil (investigating: u/wjohnson2)
+b/5002 Leak in Control Room Display found in p/safety (investigating: u/dmartinez)
+b/5003 Misalignment of Control Room Display found in p/cooling (investigating: u/cjackson)
+b/5004 Cracks found in Graphite Moderator found in p/control (investigating: u/wbrown)
+b/5005 Auth failure in Coolant Filter found in p/civil (investigating: u/cjackson)
+b/5006 Signal noise in Spent Fuel Pool found in p/cooling (investigating: u/klopez)
+b/5007 Corrosion detected on Control Rod Actuator found in p/security (investigating: u/ljohnson)
+b/5008 Auth failure in SCADA Interface found in p/core (investigating: u/emartinez)
+b/5009 Auth failure in Containment Dome found in p/cooling (investigating: u/tanderson)
+b/5010 Misalignment of Graphite Moderator found in p/control (investigating: u/cjackson)
+b/5011 Misalignment of Emergency Diesel Generator found in p/safety (investigating: u/jmiller2)
+b/5012 Corrosion detected on Fire Suppression System found in p/safety (investigating: u/klopez)
+b/5013 Misalignment of Ventilation Shaft found in p/cooling (investigating: u/mjones)
+b/5014 Signal noise in Pressure Vessel found in p/safety (investigating: u/dmartinez)
+b/5015 Leak in Perimeter Fence found in p/control (investigating: u/dmartinez)
+b/5016 Unexpected latency in Heat Exchanger found in p/core (investigating: u/bmoore)
+b/5017 Corrosion detected on Spent Fuel Pool found in p/cooling (investigating: u/jmartinez2)
+b/5018 Overheating of Ventilation Shaft found in p/cooling (investigating: u/mwilliams)
+b/5019 Misalignment of Access Control Gate found in p/control (investigating: u/jrodriguez)
+b/5020 Misalignment of Steam Generator found in p/security (investigating: u/cmiller)
+b/5021 Corrosion detected on Access Control Gate found in p/safety (investigating: u/tjones2)
+b/5022 Signal noise in Cooling Pump found in p/core (investigating: u/wjohnson)
+b/5023 Cracks found in Radiation Sensor found in p/core (investigating: u/emartinez)
+b/5024 Overheating of Control Room Display found in p/security (investigating: u/sjackson)
+b/5025 Crash in Emergency Diesel Generator found in p/core (investigating: u/ejones)
+b/5026 Misalignment of Coolant Filter found in p/civil (investigating: u/sjackson)
+b/5027 Corrosion detected on Radiation Sensor found in p/cooling (investigating: u/wjohnson2)
+b/5028 Leak in Graphite Moderator found in p/control (investigating: u/emartinez)
+b/5029 Crash in Emergency Diesel Generator found in p/civil (investigating: u/staylor)
+b/5030 Misalignment of Emergency Diesel Generator found in p/core (investigating: u/lbrown2)
+b/5031 Leak in Control Rod Actuator found in p/control (investigating: u/lrodriguez)
+b/5032 Corrosion detected on Coolant Filter found in p/control (investigating: u/mwilson)
+b/5033 Signal noise in Pressure Vessel found in p/cooling (investigating: u/jthomas2)
+b/5034 Misalignment of Turbine Valve found in p/safety (investigating: u/wmiller)
+b/5035 Unexpected latency in Pressure Vessel found in p/security (investigating: u/chernandez)
+b/5036 Misalignment of Access Control Gate found in p/civil (investigating: u/bmoore)
+b/5037 Corrosion detected on Heat Exchanger found in p/core (investigating: u/jlopez2)
+b/5038 Auth failure in Steam Generator found in p/civil (investigating: u/jthomas2)
+b/5039 Unexpected latency in Emergency Diesel Generator found in p/civil (investigating: u/bmoore)
+b/5040 Leak in SCADA Interface found in p/security (investigating: u/emartinez)
+b/5041 Cracks found in Turbine Valve found in p/security (investigating: u/kmartinez)
+b/5042 Signal noise in Backup Battery Bank found in p/core (investigating: u/mjones)
+b/5043 Leak in Radiation Sensor found in p/civil (investigating: u/manderson)
+b/5044 Corrosion detected on Containment Dome found in p/civil (investigating: u/lrodriguez)
+b/5045 Cracks found in Seismic Dampener found in p/safety (investigating: u/mwilliams)
+b/5046 Misalignment of Seismic Dampener found in p/core (investigating: u/mwilliams)
+b/5047 Signal noise in Fire Suppression System found in p/control (investigating: u/lbrown)
+b/5048 Cracks found in Turbine Valve found in p/control (investigating: u/jgonzalez2)
+b/5049 Signal noise in Heat Exchanger found in p/cooling (investigating: u/jthomas2)
+b/5050 Crash in Fire Suppression System found in p/core (investigating: u/wjohnson2)
+b/5051 Cracks found in Steam Generator found in p/core (investigating: u/dmartinez)
+b/5052 Auth failure in Spent Fuel Pool found in p/control (investigating: u/wjohnson2)
+b/5053 Unexpected latency in Graphite Moderator found in p/cooling (investigating: u/jthomas)
+b/5054 Leak in Cooling Pump found in p/security (investigating: u/rsmith)
+b/5055 Unexpected latency in Access Control Gate found in p/safety (investigating: u/ljohnson)
+b/5056 Misalignment of Heat Exchanger found in p/cooling (investigating: u/cmiller)
+b/5057 Corrosion detected on Steam Generator found in p/security (investigating: u/rsmith)
+b/5058 Leak in Graphite Moderator found in p/core (investigating: u/jlopez)
+b/5059 Auth failure in Containment Dome found in p/security (investigating: u/lbrown)
+b/5060 Unexpected latency in Radiation Sensor found in p/security (investigating: u/ljohnson)
+b/5061 Corrosion detected on Radiation Sensor found in p/control (investigating: u/wbrown)
+b/5062 Cracks found in Spent Fuel Pool found in p/core (investigating: u/ljones)
+b/5063 Leak in Heat Exchanger found in p/civil (investigating: u/wbrown)
+b/5064 Unexpected latency in Pressure Vessel found in p/civil (investigating: u/lrodriguez)
+b/5065 Overheating of Emergency Diesel Generator found in p/safety (investigating: u/jlopez2)
+b/5066 Crash in Ventilation Shaft found in p/security (investigating: u/jgonzalez)
+b/5067 Misalignment of Access Control Gate found in p/core (investigating: u/jbrown)
+b/5068 Unexpected latency in Fire Suppression System found in p/control (investigating: u/staylor)
+b/5069 Overheating of Spent Fuel Pool found in p/cooling (investigating: u/emartinez)
+b/5070 Overheating of Emergency Diesel Generator found in p/cooling (investigating: u/jjackson)
+b/5071 Unexpected latency in Control Rod Actuator found in p/cooling (investigating: u/kmartinez)
+b/5072 Misalignment of Access Control Gate found in p/safety (investigating: u/mjones)
+b/5073 Overheating of Ventilation Shaft found in p/core (investigating: u/jgonzalez)
+b/5074 Leak in Backup Battery Bank found in p/cooling (investigating: u/dmartinez)
+b/5075 Overheating of SCADA Interface found in p/control (investigating: u/jmartinez2)
+b/5076 Corrosion detected on Perimeter Fence found in p/security (investigating: u/wjohnson2)
+b/5077 Overheating of Perimeter Fence found in p/security (investigating: u/jjackson)
+b/5078 Leak in Spent Fuel Pool found in p/security (investigating: u/rwilliams)
+b/5079 Leak in Ventilation Shaft found in p/core (investigating: u/sjackson)
+b/5080 Crash in Access Control Gate found in p/security (investigating: u/emartinez)
+b/5081 Signal noise in Access Control Gate found in p/core (investigating: u/jjackson)
+b/5082 Crash in Perimeter Fence found in p/control (investigating: u/landerson)
+b/5083 Misalignment of Graphite Moderator found in p/safety (investigating: u/wbrown)
+b/5084 Overheating of Graphite Moderator found in p/civil (investigating: u/kmoore)
+b/5085 Unexpected latency in Control Rod Actuator found in p/core (investigating: u/jgarcia)
+b/5086 Cracks found in SCADA Interface found in p/control (investigating: u/jlopez2)
+b/5087 Misalignment of Cooling Pump found in p/security (investigating: u/tanderson)
+b/5088 Leak in Steam Generator found in p/security (investigating: u/jmiller)
+b/5089 Misalignment of Control Room Display found in p/core (investigating: u/wjohnson)
+b/5090 Overheating of Turbine Valve found in p/control (investigating: u/jlopez2)
+b/5091 Overheating of Control Rod Actuator found in p/safety (investigating: u/manderson)
+b/5092 Unexpected latency in Turbine Valve found in p/civil (investigating: u/rsmith)
+b/5093 Cracks found in Graphite Moderator found in p/control (investigating: u/jgarcia)
+b/5094 Corrosion detected on Seismic Dampener found in p/civil (investigating: u/dmartinez)
+b/5095 Auth failure in Spent Fuel Pool found in p/civil (investigating: u/jjackson)
+b/5096 Overheating of Steam Generator found in p/cooling (investigating: u/jmiller2)
+b/5097 Misalignment of Fire Suppression System found in p/control (investigating: u/wmiller)
+b/5098 Corrosion detected on Turbine Valve found in p/core (investigating: u/jgonzalez)
+b/5099 Crash in Control Room Display found in p/civil (investigating: u/mwilson)
+b/5100 Overheating of SCADA Interface found in p/civil (investigating: u/lbrown)
+b/5101 Corrosion detected on Spent Fuel Pool found in p/security (investigating: u/staylor)
+b/5102 Signal noise in Fire Suppression System found in p/safety (investigating: u/rsmith)
+b/5103 Signal noise in Steam Generator found in p/safety (investigating: u/ejones)
+b/5104 Cracks found in Ventilation Shaft found in p/safety (investigating: u/dmartinez)
+b/5105 Overheating of Containment Dome found in p/security (investigating: u/wjohnson)
+b/5106 Misalignment of Steam Generator found in p/cooling (investigating: u/jgarcia2)
+b/5107 Signal noise in Seismic Dampener found in p/cooling (investigating: u/wjohnson)
+b/5108 Corrosion detected on Ventilation Shaft found in p/security (investigating: u/tjones2)
+b/5109 Corrosion detected on Pressure Vessel found in p/control (investigating: u/ljones)
+b/5110 Signal noise in Backup Battery Bank found in p/core (investigating: u/wmiller)
+b/5111 Misalignment of Heat Exchanger found in p/safety (investigating: u/rwilliams)
+b/5112 Misalignment of Steam Generator found in p/control (investigating: u/kmartinez)
+b/5113 Misalignment of SCADA Interface found in p/cooling (investigating: u/jmoore)
+b/5114 Crash in Coolant Filter found in p/civil (investigating: u/ljohnson)
+b/5115 Crash in Heat Exchanger found in p/cooling (investigating: u/cjackson)
+b/5116 Misalignment of Ventilation Shaft found in p/control (investigating: u/sjackson)
+b/5117 Auth failure in Control Rod Actuator found in p/security (investigating: u/manderson)
+b/5118 Overheating of SCADA Interface found in p/control (investigating: u/cjackson)
+b/5119 Leak in SCADA Interface found in p/safety (investigating: u/wmiller)
+b/5120 Cracks found in Coolant Filter found in p/control (investigating: u/mwilliams)
+b/5121 Overheating of Access Control Gate found in p/safety (investigating: u/tjones)
+b/5122 Auth failure in Control Rod Actuator found in p/control (investigating: u/chernandez)
+b/5123 Misalignment of Heat Exchanger found in p/control (investigating: u/cjackson)
+b/5124 Misalignment of Control Rod Actuator found in p/core (investigating: u/kjohnson)
+b/5125 Misalignment of Access Control Gate found in p/security (investigating: u/jmiller)
+b/5126 Signal noise in Emergency Diesel Generator found in p/control (investigating: u/jmiller)
+b/5127 Unexpected latency in Perimeter Fence found in p/control (investigating: u/ljones)
+b/5128 Auth failure in Control Room Display found in p/security (investigating: u/staylor)
+b/5129 Crash in Fire Suppression System found in p/cooling (investigating: u/dmartinez)
+b/5130 Leak in Cooling Pump found in p/cooling (investigating: u/jrodriguez)
+b/5131 Misalignment of Graphite Moderator found in p/core (investigating: u/kmoore)
+b/5132 Misalignment of Perimeter Fence found in p/security (investigating: u/chernandez)
+b/5133 Corrosion detected on Backup Battery Bank found in p/safety (investigating: u/dmartinez)
+b/5134 Auth failure in Coolant Filter found in p/control (investigating: u/cjackson)
+b/5135 Crash in Emergency Diesel Generator found in p/cooling (investigating: u/ljohnson)
+b/5136 Leak in Control Rod Actuator found in p/civil (investigating: u/ljohnson)
+b/5137 Misalignment of Pressure Vessel found in p/civil (investigating: u/jgarcia)
+b/5138 Unexpected latency in Emergency Diesel Generator found in p/core (investigating: u/jlopez2)
+b/5139 Misalignment of Backup Battery Bank found in p/core (investigating: u/jmiller)
+b/5140 Auth failure in Containment Dome found in p/security (investigating: u/wbrown)
+b/5141 Auth failure in Spent Fuel Pool found in p/civil (investigating: u/ejones)
+b/5142 Misalignment of Containment Dome found in p/civil (investigating: u/jbrown)
+b/5143 Corrosion detected on Pressure Vessel found in p/control (investigating: u/wjohnson2)
+b/5144 Misalignment of Ventilation Shaft found in p/control (investigating: u/jlopez)
+b/5145 Unexpected latency in Ventilation Shaft found in p/cooling (investigating: u/jbrown)
+b/5146 Signal noise in SCADA Interface found in p/safety (investigating: u/jthomas)
+b/5147 Corrosion detected on Graphite Moderator found in p/safety (investigating: u/mwilson)
+b/5148 Corrosion detected on Ventilation Shaft found in p/cooling (investigating: u/staylor)
+b/5149 Corrosion detected on Heat Exchanger found in p/civil (investigating: u/jgonzalez2)
+b/5150 Cracks found in Steam Generator found in p/security (investigating: u/lbrown2)
+b/5151 Signal noise in Control Rod Actuator found in p/security (investigating: u/ljones)
+b/5152 Misalignment of Heat Exchanger found in p/core (investigating: u/wbrown)
+b/5153 Auth failure in Emergency Diesel Generator found in p/cooling (investigating: u/wmiller)
+b/5154 Auth failure in SCADA Interface found in p/control (investigating: u/sjackson)
+b/5155 Signal noise in Emergency Diesel Generator found in p/cooling (investigating: u/tanderson)
+b/5156 Signal noise in Seismic Dampener found in p/cooling (investigating: u/landerson)
+b/5157 Corrosion detected on Containment Dome found in p/control (investigating: u/jlopez2)
+b/5158 Corrosion detected on Coolant Filter found in p/core (investigating: u/wjohnson)
+b/5159 Cracks found in Seismic Dampener found in p/safety (investigating: u/jgonzalez)
+b/5160 Cracks found in Backup Battery Bank found in p/security (investigating: u/mwilson)
+b/5161 Leak in Control Rod Actuator found in p/core (investigating: u/ljones)
+b/5162 Crash in Fire Suppression System found in p/safety (investigating: u/wjohnson2)
+b/5163 Overheating of Turbine Valve found in p/cooling (investigating: u/cmiller)
+b/5164 Auth failure in SCADA Interface found in p/cooling (investigating: u/cmiller)
+b/5165 Unexpected latency in Perimeter Fence found in p/control (investigating: u/jmartinez2)
+b/5166 Cracks found in Containment Dome found in p/core (investigating: u/mwilliams)
+b/5167 Misalignment of Fire Suppression System found in p/civil (investigating: u/jlopez2)
+b/5168 Unexpected latency in Seismic Dampener found in p/control (investigating: u/jlopez2)
+b/5169 Misalignment of Access Control Gate found in p/control (investigating: u/jmoore)
+b/5170 Unexpected latency in Seismic Dampener found in p/security (investigating: u/wjohnson)
+b/5171 Auth failure in Control Rod Actuator found in p/safety (investigating: u/jgarcia2)
+b/5172 Misalignment of Perimeter Fence found in p/control (investigating: u/jjackson)
+b/5173 Cracks found in Turbine Valve found in p/security (investigating: u/jthomas)
+b/5174 Overheating of Steam Generator found in p/core (investigating: u/tanderson)
+b/5175 Leak in Control Room Display found in p/control (investigating: u/tjones)
+b/5176 Cracks found in Backup Battery Bank found in p/security (investigating: u/staylor)
+b/5177 Auth failure in Spent Fuel Pool found in p/cooling (investigating: u/klopez)
+b/5178 Crash in Steam Generator found in p/control (investigating: u/mmartin)
+b/5179 Unexpected latency in Backup Battery Bank found in p/core (investigating: u/kmartinez)
+b/5180 Auth failure in Containment Dome found in p/core (investigating: u/kmoore)
+b/5181 Unexpected latency in Heat Exchanger found in p/security (investigating: u/ljones)
+b/5182 Auth failure in Turbine Valve found in p/civil (investigating: u/tanderson)
+b/5183 Signal noise in SCADA Interface found in p/cooling (investigating: u/cjohnson)
+b/5184 Overheating of Control Rod Actuator found in p/core (investigating: u/jgarcia)
+b/5185 Crash in Backup Battery Bank found in p/core (investigating: u/tjones)
+b/5186 Signal noise in Heat Exchanger found in p/civil (investigating: u/kmoore)
+b/5187 Signal noise in Pressure Vessel found in p/core (investigating: u/wmiller)
+b/5188 Overheating of Pressure Vessel found in p/civil (investigating: u/jmiller)
+b/5189 Signal noise in SCADA Interface found in p/safety (investigating: u/klopez)
+b/5190 Auth failure in Spent Fuel Pool found in p/security (investigating: u/jmiller)
+b/5191 Signal noise in Turbine Valve found in p/core (investigating: u/jrodriguez)
+b/5192 Crash in Turbine Valve found in p/safety (investigating: u/jmartinez)
+b/5193 Unexpected latency in Access Control Gate found in p/security (investigating: u/kmoore)
+b/5194 Signal noise in SCADA Interface found in p/control (investigating: u/jmartinez2)
+b/5195 Corrosion detected on Containment Dome found in p/civil (investigating: u/ejones)
+b/5196 Auth failure in Fire Suppression System found in p/cooling (investigating: u/bmoore)
+b/5197 Corrosion detected on Fire Suppression System found in p/civil (investigating: u/chernandez)
+b/5198 Cracks found in Seismic Dampener found in p/security (investigating: u/kjohnson)
+b/5199 Cracks found in Radiation Sensor found in p/civil (investigating: u/klopez)
+b/5200 Auth failure in Control Rod Actuator found in p/core (investigating: u/rsmith)
+b/5201 Auth failure in Emergency Diesel Generator found in p/control (investigating: u/jgarcia)
+b/5202 Corrosion detected on Heat Exchanger found in p/cooling (investigating: u/klopez)
+b/5203 Cracks found in Coolant Filter found in p/core (investigating: u/cjackson)
+b/5204 Cracks found in Control Room Display found in p/safety (investigating: u/wbrown)
+b/5205 Misalignment of Backup Battery Bank found in p/core (investigating: u/staylor)
+b/5206 Leak in Containment Dome found in p/cooling (investigating: u/lrodriguez)
+b/5207 Leak in Cooling Pump found in p/core (investigating: u/jmiller2)
+b/5208 Leak in Perimeter Fence found in p/core (investigating: u/kmartinez)
+b/5209 Corrosion detected on Heat Exchanger found in p/security (investigating: u/jgarcia)
+b/5210 Corrosion detected on SCADA Interface found in p/control (investigating: u/emartinez)
+b/5211 Signal noise in Spent Fuel Pool found in p/core (investigating: u/jthomas)
+b/5212 Signal noise in Radiation Sensor found in p/cooling (investigating: u/wmiller)
+b/5213 Misalignment of SCADA Interface found in p/civil (investigating: u/jthomas)
+b/5214 Misalignment of Pressure Vessel found in p/safety (investigating: u/rsmith)
+b/5215 Leak in Pressure Vessel found in p/security (investigating: u/ljohnson)
+b/5216 Auth failure in Graphite Moderator found in p/security (investigating: u/klopez)
+b/5217 Misalignment of Cooling Pump found in p/civil (investigating: u/tanderson)
+b/5218 Cracks found in SCADA Interface found in p/control (investigating: u/jgarcia)
+b/5219 Overheating of Access Control Gate found in p/security (investigating: u/dmartinez)
+b/5220 Auth failure in Control Room Display found in p/civil (investigating: u/jthomas2)
+b/5221 Cracks found in Radiation Sensor found in p/cooling (investigating: u/cmiller)
+b/5222 Auth failure in Turbine Valve found in p/safety (investigating: u/rwilliams)
+b/5223 Overheating of Turbine Valve found in p/security (investigating: u/mmartin)
+b/5224 Auth failure in Heat Exchanger found in p/control (investigating: u/mjones)
+b/5225 Unexpected latency in Steam Generator found in p/control (investigating: u/mmartin)
+b/5226 Leak in Cooling Pump found in p/civil (investigating: u/jlopez2)
+b/5227 Crash in Heat Exchanger found in p/control (investigating: u/klopez)
+b/5228 Overheating of Control Rod Actuator found in p/civil (investigating: u/jthomas2)
+b/5229 Cracks found in Emergency Diesel Generator found in p/safety (investigating: u/wjohnson2)
+b/5230 Crash in Seismic Dampener found in p/control (investigating: u/lrodriguez)
+b/5231 Unexpected latency in SCADA Interface found in p/cooling (investigating: u/kmartinez)
+b/5232 Misalignment of Perimeter Fence found in p/cooling (investigating: u/jthomas2)
+b/5233 Misalignment of Spent Fuel Pool found in p/civil (investigating: u/jmoore)
+b/5234 Misalignment of Pressure Vessel found in p/security (investigating: u/lrodriguez)
+b/5235 Cracks found in Containment Dome found in p/civil (investigating: u/emartinez)
+b/5236 Auth failure in Emergency Diesel Generator found in p/core (investigating: u/jthomas2)
+b/5237 Crash in Pressure Vessel found in p/core (investigating: u/jmoore)
+b/5238 Unexpected latency in Spent Fuel Pool found in p/civil (investigating: u/jthomas)
+b/5239 Leak in Graphite Moderator found in p/control (investigating: u/jlopez)
+b/5240 Auth failure in Perimeter Fence found in p/safety (investigating: u/manderson)
+b/5241 Unexpected latency in Control Rod Actuator found in p/cooling (investigating: u/jmartinez)
+b/5242 Cracks found in Turbine Valve found in p/cooling (investigating: u/lbrown)
+b/5243 Leak in Fire Suppression System found in p/cooling (investigating: u/kmartinez)
+b/5244 Signal noise in Steam Generator found in p/civil (investigating: u/lbrown)
+b/5245 Auth failure in Coolant Filter found in p/safety (investigating: u/klopez)
+b/5246 Leak in Seismic Dampener found in p/cooling (investigating: u/jjackson)
+b/5247 Cracks found in Cooling Pump found in p/core (investigating: u/tjones)
+b/5248 Auth failure in Radiation Sensor found in p/civil (investigating: u/jmiller)
+b/5249 Crash in Turbine Valve found in p/control (investigating: u/jmiller)
+b/5250 Signal noise in Heat Exchanger found in p/civil (investigating: u/jbrown)
+b/5251 Misalignment of Containment Dome found in p/security (investigating: u/bmoore)
+b/5252 Misalignment of Seismic Dampener found in p/safety (investigating: u/jbrown)
+b/5253 Leak in Pressure Vessel found in p/core (investigating: u/cjackson)
+b/5254 Auth failure in Emergency Diesel Generator found in p/safety (investigating: u/wmiller)
+b/5255 Auth failure in Pressure Vessel found in p/civil (investigating: u/jmartinez)
+b/5256 Crash in Heat Exchanger found in p/security (investigating: u/kjohnson)
+b/5257 Misalignment of Steam Generator found in p/control (investigating: u/jthomas)
+b/5258 Leak in SCADA Interface found in p/control (investigating: u/wbrown)
+b/5259 Leak in Heat Exchanger found in p/cooling (investigating: u/wmiller)
+b/5260 Corrosion detected on Seismic Dampener found in p/civil (investigating: u/dmartinez)
+b/5261 Leak in Seismic Dampener found in p/core (investigating: u/jmiller2)
+b/5262 Auth failure in Containment Dome found in p/security (investigating: u/wjohnson)
+b/5263 Overheating of Coolant Filter found in p/cooling (investigating: u/wjohnson)
+b/5264 Misalignment of SCADA Interface found in p/cooling (investigating: u/mmartin)
+b/5265 Auth failure in Access Control Gate found in p/core (investigating: u/mwilson)
+b/5266 Signal noise in Spent Fuel Pool found in p/safety (investigating: u/emartinez)
+b/5267 Crash in Ventilation Shaft found in p/cooling (investigating: u/kmartinez)
+b/5268 Corrosion detected on Backup Battery Bank found in p/control (investigating: u/wjohnson)
+b/5269 Crash in Backup Battery Bank found in p/core (investigating: u/wmiller)
+b/5270 Misalignment of Graphite Moderator found in p/cooling (investigating: u/klopez)
+b/5271 Signal noise in Graphite Moderator found in p/control (investigating: u/jbrown)
+b/5272 Corrosion detected on Coolant Filter found in p/control (investigating: u/tjones)
+b/5273 Unexpected latency in Turbine Valve found in p/safety (investigating: u/cjohnson)
+b/5274 Leak in Spent Fuel Pool found in p/security (investigating: u/mmartin)
+b/5275 Crash in Access Control Gate found in p/control (investigating: u/lbrown2)
+b/5276 Crash in Turbine Valve found in p/cooling (investigating: u/jthomas2)
+b/5277 Auth failure in Heat Exchanger found in p/safety (investigating: u/cjohnson)
+b/5278 Misalignment of Backup Battery Bank found in p/civil (investigating: u/wbrown)
+b/5279 Signal noise in Cooling Pump found in p/civil (investigating: u/jrodriguez)
+b/5280 Corrosion detected on Emergency Diesel Generator found in p/cooling (investigating: u/klopez)
+b/5281 Auth failure in Heat Exchanger found in p/control (investigating: u/jmartinez)
+b/5282 Misalignment of Control Rod Actuator found in p/control (investigating: u/mwilson)
+b/5283 Corrosion detected on Radiation Sensor found in p/security (investigating: u/chernandez)
+b/5284 Auth failure in Perimeter Fence found in p/cooling (investigating: u/cmiller)
+b/5285 Corrosion detected on Control Rod Actuator found in p/control (investigating: u/staylor)
+b/5286 Leak in Access Control Gate found in p/core (investigating: u/wbrown)
+b/5287 Cracks found in Containment Dome found in p/safety (investigating: u/mwilson)
+b/5288 Leak in Seismic Dampener found in p/civil (investigating: u/kjohnson)
+b/5289 Overheating of Emergency Diesel Generator found in p/civil (investigating: u/rsmith)
+b/5290 Unexpected latency in Access Control Gate found in p/safety (investigating: u/emartinez)
+b/5291 Corrosion detected on Fire Suppression System found in p/safety (investigating: u/wjohnson)
+b/5292 Signal noise in Coolant Filter found in p/control (investigating: u/lbrown2)
+b/5293 Overheating of Heat Exchanger found in p/security (investigating: u/kmartinez)
+b/5294 Corrosion detected on Ventilation Shaft found in p/safety (investigating: u/mmartin)
+b/5295 Signal noise in Graphite Moderator found in p/civil (investigating: u/jmiller)
+b/5296 Unexpected latency in Graphite Moderator found in p/control (investigating: u/emartinez)
+b/5297 Auth failure in Access Control Gate found in p/core (investigating: u/dmartinez)
+b/5298 Misalignment of SCADA Interface found in p/safety (investigating: u/jgarcia)
+b/5299 Signal noise in Control Room Display found in p/cooling (investigating: u/rsmith)
+b/5300 Crash in Radiation Sensor found in p/control (investigating: u/jmartinez)
+b/5301 Corrosion detected on Ventilation Shaft found in p/core (investigating: u/bmoore)
+b/5302 Corrosion detected on Steam Generator found in p/core (investigating: u/kmoore)
+b/5303 Misalignment of Control Rod Actuator found in p/safety (investigating: u/jgonzalez)
+b/5304 Overheating of SCADA Interface found in p/safety (investigating: u/jgonzalez2)
+b/5305 Crash in Steam Generator found in p/civil (investigating: u/wbrown)
+b/5306 Signal noise in Cooling Pump found in p/cooling (investigating: u/landerson)
+b/5307 Misalignment of Ventilation Shaft found in p/security (investigating: u/wjohnson2)
+b/5308 Signal noise in Control Room Display found in p/security (investigating: u/tanderson)
+b/5309 Overheating of Containment Dome found in p/civil (investigating: u/jlopez)
+b/5310 Overheating of Radiation Sensor found in p/cooling (investigating: u/jjackson)
+b/5311 Cracks found in Control Rod Actuator found in p/security (investigating: u/ejones)
+b/5312 Leak in Access Control Gate found in p/civil (investigating: u/mwilson)
+b/5313 Leak in Turbine Valve found in p/civil (investigating: u/jmiller)
+b/5314 Crash in Seismic Dampener found in p/safety (investigating: u/dmartinez)
+b/5315 Misalignment of Heat Exchanger found in p/security (investigating: u/wbrown)
+b/5316 Misalignment of Pressure Vessel found in p/core (investigating: u/mwilson)
+b/5317 Auth failure in Access Control Gate found in p/cooling (investigating: u/kmartinez)
+b/5318 Misalignment of Coolant Filter found in p/safety (investigating: u/bmoore)
+b/5319 Signal noise in Ventilation Shaft found in p/civil (investigating: u/mmartin)
+b/5320 Cracks found in Steam Generator found in p/security (investigating: u/ljones)
+b/5321 Signal noise in Control Room Display found in p/cooling (investigating: u/wjohnson)
+b/5322 Leak in Coolant Filter found in p/safety (investigating: u/sjackson)
+b/5323 Cracks found in Turbine Valve found in p/civil (investigating: u/dmartinez)
+b/5324 Crash in SCADA Interface found in p/core (investigating: u/emartinez)
+b/5325 Crash in Turbine Valve found in p/control (investigating: u/rsmith)
+b/5326 Leak in Control Room Display found in p/security (investigating: u/jgarcia2)
+b/5327 Misalignment of Turbine Valve found in p/safety (investigating: u/cmiller)
+b/5328 Unexpected latency in Pressure Vessel found in p/safety (investigating: u/jmartinez2)
+b/5329 Unexpected latency in Graphite Moderator found in p/control (investigating: u/cjohnson)
+b/5330 Unexpected latency in Ventilation Shaft found in p/safety (investigating: u/jthomas)
+b/5331 Overheating of SCADA Interface found in p/cooling (investigating: u/jgarcia2)
+b/5332 Crash in Access Control Gate found in p/security (investigating: u/jgarcia)
+b/5333 Leak in Containment Dome found in p/civil (investigating: u/rwilliams)
+b/5334 Cracks found in Perimeter Fence found in p/cooling (investigating: u/jgonzalez2)
+b/5335 Unexpected latency in Access Control Gate found in p/security (investigating: u/manderson)
+b/5336 Corrosion detected on Seismic Dampener found in p/core (investigating: u/rwilliams)
+b/5337 Misalignment of Spent Fuel Pool found in p/civil (investigating: u/mwilson)
+b/5338 Auth failure in Radiation Sensor found in p/safety (investigating: u/mwilliams)
+b/5339 Misalignment of Steam Generator found in p/security (investigating: u/jmiller)
+b/5340 Overheating of Containment Dome found in p/core (investigating: u/wmiller)
+b/5341 Leak in Emergency Diesel Generator found in p/security (investigating: u/dmartinez)
+b/5342 Leak in Access Control Gate found in p/security (investigating: u/jthomas)
+b/5343 Misalignment of Seismic Dampener found in p/civil (investigating: u/wjohnson)
+b/5344 Auth failure in Control Rod Actuator found in p/security (investigating: u/landerson)
+b/5345 Signal noise in Spent Fuel Pool found in p/security (investigating: u/tjones)
+b/5346 Cracks found in Perimeter Fence found in p/safety (investigating: u/rwilliams)
+b/5347 Misalignment of Control Room Display found in p/core (investigating: u/jrodriguez)
+b/5348 Misalignment of Heat Exchanger found in p/safety (investigating: u/ljohnson)
+b/5349 Crash in Coolant Filter found in p/security (investigating: u/jmiller)
+b/5350 Signal noise in Emergency Diesel Generator found in p/control (investigating: u/wjohnson2)
+b/5351 Overheating of Control Rod Actuator found in p/civil (investigating: u/jthomas)
+b/5352 Signal noise in Containment Dome found in p/core (investigating: u/jmiller2)
+b/5353 Signal noise in Control Rod Actuator found in p/safety (investigating: u/ejones)
+b/5354 Unexpected latency in Control Room Display found in p/security (investigating: u/ejones)
+b/5355 Corrosion detected on Fire Suppression System found in p/security (investigating: u/wmiller)
+b/5356 Auth failure in Pressure Vessel found in p/cooling (investigating: u/lrodriguez)
+b/5357 Leak in Spent Fuel Pool found in p/civil (investigating: u/rwilliams)
+b/5358 Cracks found in Heat Exchanger found in p/core (investigating: u/lrodriguez)
+b/5359 Unexpected latency in Fire Suppression System found in p/security (investigating: u/emartinez)
+b/5360 Crash in Ventilation Shaft found in p/safety (investigating: u/wmiller)
+b/5361 Unexpected latency in Pressure Vessel found in p/core (investigating: u/klopez)
+b/5362 Auth failure in Steam Generator found in p/control (investigating: u/jbrown)
+b/5363 Auth failure in Spent Fuel Pool found in p/civil (investigating: u/jthomas2)
+b/5364 Corrosion detected on Backup Battery Bank found in p/control (investigating: u/wmiller)
+b/5365 Auth failure in Access Control Gate found in p/safety (investigating: u/rwilliams)
+b/5366 Crash in Emergency Diesel Generator found in p/civil (investigating: u/jthomas)
+b/5367 Corrosion detected on Control Room Display found in p/security (investigating: u/kjohnson)
+b/5368 Corrosion detected on Control Rod Actuator found in p/cooling (investigating: u/ejones)
+b/5369 Overheating of Ventilation Shaft found in p/cooling (investigating: u/cjackson)
+b/5370 Signal noise in Emergency Diesel Generator found in p/safety (investigating: u/tjones2)
+b/5371 Corrosion detected on Seismic Dampener found in p/core (investigating: u/jmartinez2)
+b/5372 Corrosion detected on Containment Dome found in p/core (investigating: u/klopez)
+b/5373 Crash in Control Rod Actuator found in p/security (investigating: u/ejones)
+b/5374 Signal noise in Turbine Valve found in p/cooling (investigating: u/klopez)
+b/5375 Unexpected latency in Backup Battery Bank found in p/security (investigating: u/jgarcia)
+b/5376 Leak in Spent Fuel Pool found in p/control (investigating: u/wjohnson)
+b/5377 Auth failure in Turbine Valve found in p/civil (investigating: u/cjackson)
+b/5378 Auth failure in Ventilation Shaft found in p/control (investigating: u/mmartin)
+b/5379 Unexpected latency in Spent Fuel Pool found in p/civil (investigating: u/lbrown2)
+b/5380 Misalignment of Fire Suppression System found in p/civil (investigating: u/kjohnson)
+b/5381 Overheating of Graphite Moderator found in p/security (investigating: u/wjohnson2)
+b/5382 Crash in Seismic Dampener found in p/security (investigating: u/jmiller)
+b/5383 Unexpected latency in Seismic Dampener found in p/safety (investigating: u/jrodriguez)
+b/5384 Unexpected latency in Access Control Gate found in p/security (investigating: u/jmoore)
+b/5385 Leak in Pressure Vessel found in p/safety (investigating: u/cjohnson)
+b/5386 Crash in Turbine Valve found in p/security (investigating: u/mmartin)
+b/5387 Leak in Control Rod Actuator found in p/safety (investigating: u/jthomas)
+b/5388 Misalignment of Radiation Sensor found in p/safety (investigating: u/jlopez)
+b/5389 Crash in Cooling Pump found in p/control (investigating: u/tjones2)
+b/5390 Signal noise in Coolant Filter found in p/civil (investigating: u/emartinez)
+b/5391 Overheating of Radiation Sensor found in p/cooling (investigating: u/klopez)
+b/5392 Crash in Access Control Gate found in p/civil (investigating: u/mjones)
+b/5393 Auth failure in Containment Dome found in p/core (investigating: u/tanderson)
+b/5394 Overheating of Steam Generator found in p/civil (investigating: u/klopez)
+b/5395 Crash in Fire Suppression System found in p/cooling (investigating: u/mwilliams)
+b/5396 Unexpected latency in Control Rod Actuator found in p/civil (investigating: u/jlopez2)
+b/5397 Cracks found in Control Room Display found in p/security (investigating: u/jgonzalez)
+b/5398 Cracks found in Seismic Dampener found in p/safety (investigating: u/manderson)
+b/5399 Auth failure in Fire Suppression System found in p/safety (investigating: u/cjohnson)
+b/5400 Crash in Radiation Sensor found in p/control (investigating: u/jmiller2)
