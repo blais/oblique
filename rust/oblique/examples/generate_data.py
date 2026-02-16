@@ -112,10 +112,6 @@ def generate_header():
 def generate_static_data():
     lines = []
     
-    lines.append("\n# --- Quarters ---")
-    for qid, desc in QUARTERS:
-        lines.append(f"q/{qid} {desc}")
-
     lines.append("\n# --- Components / Teams ---")
     for tid, desc in TEAMS:
         lines.append(f"p/{tid} {desc}")
@@ -129,7 +125,7 @@ def generate_static_data():
         if random.random() < 0.2 and len(USERS) > 5:
             mentor = random.choice(USERS)
             if mentor[0] != uid:
-                 mentor_text = f" (mentored by u/{mentor[0]})"
+                 mentor_text = f" (mentored by u/{mentor[0]} )"
         
         lines.append(f"u/{uid} {name} ({role}, p/{team}){mentor_text}")
         
@@ -144,11 +140,14 @@ def generate_quarter_data(quarter_idx):
     lines.append(f"\n# ==========================================")
     lines.append(f"# Planning for {qdesc}")
     lines.append(f"# ==========================================")
+    lines.append(f"q/{qid} {qdesc}")
     
     # 1. Milestones for this quarter
     q_milestones = []
     num_ms = NUM_MILESTONES // len(QUARTERS)
-    lines.append(f"\n# --- Milestones for {qid} ---")
+    
+    # Indent items under the Quarter
+    indent = "  "
     
     for i in range(num_ms):
         current_ms_id += 1
@@ -161,13 +160,13 @@ def generate_quarter_data(quarter_idx):
             prev = random.choice(generated_milestones)
             dep_text = f" (requires m/{prev})"
             
-        line = f"m/{ms_id} Final sign-off for {noun}{dep_text} in q/{qid}"
+        # No explicit "in q/{qid}" needed due to inheritance
+        line = f"{indent}m/{ms_id} Final sign-off for {noun}{dep_text}"
         lines.append(line)
         q_milestones.append(ms_id)
         generated_milestones.append(ms_id)
 
     # 2. Tasks for this quarter
-    lines.append(f"\n# --- Tasks for {qid} ---")
     num_tasks = NUM_TASKS // len(QUARTERS)
     
     q_tasks = []
@@ -190,8 +189,7 @@ def generate_quarter_data(quarter_idx):
         # Link to user (always)
         links.append(f"u/{user}")
         
-        # Link to Quarter (always)
-        links.append(f"q/{qid}")
+        # Quarter link implicit via indentation
         
         # Link to previous tasks (dependency)
         if generated_tasks and random.random() < 0.25:
@@ -205,11 +203,7 @@ def generate_quarter_data(quarter_idx):
             
         desc = f"{verb} {noun} logic & specs"
         
-        # Format: t/ID Desc links...
-        # Join links naturally?
-        # "for p/team assigned to u/user in q/qid, depends on t/X..."
-        
-        link_text = f"for p/{team} assigned to u/{user} in q/{qid}"
+        link_text = f"for p/{team} assigned to u/{user}"
         extras = []
         if generated_tasks and random.random() < 0.25:
              prev = random.choice(generated_tasks)
@@ -220,14 +214,18 @@ def generate_quarter_data(quarter_idx):
             extras.append(f"targeting m/{ms}")
             
         if extras:
-            link_text += " (" + ", ".join(extras) + ")"
+            link_text += " (" + ", ".join(extras) + " )"
             
-        lines.append(f"t/{tid} {desc} {link_text}")
+        lines.append(f"{indent}t/{tid} {desc} {link_text}")
         q_tasks.append(tid)
         generated_tasks.append(tid)
 
     # 3. Bugs for this quarter (linked to this quarter's tasks)
-    lines.append(f"\n# --- Bugs reported in {qid} ---")
+    # Group bugs under tasks if linked?
+    # Or just under Quarter?
+    # Let's verify: "reorganize list items leveraging inheritance"
+    # Grouping bugs under Quarter is inheritance.
+    
     num_bugs = NUM_BUGS // len(QUARTERS)
     
     for i in range(num_bugs):
@@ -241,11 +239,17 @@ def generate_quarter_data(quarter_idx):
         
         # Link to a task
         task_link = ""
+        # If we link to a task, maybe we indent under that task?
+        # But we print tasks first, then bugs.
+        # To indent under task, we'd need to print the bug immediately after the task.
+        # Restructuring loop to interleave bugs would be complex for this script update.
+        # Let's stick to indenting under Quarter.
+        
         if q_tasks and random.random() < 0.7:
             task = random.choice(q_tasks)
             task_link = f" while working on t/{task}"
             
-        line = f"b/{bid} {prefix} {noun} found in p/{team}{task_link} (assigned: u/{user})"
+        line = f"{indent}b/{bid} {prefix} {noun} found in p/{team}{task_link} (assigned: u/{user} )"
         lines.append(line)
 
     return "\n".join(lines)

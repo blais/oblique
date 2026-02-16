@@ -63,29 +63,54 @@ impl Parser {
     pub fn parse_string(&mut self, content: &str) -> Result<(), Error> {
         let lines: Vec<&str> = content.lines().collect();
         let mut line_idx = 0;
+        
+        // Stack of (indentation_level, parent_reference)
+        let mut context_stack: Vec<(usize, Reference)> = Vec::new();
 
         while line_idx < lines.len() {
             let original_line = lines[line_idx];
             line_idx += 1;
 
-            // Skip empty lines and comments (before macro expansion to avoid processing comments)
-            let trimmed = original_line.trim();
-            if trimmed.is_empty() || trimmed.starts_with('#') {
+            // Calculate indentation
+            let trimmed = original_line.trim_start();
+            if trimmed.is_empty() {
+                continue;
+            }
+            
+            let indent = original_line.len() - trimmed.len();
+            
+            // Adjust stack based on indentation
+            while !context_stack.is_empty() {
+                if context_stack.last().unwrap().0 >= indent {
+                    context_stack.pop();
+                } else {
+                    break;
+                }
+            }
+            
+            // Capture parent reference before processing the line
+            let parent_ref = context_stack.last().map(|(_, r)| r.clone());
+
+            // Skip comments (check after indent calc but before macro/tokenizing to allow indented comments)
+            if trimmed.starts_with('#') {
                 continue;
             }
 
             // Apply macros
             let line = self.macro_system.apply(original_line);
             
-            // Re-check for empty/comment after macro expansion? 
-            // The doc says "Any line beginning with # is a comment". 
-            // Macros might produce comments, but typically we want to parse the result.
-            // However, usually macros apply to content.
-            // Let's tokenize the expanded line.
             let tokens = tokenize_line(&line);
             if tokens.is_empty() {
                 continue;
             }
+
+            // Helper to add parent ref
+            let add_parent = |obj: &mut Object, parent: Option<Reference>| {
+                if let Some(p) = parent {
+                    // Add to unresolved_refs (which acts as the bucket for all refs initially)
+                    obj.unresolved_refs.insert(p);
+                }
+            };
 
             match &tokens[0] {
                 Token::TypeDecl(name) => {
@@ -125,10 +150,6 @@ impl Parser {
                         if let Some(idx) = rest.find(char::is_whitespace) {
                             let pattern = &rest[..idx];
                             let replacement = rest[idx..].trim_start();
-                            
-                            // Check if replacement refers to a reference-like token which might have been 
-                            // intended as a single token but we are parsing raw.
-                            // The user input is what matters.
                             
                             self.macro_system.add_macro(pattern, replacement)?;
                         } else {
@@ -183,7 +204,7 @@ impl Parser {
                     let contents = self.join_tokens(&tokens[1..tokens.len()-1]);
                     let (refs, unresolved_refs) = self.extract_references(&tokens[1..tokens.len()-1]);
 
-                    self.objects.push(Object {
+                    let mut obj = Object {
                         id: ObjectId {
                             type_name: type_name.clone(),
                             ident: Some(ident.clone()),
@@ -192,13 +213,19 @@ impl Parser {
                         refs,
                         unresolved_refs,
                         lineno: Some(line_idx),
-                    });
+                    };
+                    add_parent(&mut obj, parent_ref);
+                    
+                    // Update stack
+                    context_stack.push((indent, Reference { type_name: type_name.clone(), ident: ident.clone() }));
+                    
+                    self.objects.push(obj);
                 },
                 Token::AutoReference(type_name) => {
                     let contents = self.join_tokens(&tokens[1..tokens.len()-1]);
                     let (refs, unresolved_refs) = self.extract_references(&tokens[1..tokens.len()-1]);
 
-                    self.objects.push(Object {
+                    let mut obj = Object {
                         id: ObjectId {
                             type_name: type_name.clone(),
                             ident: None,
@@ -207,13 +234,21 @@ impl Parser {
                         refs,
                         unresolved_refs,
                         lineno: Some(line_idx),
-                    });
+                    };
+                    add_parent(&mut obj, parent_ref);
+                    
+                    // Note: We can't push auto-ref to stack easily because we don't have the final ID yet.
+                    // The ID is generated in Database::add_object.
+                    // For now, we simply don't push it to stack, so children won't inherit from it.
+                    // TODO: To support this, we'd need to pre-allocate IDs or change architecture.
+                    
+                    self.objects.push(obj);
                 },
                 Token::Word(_) => {
                     let contents = self.join_tokens(&tokens[0..tokens.len()-1]);
                     let (refs, unresolved_refs) = self.extract_references(&tokens[0..tokens.len()-1]);
 
-                    self.objects.push(Object {
+                    let mut obj = Object {
                         id: ObjectId {
                             type_name: "item".to_string(),
                             ident: None,
@@ -222,7 +257,12 @@ impl Parser {
                         refs,
                         unresolved_refs,
                         lineno: Some(line_idx),
-                    });
+                    };
+                    add_parent(&mut obj, parent_ref);
+                    
+                    // Same as AutoReference, can't push to stack without ID.
+                    
+                    self.objects.push(obj);
                 },
                 _ => {}
             }
