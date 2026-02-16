@@ -20,8 +20,8 @@ pub struct Database {
     /// The render system for the database
     pub render_system: RenderSystem,
 
-    /// The next auto-generated identifier for items
-    next_item_id: usize,
+    /// Next auto-generated identifier per type
+    next_ids: HashMap<String, usize>,
 }
 
 impl Database {
@@ -31,7 +31,7 @@ impl Database {
             types: HashMap::new(),
             objects: HashMap::new(),
             render_system: RenderSystem::new(),
-            next_item_id: 1,
+            next_ids: HashMap::new(),
         };
 
         // Add the default item type
@@ -53,9 +53,11 @@ impl Database {
     /// Add an object to the database
     pub fn add_object(&mut self, mut object: Object) -> Result<(), Error> {
         // Generate an ID if needed
-        if object.id.ident.is_none() && object.id.type_name == "item" {
-            object.id.ident = Some(format!("{}", self.next_item_id));
-            self.next_item_id += 1;
+        if object.id.ident.is_none() {
+            let type_name = &object.id.type_name;
+            let next_id = self.next_ids.entry(type_name.clone()).or_insert(1);
+            object.id.ident = Some(format!("{}", next_id));
+            *next_id += 1;
         }
 
         // Check for duplicate definitions

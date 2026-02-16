@@ -43,8 +43,9 @@ BUG_PREFIXES = ["Leak in", "Crash in", "Misalignment of", "Corrosion detected on
 # --- State ---
 generated_tasks = [] # List of task IDs
 generated_milestones = [] # List of milestone IDs
-current_task_id = 1000
-current_bug_id = 5000
+current_task_id = 5000 # Manual IDs start high to avoid collision with auto-IDs
+next_auto_task_id = 1
+current_bug_id = 8000
 current_ms_id = 0
 
 # --- User Generation ---
@@ -132,7 +133,7 @@ def generate_static_data():
     return "\n".join(lines)
 
 def generate_quarter_data(quarter_idx):
-    global current_task_id, current_bug_id, current_ms_id
+    global current_task_id, current_bug_id, current_ms_id, next_auto_task_id
     lines = []
     
     qid, qdesc = QUARTERS[quarter_idx]
@@ -188,8 +189,15 @@ def generate_quarter_data(quarter_idx):
     q_tasks = []
     
     for i in range(num_tasks):
-        current_task_id += 1
-        tid = current_task_id
+        # Decide if auto or manual
+        is_auto = random.random() < 0.9
+        
+        if is_auto:
+            tid = next_auto_task_id
+            next_auto_task_id += 1
+        else:
+            current_task_id += 1
+            tid = current_task_id
         
         verb = random.choice(VERBS)
         noun = random.choice(NOUNS)
@@ -241,7 +249,10 @@ def generate_quarter_data(quarter_idx):
         else:
              full_text = f"{desc} - {link_text}"
 
-        lines.append(f"{indent}t/{tid} {full_text}")
+        if is_auto:
+            lines.append(f"{indent}t/ {full_text}")
+        else:
+            lines.append(f"{indent}t/{tid} {full_text}")
         
         # Random extra whitespace
         if random.random() < 0.05:
