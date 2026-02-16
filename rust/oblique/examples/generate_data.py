@@ -1,10 +1,11 @@
 import random
 import datetime
+import math
 
-OUTPUT_FILE = "examples/nuclear_plant.oblique"
+OUTPUT_FILE = "rust/oblique/examples/nuclear_plant.oblique"
 NUM_TASKS = 1500
 NUM_BUGS = 400
-NUM_MILESTONES = 50
+NUM_MILESTONES = 60 # 20 per quarter
 
 # --- Data Constants ---
 
@@ -25,14 +26,32 @@ TEAMS = [
 
 ROLES = ["Lead", "Senior Eng", "Junior Eng", "PM", "Safety Officer"]
 
-# Generate some realistic looking users
 FIRST_NAMES = ["James", "Linda", "Robert", "Patricia", "John", "Jennifer", "Michael", "Elizabeth", "David", "Barbara", "William", "Susan", "Richard", "Jessica", "Joseph", "Sarah", "Thomas", "Karen", "Charles", "Lisa"]
 LAST_NAMES = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin"]
 
+VERBS = ["Implement", "Design", "Review", "Audit", "Test", "Deploy", "Refactor", "Construct", "Inspect", "Calibrate", "Document", "Prototype", "Validating"]
+NOUNS = [
+    "Cooling Pump", "Control Rod Actuator", "Graphite Moderator", "Steam Generator", 
+    "Turbine Valve", "Emergency Diesel Generator", "Radiation Sensor", "Containment Dome", 
+    "Spent Fuel Pool", "SCADA Interface", "Fire Suppression System", "Seismic Dampener", 
+    "Access Control Gate", "Perimeter Fence", "Coolant Filter", "Pressure Vessel",
+    "Heat Exchanger", "Backup Battery Bank", "Ventilation Shaft", "Control Room Display"
+]
+
+BUG_PREFIXES = ["Leak in", "Crash in", "Misalignment of", "Corrosion detected on", "Signal noise in", "Overheating of", "Unexpected latency in", "Auth failure in", "Cracks found in", "Inconsistent readings from"]
+
+# --- State ---
+generated_tasks = [] # List of task IDs
+generated_milestones = [] # List of milestone IDs
+current_task_id = 1000
+current_bug_id = 5000
+current_ms_id = 0
+
+# --- User Generation ---
 USERS = []
 seen_uids = set()
 
-for i in range(50):
+for i in range(60): # More users
     fn = random.choice(FIRST_NAMES)
     ln = random.choice(LAST_NAMES)
     base_uid = f"{fn.lower()[0]}{ln.lower()}"
@@ -48,17 +67,6 @@ for i in range(50):
     role = random.choice(ROLES)
     team = random.choice(TEAMS)[0]
     USERS.append((uid, f"{fn} {ln}", role, team))
-
-VERBS = ["Implement", "Design", "Review", "Audit", "Test", "Deploy", "Refactor", "Construct", "Inspect", "Calibrate", "Document"]
-NOUNS = [
-    "Cooling Pump", "Control Rod Actuator", "Graphite Moderator", "Steam Generator", 
-    "Turbine Valve", "Emergency Diesel Generator", "Radiation Sensor", "Containment Dome", 
-    "Spent Fuel Pool", "SCADA Interface", "Fire Suppression System", "Seismic Dampener", 
-    "Access Control Gate", "Perimeter Fence", "Coolant Filter", "Pressure Vessel",
-    "Heat Exchanger", "Backup Battery Bank", "Ventilation Shaft", "Control Room Display"
-]
-
-BUG_PREFIXES = ["Leak in", "Crash in", "Misalignment of", "Corrosion detected on", "Signal noise in", "Overheating of", "Unexpected latency in", "Auth failure in", "Cracks found in"]
 
 # --- Helper Functions ---
 
@@ -95,14 +103,8 @@ def generate_header():
 /render m 🚩 Milestone: \1
 
 # Macros for quick entry
-# Usage: @jdoe -> u/\1
-
-# Usage: #core -> p/\1
-
-# Usage: Q2 -> q/2026q2 (Simple alias mapping)
-/macro \bQ2\b q/2026q2
-/macro \bQ3\b q/2026q3
-/macro \bQ4\b q/2026q4
+/macro @([a-z0-9]+) u/\1
+/macro #([a-z_]+) p/\1
 
 # --- Static Definitions ---
 """
@@ -117,62 +119,146 @@ def generate_static_data():
     lines.append("\n# --- Components / Teams ---")
     for tid, desc in TEAMS:
         lines.append(f"p/{tid} {desc}")
+        # Add diverse links between components (just description text for now, or new type?)
+        # Let's keep it simple text.
 
     lines.append("\n# --- Users ---")
     for uid, name, role, team in USERS:
-        # u/jdoe John Doe (Lead, #core)
-        lines.append(f"u/{uid} {name} ({role}, p/{team})")
+        # Link users to other users (mentoring)
+        mentor_text = ""
+        if random.random() < 0.2 and len(USERS) > 5:
+            mentor = random.choice(USERS)
+            if mentor[0] != uid:
+                 mentor_text = f" (mentored by u/{mentor[0]})"
+        
+        lines.append(f"u/{uid} {name} ({role}, p/{team}){mentor_text}")
         
     return "\n".join(lines)
 
-def generate_milestones():
-    lines = ["\n# --- Milestones ---"]
-    for i in range(1, NUM_MILESTONES + 1):
-        q = random.choice(QUARTERS)[0]
-        noun = random.choice(NOUNS)
-        lines.append(f"m/ms_{i} Final approval for {noun} in q/{q}")
-    return "\n".join(lines)
-
-def generate_tasks_and_bugs():
-    lines = ["\n# --- Tasks & Bugs ---"]
+def generate_quarter_data(quarter_idx):
+    global current_task_id, current_bug_id, current_ms_id
+    lines = []
     
-    # Generate Tasks
-    for i in range(1, NUM_TASKS + 1):
+    qid, qdesc = QUARTERS[quarter_idx]
+    
+    lines.append(f"\n# ==========================================")
+    lines.append(f"# Planning for {qdesc}")
+    lines.append(f"# ==========================================")
+    
+    # 1. Milestones for this quarter
+    q_milestones = []
+    num_ms = NUM_MILESTONES // len(QUARTERS)
+    lines.append(f"\n# --- Milestones for {qid} ---")
+    
+    for i in range(num_ms):
+        current_ms_id += 1
+        ms_id = f"ms_{qid}_{i+1}"
+        noun = random.choice(NOUNS)
+        
+        # Link to previous milestones?
+        dep_text = ""
+        if generated_milestones and random.random() < 0.3:
+            prev = random.choice(generated_milestones)
+            dep_text = f" (requires m/{prev})"
+            
+        line = f"m/{ms_id} Final sign-off for {noun}{dep_text} in q/{qid}"
+        lines.append(line)
+        q_milestones.append(ms_id)
+        generated_milestones.append(ms_id)
+
+    # 2. Tasks for this quarter
+    lines.append(f"\n# --- Tasks for {qid} ---")
+    num_tasks = NUM_TASKS // len(QUARTERS)
+    
+    q_tasks = []
+    
+    for i in range(num_tasks):
+        current_task_id += 1
+        tid = current_task_id
+        
         verb = random.choice(VERBS)
         noun = random.choice(NOUNS)
         user = random.choice(USERS)[0]
         team = random.choice(TEAMS)[0]
-        quarter = random.choice(QUARTERS)[0]
         
-        # t/1001 Implement Cooling Pump logic for #cooling assigned to @jdoe scheduled for Q2
+        # Diverse links
+        links = []
+        
+        # Link to component (always)
+        links.append(f"p/{team}")
+        
+        # Link to user (always)
+        links.append(f"u/{user}")
+        
+        # Link to Quarter (always)
+        links.append(f"q/{qid}")
+        
+        # Link to previous tasks (dependency)
+        if generated_tasks and random.random() < 0.25:
+            prev = random.choice(generated_tasks)
+            links.append(f"depends on t/{prev}")
+            
+        # Link to Milestone (blocker/relation)
+        if q_milestones and random.random() < 0.15:
+            ms = random.choice(q_milestones)
+            links.append(f"blocking m/{ms}")
+            
         desc = f"{verb} {noun} logic & specs"
-        line = f"t/{1000+i} {desc} for p/{team} assigned to u/{user} in q/{quarter}"
-        lines.append(line)
+        
+        # Format: t/ID Desc links...
+        # Join links naturally?
+        # "for p/team assigned to u/user in q/qid, depends on t/X..."
+        
+        link_text = f"for p/{team} assigned to u/{user} in q/{qid}"
+        extras = []
+        if generated_tasks and random.random() < 0.25:
+             prev = random.choice(generated_tasks)
+             extras.append(f"depends on t/{prev}")
+        
+        if q_milestones and random.random() < 0.15:
+            ms = random.choice(q_milestones)
+            extras.append(f"targeting m/{ms}")
+            
+        if extras:
+            link_text += " (" + ", ".join(extras) + ")"
+            
+        lines.append(f"t/{tid} {desc} {link_text}")
+        q_tasks.append(tid)
+        generated_tasks.append(tid)
 
-    # Generate Bugs
-    for i in range(1, NUM_BUGS + 1):
+    # 3. Bugs for this quarter (linked to this quarter's tasks)
+    lines.append(f"\n# --- Bugs reported in {qid} ---")
+    num_bugs = NUM_BUGS // len(QUARTERS)
+    
+    for i in range(num_bugs):
+        current_bug_id += 1
+        bid = current_bug_id
+        
         prefix = random.choice(BUG_PREFIXES)
         noun = random.choice(NOUNS)
         user = random.choice(USERS)[0]
         team = random.choice(TEAMS)[0]
         
-        # b/500 Leak in Heat Exchanger identified in #cooling (cc @jdoe)
-        desc = f"{prefix} {noun}"
-        line = f"b/{5000+i} {desc} found in p/{team} (investigating: u/{user})"
+        # Link to a task
+        task_link = ""
+        if q_tasks and random.random() < 0.7:
+            task = random.choice(q_tasks)
+            task_link = f" while working on t/{task}"
+            
+        line = f"b/{bid} {prefix} {noun} found in p/{team}{task_link} (assigned: u/{user})"
         lines.append(line)
-        
-    return "\n".join(lines)
 
-# --- Main Generation ---
+    return "\n".join(lines)
 
 def main():
     with open(OUTPUT_FILE, "w") as f:
         f.write(generate_header())
         f.write(generate_static_data())
-        f.write(generate_milestones())
-        f.write(generate_tasks_and_bugs())
+        
+        for i in range(len(QUARTERS)):
+            f.write(generate_quarter_data(i))
     
-    print(f"Generated {OUTPUT_FILE} with ~{len(QUARTERS) + len(TEAMS) + len(USERS) + NUM_MILESTONES + NUM_TASKS + NUM_BUGS} nodes.")
+    print(f"Generated {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()
