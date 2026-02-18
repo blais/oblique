@@ -82,85 +82,65 @@ impl Database {
     /// Resolve references in the database
     pub fn resolve_references(&mut self) -> Result<(), Error> {
         let mut objects = std::mem::take(&mut self.objects);
-
-        let keys: Vec<ObjectId> = objects.keys().cloned().collect();
-        // for key in keys.iter() {
-        //     match objects.get(key) {
-        //         None => continue,
-        //         Some(object) => {
-
         let mut new_objects: HashMap<ObjectId, Object> = HashMap::new();
 
-        for key in keys.iter() {
-            // for object in objects.values() {
-            let mut resolved = HashSet::new();
-            let mut unresolved = HashSet::new();
+        let keys: Vec<ObjectId> = objects.keys().cloned().collect();
 
-            match objects.get(key) {
-                None => continue,
-                Some(object) => {
-                    for reference in &object.unresolved_refs {
-                        let type_flavor = match self.get_type_flavor(&reference.type_name) {
-                            Some(flavor) => flavor,
-                            None => {
-                                return Err(Error::InvalidType(
-                                    reference.type_name.clone(),
-                                    reference.ident.clone(),
-                                    object.lineno.unwrap_or(0),
-                                ));
-                            }
-                        };
+        for key in &keys {
+            let (resolved, unresolved) = {
+                let object = objects.get(key).unwrap();
+                let mut resolved = object.refs.clone();
+                let mut unresolved = HashSet::new();
 
-                        let ref_id = ObjectId {
-                            type_name: reference.type_name.clone(),
-                            ident: Some(reference.ident.clone()),
-                        };
+                for reference in &object.unresolved_refs {
+                    let type_flavor = self.get_type_flavor(&reference.type_name).ok_or_else(|| {
+                        Error::InvalidType(
+                            reference.type_name.clone(),
+                            reference.ident.clone(),
+                            object.lineno.unwrap_or(0),
+                        )
+                    })?;
 
-                        match type_flavor {
-                            TypeFlavor::Strict => {
-                                // Check if the referenced object exists
-                                if objects.contains_key(&ref_id) {
-                                    resolved.insert(reference.clone());
-                                } else {
-                                    unresolved.insert(reference.clone());
-                                }
-                            }
-                            TypeFlavor::Lazy => {
-                                // Automatically create the referenced object if it doesn't exist
-                                if !objects.contains_key(&ref_id) {
-                                    new_objects.insert(
-                                        ref_id.clone(),
-                                        Object {
-                                            id: ref_id,
-                                            contents: String::new(),
-                                            refs: HashSet::new(),
-                                            unresolved_refs: HashSet::new(),
-                                            lineno: None,
-                                        },
-                                    );
-                                }
+                    if type_flavor == TypeFlavor::Ignore {
+                        continue;
+                    }
 
-                                resolved.insert(reference.clone());
-                            }
-                            TypeFlavor::Ignore => {
-                                // Ignore references to this type
-                            }
-                        }
+                    let ref_id = ObjectId {
+                        type_name: reference.type_name.clone(),
+                        ident: Some(reference.ident.clone()),
+                    };
+
+                    let exists = objects.contains_key(&ref_id) || new_objects.contains_key(&ref_id);
+
+                    if exists {
+                        resolved.insert(reference.clone());
+                    } else if type_flavor == TypeFlavor::Lazy {
+                        new_objects.insert(
+                            ref_id.clone(),
+                            Object {
+                                id: ref_id,
+                                contents: String::new(),
+                                refs: HashSet::new(),
+                                unresolved_refs: HashSet::new(),
+                                lineno: None,
+                            },
+                        );
+                        resolved.insert(reference.clone());
+                    } else {
+                        // Strict and not found
+                        unresolved.insert(reference.clone());
                     }
                 }
-            }
+                (resolved, unresolved)
+            };
 
-            if let Some(object) = objects.get_mut(key) {
-                object.refs = resolved;
-                object.unresolved_refs = unresolved;
-            }
+            let object = objects.get_mut(key).unwrap();
+            object.refs = resolved;
+            object.unresolved_refs = unresolved;
         }
 
         // Add the new objects to the database
-        for (id, object) in new_objects {
-            objects.insert(id, object);
-        }
-
+        objects.extend(new_objects);
         self.objects = objects;
         Ok(())
     }

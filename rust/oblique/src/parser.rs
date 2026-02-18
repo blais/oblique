@@ -59,6 +59,35 @@ impl Parser {
         self.parse_string(&content)
     }
 
+    fn process_object(
+        &mut self,
+        type_name: String,
+        ident: Option<String>,
+        content_tokens: &[Token],
+        line_idx: usize,
+        parent_ref: Option<Reference>,
+    ) -> Object {
+        let contents = self.join_tokens(content_tokens);
+        let (refs, unresolved_refs) = self.extract_references(content_tokens);
+
+        let mut obj = Object {
+            id: ObjectId {
+                type_name,
+                ident,
+            },
+            contents,
+            refs,
+            unresolved_refs,
+            lineno: Some(line_idx),
+        };
+
+        if let Some(p) = parent_ref {
+            obj.unresolved_refs.insert(p);
+        }
+
+        obj
+    }
+
     /// Parse a string
     pub fn parse_string(&mut self, content: &str) -> Result<(), Error> {
         let lines: Vec<&str> = content.lines().collect();
@@ -104,39 +133,20 @@ impl Parser {
                 continue;
             }
 
-            // Helper to add parent ref
-            let add_parent = |obj: &mut Object, parent: Option<Reference>| {
-                if let Some(p) = parent {
-                    // Add to unresolved_refs (which acts as the bucket for all refs initially)
-                    obj.unresolved_refs.insert(p);
-                }
-            };
-
             match &tokens[0] {
-                Token::TypeDecl(name) => {
+                Token::TypeDecl(name) | Token::LazyTypeDecl(name) | Token::IgnoreTypeDecl(name) => {
                     let contents = self.join_tokens(&tokens[1..tokens.len()-1]);
+                    let flavor = match &tokens[0] {
+                        Token::TypeDecl(_) => TypeFlavor::Strict,
+                        Token::LazyTypeDecl(_) => TypeFlavor::Lazy,
+                        Token::IgnoreTypeDecl(_) => TypeFlavor::Ignore,
+                        _ => unreachable!(),
+                    };
+                    
                     self.types.push(Type {
                         name: name.clone(),
                         contents,
-                        flavor: TypeFlavor::Strict,
-                        lineno: Some(line_idx),
-                    });
-                },
-                Token::LazyTypeDecl(name) => {
-                    let contents = self.join_tokens(&tokens[1..tokens.len()-1]);
-                    self.types.push(Type {
-                        name: name.clone(),
-                        contents,
-                        flavor: TypeFlavor::Lazy,
-                        lineno: Some(line_idx),
-                    });
-                },
-                Token::IgnoreTypeDecl(name) => {
-                    let contents = self.join_tokens(&tokens[1..tokens.len()-1]);
-                    self.types.push(Type {
-                        name: name.clone(),
-                        contents,
-                        flavor: TypeFlavor::Ignore,
+                        flavor,
                         lineno: Some(line_idx),
                     });
                 },
@@ -158,8 +168,6 @@ impl Parser {
                                 message: "Invalid macro declaration: missing replacement".to_string(),
                             });
                         }
-                    } else {
-                         // Should not happen if token was MacroDecl
                     }
                 },
                 Token::RenderDecl => {
@@ -201,20 +209,13 @@ impl Parser {
                     self.handle_import(&filename)?;
                 },
                 Token::Reference { type_name, ident } => {
-                    let contents = self.join_tokens(&tokens[1..tokens.len()-1]);
-                    let (refs, unresolved_refs) = self.extract_references(&tokens[1..tokens.len()-1]);
-
-                    let mut obj = Object {
-                        id: ObjectId {
-                            type_name: type_name.clone(),
-                            ident: Some(ident.clone()),
-                        },
-                        contents,
-                        refs,
-                        unresolved_refs,
-                        lineno: Some(line_idx),
-                    };
-                    add_parent(&mut obj, parent_ref);
+                    let obj = self.process_object(
+                        type_name.clone(),
+                        Some(ident.clone()),
+                        &tokens[1..tokens.len()-1],
+                        line_idx,
+                        parent_ref,
+                    );
                     
                     // Update stack
                     context_stack.push((indent, Reference { type_name: type_name.clone(), ident: ident.clone() }));
@@ -222,46 +223,23 @@ impl Parser {
                     self.objects.push(obj);
                 },
                 Token::AutoReference(type_name) => {
-                    let contents = self.join_tokens(&tokens[1..tokens.len()-1]);
-                    let (refs, unresolved_refs) = self.extract_references(&tokens[1..tokens.len()-1]);
-
-                    let mut obj = Object {
-                        id: ObjectId {
-                            type_name: type_name.clone(),
-                            ident: None,
-                        },
-                        contents,
-                        refs,
-                        unresolved_refs,
-                        lineno: Some(line_idx),
-                    };
-                    add_parent(&mut obj, parent_ref);
-                    
-                    // Note: We can't push auto-ref to stack easily because we don't have the final ID yet.
-                    // The ID is generated in Database::add_object.
-                    // For now, we simply don't push it to stack, so children won't inherit from it.
-                    // TODO: To support this, we'd need to pre-allocate IDs or change architecture.
-                    
+                    let obj = self.process_object(
+                        type_name.clone(),
+                        None,
+                        &tokens[1..tokens.len()-1],
+                        line_idx,
+                        parent_ref,
+                    );
                     self.objects.push(obj);
                 },
                 Token::Word(_) => {
-                    let contents = self.join_tokens(&tokens[0..tokens.len()-1]);
-                    let (refs, unresolved_refs) = self.extract_references(&tokens[0..tokens.len()-1]);
-
-                    let mut obj = Object {
-                        id: ObjectId {
-                            type_name: "item".to_string(),
-                            ident: None,
-                        },
-                        contents,
-                        refs,
-                        unresolved_refs,
-                        lineno: Some(line_idx),
-                    };
-                    add_parent(&mut obj, parent_ref);
-                    
-                    // Same as AutoReference, can't push to stack without ID.
-                    
+                    let obj = self.process_object(
+                        "item".to_string(),
+                        None,
+                        &tokens[0..tokens.len()-1],
+                        line_idx,
+                        parent_ref,
+                    );
                     self.objects.push(obj);
                 },
                 _ => {}

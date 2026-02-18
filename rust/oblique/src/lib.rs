@@ -9,8 +9,10 @@ mod lexer;
 mod parser;
 mod database;
 mod macros;
+pub mod dot;
 
 pub use ast::{Type, TypeFlavor, Object, ObjectId, Reference};
 pub use error::Error;
 pub use database::Database;
 pub use parser::{parse_file, parse_string};
+pub use dot::generate_dot;
